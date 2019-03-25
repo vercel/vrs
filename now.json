@@ -4,9 +4,26 @@
   "alias": "serverless-vrs",
   "public": false,
   "builds": [
+    { "src": "api/**/*.js", "use": "@now/node" },
     {
-      "src": "package.json",
+      "src": "www/package.json",
       "use": "@now/next"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "api/$1",
+      "headers": {
+        "cache-control": "s-maxage=31536000, maxage=0, stale-while-revalidate=31536000, stale-if-error=31536000"
+      }
+    },
+    {
+      "src": "/(.*)",
+      "dest": "www/$1",
+      "headers": {
+        "cache-control": "s-maxage=31536000, maxage=0, stale-while-revalidate=31536000, stale-if-error=31536000"
+      }
     }
   ]
 }
