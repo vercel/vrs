@@ -1,17 +1,32 @@
 /**
  * Created by shu on 7/5/2017.
+ * Refactored by coetry on 3/25/2019.
  */
 
-import Layout from '../components/Layout'
-import Footer from '../components/Footer'
+import Layout from "../components/Layout";
+import Footer from "../components/Footer";
 
-export default () =>
+export default () => (
   <Layout>
     <main className="pa3 pa5-ns vh-100 white dt">
       <div className="f4 lh-copy measure dtc v-mid">
-        <p><span className="fw6">VRS</span> is a demo project for the Advanced Web Technology course at Fudan University.</p>
-        <p><span className="fw6">VRS</span> is open sourced at <a href="http://repo.shud.in/vrs" className="no-underline white bb" target="_blank">GitHub</a>.</p>
+        <p>
+          <span className="fw6">VRS</span> is a demonstration of serverless
+          e-commerce for the next generation.
+        </p>
+        <p>
+          <span className="fw6">VRS</span> is open sourced at{" "}
+          <a
+            href="https://github.com/zeit/vrs"
+            className="no-underline white bb"
+            target="_blank"
+          >
+            GitHub
+          </a>
+          .
+        </p>
       </div>
     </main>
-    <Footer/>
+    <Footer />
   </Layout>
+);

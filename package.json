@@ -1,20 +1,19 @@
 {
   "scripts": {
-    "dev": "next --p 8080",
+    "dev": "next",
     "build": "next build",
-    "export": "next --version && next export",
-    "build-static": "next build && next export",
-    "start": "next start --p 8080"
+    "now-build": "npm run build"
   },
   "dependencies": {
     "bluebird": "^3.5.0",
     "jquery": "^3.2.1",
     "lodash": "^4.17.4",
+    "next": "^8.0.3",
     "nprogress": "^0.2.0",
-    "react": "^16.4.2",
+    "react": "^16.8.5",
     "react-click-outside": "tj/react-click-outside",
     "react-color": "^2.12.0",
-    "react-dom": "^16.4.2",
+    "react-dom": "^16.8.5",
     "react-motion": "^0.5.0",
     "react-smooth-scrollbar": "^7.2.2",
     "tachyons": "^4.7.1",
@@ -24,17 +23,8 @@
     "yarn": "^0.23.4"
   },
   "devDependencies": {
-    "babel-plugin-inline-react-svg": "^0.4.0",
-    "babel-runtime": "^6.23.0",
-    "css-loader": "^0.28.1",
-    "less": "^2.7.2",
-    "less-loader": "^4.0.3",
-    "next": "^4.2.3",
-    "postcss-cssnext": "^2.10.0",
-    "postcss-easy-import": "^2.0.0",
-    "postcss-loader": "^1.3.3",
-    "raw-loader": "^0.5.1",
-    "style-loader": "^0.17.0",
-    "val-loader": "^1.0.2"
+    "@zeit/next-css": "^1.0.1",
+    "@zeit/next-less": "^1.0.1",
+    "less": "^3.9.0"
   }
 }

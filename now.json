@@ -1,9 +1,12 @@
 {
+  "version": 2,
   "name": "vrs",
-  "alias": "vrs",
+  "alias": "serverless-vrs",
   "public": false,
-  "static": {
-    "directoryListing": false
-  },
-  "type": "static"
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@now/next"
+    }
+  ]
 }
