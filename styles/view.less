@@ -1,0 +1,25 @@
+.view-canvas {
+  cursor: grab;
+  &:active {
+    cursor: grabbing;
+  }
+}
+.viewer-container {
+  align-content: center;
+  align-items: flex-end;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  .sidebar {
+    flex: 1;
+
+    &.purchase {
+      align-items: center;
+    }
+  }
+
+  canvas {
+    flex: 2 300px;
+    height: auto;
+  }
+}

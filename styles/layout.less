@@ -1,0 +1,45 @@
+@backgroud: #040404;
+
+body {
+  background-color: @backgroud;
+}
+
+.container {
+  height: 100vh;
+}
+
+.scrollbar-track-y, scrollbar .scrollbar-track-y {
+  right: 3px !important;
+  width: 5px !important;
+}
+
+.scrollbar-thumb, scrollbar .scrollbar-thumb {
+  width: 5px !important;
+}
+
+.tippy-tooltip.dark-theme .tippy-tooltip-content {
+  color: white;
+}
+
+.tippy-tooltip:focus, .tippy-tooltip:active, .tippy-popper:focus {
+  outline: none;
+}
+
+#cart-template {
+  max-height: 300px;
+}
+
+.badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 14px;
+  height: 14px;
+  font-size: 10px;
+  line-height: 14px;
+  text-align: center;
+  border-radius: 100%;
+  letter-spacing: -1px;
+  white-space: nowrap;
+  background: red;
+}
