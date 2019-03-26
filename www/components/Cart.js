@@ -1,138 +1,152 @@
 /**
  * Created by shu on 8/6/2017.
+ * Refactored by coetry on 3/25/2017.
  */
 
-import { Component } from 'react'
-import Head from 'next/head'
+import { useState, useEffect } from "react";
+import Head from "next/head";
 
-import Tippy from 'tippy.js'
-import $ from 'jquery'
-import CartStyles from 'tippy.js/dist/tippy.css'
+import Tippy from "tippy.js";
+import $ from "jquery";
+import CartStyles from "tippy.js/dist/tippy.css";
 
-function saveToLocalStorage(key, data) {
-  try {
-    window.localStorage.setItem(key, JSON.stringify(data))
-  } catch (err) {
-    console.log(err)
-  }
-}
+export default function Cart({ children }) {
+  const [cnt, setCnt] = useState(0);
+  const [items, setItems] = useState([]);
 
-function loadFromLocalStorage(key) {
-  try {
-    return JSON.parse(window.localStorage.getItem(key))
-  } catch (err) {
-    return null
-  }
-}
-
-export default class extends Component {
-  constructor() {
-    super()
-
-    this.state = {
-      cnt: 0,
-      items: []
-    }
-  }
-  saveCart() {
-    saveToLocalStorage('vrs:cart', this.state)
-    // TODO: save to server
-  }
-  componentDidMount() {
-    let el =$('.cart-tippy')[0]
-    let tippy = Tippy('.cart-tippy', {
-      html: '#cart-template',
+  useEffect(() => {
+    console.log(CartStyles);
+    let el = $(".cart-tippy")[0];
+    let tippy = Tippy(".cart-tippy", {
+      html: "#cart-template",
       arrow: true,
       hideOnClick: false,
-      theme: 'dark',
-    })
-    let popper = tippy.getPopperElement(el)
+      theme: "dark"
+    });
+    let popper = tippy.getPopperElement(el);
 
-    let state = loadFromLocalStorage('vrs:cart')
-    if (state) {
-      this.setState(state)
-      setTimeout(() => {
-        tippy.update(popper)
-      }, 100)
+    let localCart = loadFromLocalStorage("vrs:cart");
+
+    if (localCart) {
+      localCart = JSON.parse(localCart);
+
+      let { cnt: local_cnt, items: local_items } = localCart;
+
+      if (local_cnt) {
+        setCnt(local_cnt);
+      }
+
+      if (local_items) {
+        setItems(local_items);
+      }
     }
+
+    /*
+      setTimeout(() => {
+        tippy.update(popper);
+      }, 100);
+      */
 
     // dirty
     window.addToCart = url => {
-      let $screenshot = $(`<img src="${url}" class="screenshot"/>`)
-      $screenshot.appendTo('.container .scroll-content > div')
+      let $screenshot = $(`<img src="${url}" class="screenshot"/>`);
+      $screenshot.appendTo(".container .scroll-content > div");
       $screenshot.css({
         left: 0,
         top: 0,
         width: window.innerWidth,
         height: window.innerHeight
-      })
+      });
       setTimeout(() => {
-        let box = $('#cart-icon')[0].getBoundingClientRect()
+        let box = $("#cart-icon")[0].getBoundingClientRect();
         $screenshot.css({
           width: 30,
           height: 30,
           left: box.left,
           top: box.top + 20,
-          opacity: 0,
-        })
+          opacity: 0
+        });
 
-        this.setState({
-          cnt: this.state.cnt + 1,
-          items: [...this.state.items, {
-            url
-          }]
-        })
+        setCnt(cnt + 1);
+        setItems([...items, { url }]);
 
-        this.saveCart()
+        saveCart();
 
-        tippy.update(popper)
+        tippy.update(popper);
 
         setTimeout(() => {
-          $screenshot.remove()
-        }, 1000)
-      }, 300)
+          $screenshot.remove();
+        }, 1000);
+      }, 300);
+    };
+  }, []);
+
+  function removeFromCart(index) {
+    console.log(index);
+    this.state.items.splice(index, 1);
+    this.setState({
+      cnt: this.state.cnt - 1
+    });
+    this.saveCart();
+    tippy.update(popper);
+  }
+
+  function saveToLocalStorage(key, data) {
+    try {
+      window.localStorage.setItem(key, JSON.stringify(data));
+    } catch (err) {
+      console.log(err);
     }
   }
-  removeFromCart(index) {
-    console.log(index)
-    this.state.items.splice(index, 1)
-    this.setState({
-      cnt: this.state.cnt - 1,
-    })
-    this.saveCart()
-    tippy.update(popper)
+
+  function loadFromLocalStorage(key) {
+    try {
+      return JSON.parse(window.localStorage.getItem(key));
+    } catch (err) {
+      return null;
+    }
   }
-  render() {
-    return <div style={{position: 'relative'}}>
+
+  function saveCart() {
+    saveToLocalStorage("vrs:cart", { cnt, items });
+    // TODO: save to server
+  }
+
+  return (
+    <div style={{ position: "relative" }}>
       <Head>
-        <style dangerouslySetInnerHTML={{__html: CartStyles}} />
+        <style dangerouslySetInnerHTML={{ __html: CartStyles }} />
       </Head>
-      {
-        this.state.cnt ? <div className="badge">{this.state.cnt}</div> : ''
-      }
+      {cnt ? <div className="badge">{cnt}</div> : null}
       <div
         id="cart-icon"
         className="cart-tippy"
         data-duration="300"
         data-animation="shift"
         data-trigger="click"
-        data-position="bottom">
-
-        {this.props.children}
-        <div id="cart-template" style={{display: 'none'}}>
-          <p>Cart ({this.state.cnt})</p>
+        data-position="bottom"
+      >
+        {children}
+        <div id="cart-template" style={{ display: "none" }}>
+          <p>Cart ({cnt})</p>
           <ul className="list tl pa0">
-            {
-              this.state.items.map((item, index) =>
-                <li key={`item-${index}`}><img src={item.url} className="w3"/>
-                  <a onClick={ev => this.removeFromCart(index)}><i className="material-icons hover-gray pointer">close</i></a>
-                </li>
-              )
-            }
+            {items.map((item, index) => (
+              <li key={`item-${index}`}>
+                <img src={item.url} className="w3" />
+                <a onClick={ev => removeFromCart(index)}>
+                  <i className="material-icons hover-gray pointer">close</i>
+                </a>
+              </li>
+            ))}
           </ul>
-          <a className="white mb2" href="/checkout">checkout</a>
+          {/*
+	 
+          <a className="white mb2" href="/checkout">
+            checkout
+          </a>
+       */}
         </div>
       </div>
     </div>
-  }
+  );
 }
