@@ -14,72 +14,72 @@ export default function Cart({ children }) {
   const [cnt, setCnt] = useState(0);
   const [items, setItems] = useState([]);
 
-  useEffect(() => {
-    console.log(CartStyles);
-    let el = $(".cart-tippy")[0];
-    let tippy = Tippy(".cart-tippy", {
-      html: "#cart-template",
-      arrow: true,
-      hideOnClick: false,
-      theme: "dark"
-    });
-    let popper = tippy.getPopperElement(el);
+  useEffect(
+    () => {
+      console.log(CartStyles);
+      let el = $(".cart-tippy")[0];
+      let tippy = Tippy(".cart-tippy", {
+        html: "#cart-template",
+        arrow: true,
+        hideOnClick: false,
+        theme: "dark"
+      });
+      let popper = tippy.getPopperElement(el);
 
-    let localCart = loadFromLocalStorage("vrs:cart");
-
-    if (localCart) {
-      localCart = JSON.parse(localCart);
+      let localCart = loadFromLocalStorage("vrs:cart");
+      console.log("before parse", localCart);
 
       let { cnt: local_cnt, items: local_items } = localCart;
 
       if (local_cnt) {
-        setCnt(local_cnt);
+        //setCnt(local_cnt);
       }
 
       if (local_items) {
-        setItems(local_items);
+        //setItems(local_items);
       }
-    }
 
-    /*
+      /*
       setTimeout(() => {
         tippy.update(popper);
       }, 100);
       */
 
-    // dirty
-    window.addToCart = url => {
-      let $screenshot = $(`<img src="${url}" class="screenshot"/>`);
-      $screenshot.appendTo(".container .scroll-content > div");
-      $screenshot.css({
-        left: 0,
-        top: 0,
-        width: window.innerWidth,
-        height: window.innerHeight
-      });
-      setTimeout(() => {
-        let box = $("#cart-icon")[0].getBoundingClientRect();
+      // dirty
+      window.addToCart = url => {
+        let $screenshot = $(`<img src="${url}" class="screenshot"/>`);
+        $screenshot.appendTo(".container .scroll-content > div");
         $screenshot.css({
-          width: 30,
-          height: 30,
-          left: box.left,
-          top: box.top + 20,
-          opacity: 0
+          left: 0,
+          top: 0,
+          width: window.innerWidth,
+          height: window.innerHeight
         });
-
-        setCnt(cnt + 1);
-        setItems([...items, { url }]);
-
-        saveCart();
-
-        tippy.update(popper);
-
         setTimeout(() => {
-          $screenshot.remove();
-        }, 1000);
-      }, 300);
-    };
-  }, []);
+          let box = $("#cart-icon")[0].getBoundingClientRect();
+          $screenshot.css({
+            width: 30,
+            height: 30,
+            left: box.left,
+            top: box.top + 20,
+            opacity: 0
+          });
+
+          setCnt(cnt + 1);
+          setItems([...items, { url }]);
+
+          saveCart();
+
+          tippy.update(popper);
+
+          setTimeout(() => {
+            $screenshot.remove();
+          }, 1000);
+        }, 300);
+      };
+    },
+    [cnt]
+  );
 
   function removeFromCart(index) {
     console.log(index);
