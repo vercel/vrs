@@ -1,8 +1,3 @@
-/**
- * Created by shu on 8/6/2017.
- * Refactored by coetry on 3/25/2017.
- */
-
 import { useState, useEffect } from "react";
 import Head from "next/head";
 
@@ -16,7 +11,6 @@ export default function Cart({ children }) {
 
   useEffect(
     () => {
-      console.log(CartStyles);
       let el = $(".cart-tippy")[0];
       let tippy = Tippy(".cart-tippy", {
         html: "#cart-template",
@@ -29,14 +23,16 @@ export default function Cart({ children }) {
       let localCart = loadFromLocalStorage("vrs:cart");
       console.log("before parse", localCart);
 
-      let { cnt: local_cnt, items: local_items } = localCart;
+      if (localCart) {
+        let { cnt: local_cnt, items: local_items } = localCart;
 
-      if (local_cnt) {
-        //setCnt(local_cnt);
-      }
+        if (local_cnt) {
+          setCnt(local_cnt);
+        }
 
-      if (local_items) {
-        //setItems(local_items);
+        if (local_items) {
+          setItems(local_items);
+        }
       }
 
       /*
@@ -46,37 +42,6 @@ export default function Cart({ children }) {
       */
 
       // dirty
-      window.addToCart = url => {
-        let $screenshot = $(`<img src="${url}" class="screenshot"/>`);
-        $screenshot.appendTo(".container .scroll-content > div");
-        $screenshot.css({
-          left: 0,
-          top: 0,
-          width: window.innerWidth,
-          height: window.innerHeight
-        });
-        setTimeout(() => {
-          let box = $("#cart-icon")[0].getBoundingClientRect();
-          $screenshot.css({
-            width: 30,
-            height: 30,
-            left: box.left,
-            top: box.top + 20,
-            opacity: 0
-          });
-
-          setCnt(cnt + 1);
-          setItems([...items, { url }]);
-
-          saveCart();
-
-          tippy.update(popper);
-
-          setTimeout(() => {
-            $screenshot.remove();
-          }, 1000);
-        }, 300);
-      };
     },
     [cnt]
   );
@@ -89,6 +54,39 @@ export default function Cart({ children }) {
     });
     this.saveCart();
     tippy.update(popper);
+  }
+
+  function addToCart(url) {
+    console.log("adding to cart ...");
+    let $screenshot = $(`<img src="${url}" class="screenshot"/>`);
+    $screenshot.appendTo(".container .scroll-content > div");
+    $screenshot.css({
+      left: 0,
+      top: 0,
+      width: window.innerWidth,
+      height: window.innerHeight
+    });
+    setTimeout(() => {
+      let box = $("#cart-icon")[0].getBoundingClientRect();
+      $screenshot.css({
+        width: 30,
+        height: 30,
+        left: box.left,
+        top: box.top + 20,
+        opacity: 0
+      });
+
+      setCnt(cnt + 1);
+      setItems([...items, { url }]);
+
+      saveCart();
+
+      tippy.update(popper);
+
+      setTimeout(() => {
+        $screenshot.remove();
+      }, 1000);
+    }, 300);
   }
 
   function saveToLocalStorage(key, data) {
