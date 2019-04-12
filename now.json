@@ -39,5 +39,11 @@
         "cache-control": "s-maxage=31536000, maxage=0, stale-while-revalidate=31536000, stale-if-error=31536000"
       }
     }
-  ]
+  ],
+  "env": {
+    "COOK_KEY": "@vrs-cook-key",
+    "GITHUB_CLIENT_ID": "@vrs-github-client-id",
+    "GITHUB_CLIENT_SECRET": "@vrs-github-client-secret",
+    "MONGODB_ATLAS_URI": "@vrs-mongodb-atlas-uri"
+  }
 }
