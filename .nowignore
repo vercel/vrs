@@ -1,3 +1,11 @@
 node_modules
 .next
 .gitignore
+canvas.html
+ts
+#*
+three_d_models
+.env
+.DS_Store
+tsconfig.js
+test-server.js

@@ -26,6 +26,13 @@
       }
     },
     {
+      "src": "/backend/(.*)",
+      "dest": "backend/$1",
+      "headers": {
+        "cache-control": "s-maxage=31536000, maxage=0, stale-while-revalidate=31536000, stale-if-error=31536000"
+      }
+    },
+    {
       "src": "/(.*)",
       "dest": "frontend/$1",
       "headers": {
