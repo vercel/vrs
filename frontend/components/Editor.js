@@ -452,16 +452,19 @@ class Editor extends Component {
     this.three.composer = composer;
   }
   initModel() {
-    const loader = new THREE.ObjectLoader();
+    //const loader = new THREE.ObjectLoader();
+    const loader = new THREE.GLTFLoader();
 
     const id =
       new URL(window.location.href).searchParams.get("id") ||
       Router.query.id ||
       this.props.id;
-    const modelPath = `/static/models/${id}/data.js`;
+    const modelPath = `/static/models/${id}/scene.gltf`;
 
     return new Promise(resolve => {
       loader.load(modelPath, result => {
+        console.log(result);
+        console.log(result instanceof THREE.Scene);
         if (result instanceof THREE.Scene) {
           this.initModelScene(result);
         } else {
@@ -492,14 +495,14 @@ class Editor extends Component {
   initModelScene(scene) {
     // set an initial scale for camera/controls
     const { camera } = this.three;
-    let bBox = new THREE.Box3().setFromObject(scene);
+    let bBox = new THREE.Box3().setFromObject(scene.scene.children[0]);
     let { y: height, x: width, z: depth } = bBox.getSize();
     let modelSize = Math.max(height, width, depth);
     let scaleRatio = 10 / modelSize;
     height *= scaleRatio;
 
     let dist = 4 / Math.tan((camera.fov * Math.PI) / 360);
-    let pos = scene.position.clone();
+    let pos = scene.scene.position.clone();
     pos.setY(pos.y - bBox.min.y);
 
     pos.setY(height / 2);
@@ -531,8 +534,8 @@ class Editor extends Component {
 
     // parse the model scene and push all objects to the current scene
     let group = new THREE.Group();
-    while (scene.children.length) {
-      let object = scene.children.pop();
+    while (scene.scene.children.length) {
+      let object = scene.scene.children.pop();
       if (object) {
         object.position.setY(object.position.y - bBox.min.y);
         object.position.setX(
@@ -548,7 +551,7 @@ class Editor extends Component {
       }
     }
     // move y-axis, normalize size
-    group.rotation.copy(scene.rotation);
+    group.rotation.copy(scene.scene.rotation);
     group.scale.set(scaleRatio, scaleRatio, scaleRatio);
     this.modelGroup = group;
     this.initModelObject(group);
