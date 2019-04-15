@@ -452,25 +452,29 @@ class Editor extends Component {
     this.three.composer = composer;
   }
   initModel() {
+    console.log("initializing model");
     //const loader = new THREE.ObjectLoader();
-    const loader = new THREE.GLTFLoader();
+    const loader = new THREE.OBJLoader();
 
     const id =
       new URL(window.location.href).searchParams.get("id") ||
       Router.query.id ||
       this.props.id;
-    const modelPath = `/static/models/${id}/scene.gltf`;
+    const modelPath = `/static/models/${id}/data.obj`;
 
     return new Promise(resolve => {
       loader.load(modelPath, result => {
-        console.log(result);
-        console.log(result instanceof THREE.Scene);
+        console.log("loader.load result: ", result);
+        console.log("instance of THREE.Scene:", result instanceof THREE.Scene);
         if (result instanceof THREE.Scene) {
+          console.log("calling initModelScene");
           this.initModelScene(result);
         } else {
           if (result.scene) {
-            this.initModelScene(result);
+            console.log("calling initModelScene w/ result.scene");
+            this.initModelScene(result.scene);
           } else {
+            console.log("calling initModelObject w/ result");
             this.initModelObject(result);
           }
         }
@@ -492,17 +496,16 @@ class Editor extends Component {
     }
     controls.update();
   }
-  initModelScene(scene) {
-    // set an initial scale for camera/controls
-    const { camera } = this.three;
-    let bBox = new THREE.Box3().setFromObject(scene.scene.children[0]);
+  initModelScene(gltfScene) {
+    const { camera, scene } = this.three;
+    let bBox = new THREE.Box3().setFromObject(gltfScene.children[0]);
     let { y: height, x: width, z: depth } = bBox.getSize();
     let modelSize = Math.max(height, width, depth);
     let scaleRatio = 10 / modelSize;
     height *= scaleRatio;
 
     let dist = 4 / Math.tan((camera.fov * Math.PI) / 360);
-    let pos = scene.scene.position.clone();
+    let pos = gltfScene.position.clone();
     pos.setY(pos.y - bBox.min.y);
 
     pos.setY(height / 2);
@@ -534,8 +537,8 @@ class Editor extends Component {
 
     // parse the model scene and push all objects to the current scene
     let group = new THREE.Group();
-    while (scene.scene.children.length) {
-      let object = scene.scene.children.pop();
+    while (gltfScene.children.length) {
+      let object = gltfScene.children.pop();
       if (object) {
         object.position.setY(object.position.y - bBox.min.y);
         object.position.setX(
@@ -544,16 +547,16 @@ class Editor extends Component {
         object.castShadow = true;
         object.receiveShadow = false;
         group.add(object);
-
         if (object instanceof THREE.PerspectiveCamera) {
           this.initModelCamera(object, scaleRatio);
         }
       }
     }
     // move y-axis, normalize size
-    group.rotation.copy(scene.scene.rotation);
+    group.rotation.copy(gltfScene.rotation);
     group.scale.set(scaleRatio, scaleRatio, scaleRatio);
     this.modelGroup = group;
+    console.log("calling initModelObject w/", group);
     this.initModelObject(group);
   }
   initModelCamera(object, scaleRatio) {
@@ -574,13 +577,18 @@ class Editor extends Component {
   }
   initModelObject(object) {
     // push an object from the model file to the current scene
+    console.log("initModelObject", object);
 
     const { scene } = this.three;
-
+    /*
     let verticesCnt = 0;
     let wireframeClone = object.clone();
+    console.log("wireframeClone", wireframeClone);
+    console.log("traversing wireframeClone ...");
     traverse(wireframeClone, child => {
+      console.log("type:", child.type);
       if (child instanceof THREE.Mesh) {
+        console.log("child is instance of THREE.Mesh", child);
         let pointsGeo = new THREE.Geometry();
         pointsGeo.dynamic = true;
         for (let i = 0; i < child.geometry.vertices.length; ++i) {
@@ -642,6 +650,8 @@ class Editor extends Component {
       }
     });
     this.objects.push(object);
+   */
+
     scene.add(object);
   }
 
@@ -899,6 +909,7 @@ class Editor extends Component {
           name = "";
 
         material.forEach(mt => {
+          console.log("mt", mt);
           if (mt.map instanceof THREE.Texture) {
             textures.push(mt.map.image.src);
           }
@@ -908,6 +919,8 @@ class Editor extends Component {
           refractionRatios.push(mt.refractionRatio || 0);
           shininesses.push(mt.shininess || 0);
         });
+
+        console.log("textures", textures);
         if (this.highlightedObject.name) {
           name = this.highlightedObject.name;
         }

@@ -8,8 +8,8 @@ global.THREE = THREE;
 
 // three.js polyfills...shit!
 require("three/examples/js/Mirror");
-require("three/examples/js/loaders/ColladaLoader2");
-require("three/examples/js/loaders/GLTFLoader");
+//require("three/examples/js/loaders/ColladaLoader2");
+require("three/examples/js/loaders/OBJLoader");
 require("three/examples/js/renderers/Projector");
 require("three/examples/js/renderers/CanvasRenderer");
 require("three/examples/js/effects/VREffect");
