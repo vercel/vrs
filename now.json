@@ -1,8 +1,9 @@
 {
   "version": 2,
   "name": "vrs",
-  "alias": "serverless-vrs",
+  "alias": ["serverless-vrs.now.sh"],
   "public": false,
+  "regions": ["sfo"],
   "builds": [
     { "src": "backend/**/*.js", "use": "@now/node" },
     {

@@ -46,22 +46,6 @@ function Store({ products }) {
               </div>
             ))}
         </div>
-        <br />
-        <h2 className="f4 fw4 pa3 mv0 tc">
-          <i className="material-icons">account_balance</i>
-        </h2>
-        <div className="cf pa2">NULL</div>
-        <br />
-        <h2 className="f4 fw4 pa3 mv0 tc">
-          <i className="material-icons">directions_car</i>
-        </h2>
-        <div className="cf pa2">NULL</div>
-        <br />
-        <h2 className="f4 fw4 pa3 mv0 tc">
-          <i className="material-icons">tag_faces</i>
-        </h2>
-        <div className="cf pa2">NULL</div>
-        <br />
       </article>
       <Footer />
     </Layout>
