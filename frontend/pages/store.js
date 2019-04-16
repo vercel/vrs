@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import Link from "next/link";
 import Layout from "../components/Layout";
 import Footer from "../components/Footer";
@@ -7,9 +6,6 @@ import fetch from "isomorphic-unfetch";
 const MODEL_NUM = 3;
 
 function Store({ products }) {
-  useEffect(() => {
-    console.log("PRODUCTS:", products);
-  }, []);
   return (
     <Layout>
       <article className="pt5 bg-black white ph3">
@@ -37,9 +33,13 @@ function Store({ products }) {
                     />
                     <dl className="mt2 f6 lh-copy">
                       <dt className="clip">Name</dt>
-                      <dd className="ml0 white truncate w-100">#{i + 1}</dd>
+                      <dd className="ml0 white truncate w-100">
+                        {products[i + 1].name}
+                      </dd>
                       <dt className="clip">Description</dt>
-                      <dd className="ml0 gray truncate w-100">Lorem Ipsum</dd>
+                      <dd className="ml0 gray truncate w-100">
+                        {products[i + 1].description}
+                      </dd>
                     </dl>
                   </a>
                 </Link>
@@ -77,7 +77,7 @@ Store.getInitialProps = async function getInitialProps({ req }) {
   }
   try {
     const response = await fetch(URL);
-    const products = await response.json();
+    const { docs: products } = await response.json();
     return { products };
   } catch (e) {
     console.error(e.message);
