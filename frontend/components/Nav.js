@@ -35,6 +35,12 @@ export default function Nav() {
     }
   }, []);
 
+  function logout() {
+    Cookies.remove("user-from-github");
+    setUsername(null);
+    setAvatarURL(null);
+  }
+
   return (
     <header className={`fixed w-100 ph3 pv3 pv3-ns ph3-m ph4-l fixed z-9999`}>
       <Head>
@@ -88,23 +94,25 @@ export default function Nav() {
               <i className="material-icons md-18">shopping_cart</i>
             </Cart>
           </a>
-          <Link href={avatarURL ? "/auth/logout" : "/login"}>
-            <a
-              className={`link dim white dib v-mid ${
-                router === "/login" ? "bb" : ""
-              }`}
-              title="Login"
-            >
-              {avatarURL ? (
-                <img
-                  src={avatarURL}
-                  style={{ height: "30px", borderRadius: 100 }}
-                />
-              ) : (
+          {avatarURL ? (
+            <img
+              className="link dim white dib v-mid"
+              onClick={logout}
+              src={avatarURL}
+              style={{ height: "30px", borderRadius: 100 }}
+            />
+          ) : (
+            <Link href="/login">
+              <a
+                className={`link dim white dib v-mid ${
+                  router === "/login" ? "bb" : ""
+                }`}
+                title="Login"
+              >
                 <i className="material-icons md-18">person</i>
-              )}
-            </a>
-          </Link>
+              </a>
+            </Link>
+          )}
         </div>
       </nav>
     </header>
