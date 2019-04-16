@@ -15,28 +15,22 @@
       "src": "/api/(.*)",
       "dest": "backend/api/$1",
       "headers": {
-        "cache-control": "s-maxage=31536000, maxage=0, stale-while-revalidate=31536000, stale-if-error=31536000"
+        "cache-control": "s-maxage=1, maxage=0, stale-while-revalidate=31536000, stale-if-error=31536000"
       }
     },
     {
       "src": "/auth/(.*)",
-      "dest": "backend/auth/$1",
-      "headers": {
-        "cache-control": "s-maxage=31536000, maxage=0, stale-while-revalidate=31536000, stale-if-error=31536000"
-      }
+      "dest": "backend/auth/$1"
     },
     {
       "src": "/backend/(.*)",
-      "dest": "backend/$1",
-      "headers": {
-        "cache-control": "s-maxage=31536000, maxage=0, stale-while-revalidate=31536000, stale-if-error=31536000"
-      }
+      "dest": "backend/$1"
     },
     {
       "src": "/(.*)",
       "dest": "frontend/$1",
       "headers": {
-        "cache-control": "s-maxage=31536000, maxage=0, stale-while-revalidate=31536000, stale-if-error=31536000"
+        "cache-control": "s-maxage=1, maxage=0, stale-while-revalidate=31536000, stale-if-error=31536000"
       }
     }
   ],
