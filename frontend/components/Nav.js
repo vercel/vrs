@@ -27,7 +27,9 @@ export default function Nav() {
   useEffect(() => {
     Router.router && setRouter(Router.router.pathname);
     if (Cookies.get("user-from-github")) {
-      const { username, avatar } = JSON.parse(Cookies.get("user-from-github"));
+      const { username, avatar } = JSON.parse(
+        decodeURIComponent(Cookies.get("user-from-github"))
+      );
       setUsername(username);
       setAvatarURL(avatar);
     }
