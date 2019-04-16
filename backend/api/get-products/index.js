@@ -15,6 +15,10 @@ app.get("*", async (req, res) => {
     const Model = conn.model("Model", ModelSchema);
     Model.find({}, (error, docs) => {
       if (error) res.status(500).json({ error });
+      res.set(
+        "cache-control",
+        "s-maxage=1, maxage=0, stale-while-revalidate=31536000, stale-if-error=31536000"
+      );
       res.json({ docs });
       conn.close();
     });
