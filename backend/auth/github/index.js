@@ -53,10 +53,11 @@ passport.deserializeUser((user, done) => done(null, user));
 
 app.get("*", passport.authenticate("github"), async (req, res) => {
   console.log("user on req:", req.user);
-  const { id } = req.user;
+  const { username, avatar } = req.user;
   delete req.session.passport;
   req.session["user-from-github"] = {
-    id
+    username,
+    avatar
   };
   res.redirect("/");
 });
