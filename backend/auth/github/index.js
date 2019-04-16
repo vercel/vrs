@@ -7,7 +7,7 @@ const app = require("../../utils/app");
 const UserSchema = require("../../models/User");
 
 app.use(passport.initialize());
-app.use(passport.session());
+//app.use(passport.session());
 
 passport.use(
   new GitHubStrategy(
@@ -53,12 +53,8 @@ passport.deserializeUser((user, done) => done(null, user));
 
 app.get("*", passport.authenticate("github"), async (req, res) => {
   console.log("user on req:", req.user);
-  const { username, avatar } = req.user;
-  delete req.session.passport;
-  req.session["user-from-github"] = {
-    username,
-    avatar
-  };
+  const { id, username, avatar } = req.user;
+  res.cookies("user-from-github", JSON.stringify({ id, username, avatar }));
   res.redirect("/");
 });
 

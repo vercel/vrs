@@ -1,2 +1,2 @@
-const cookieSession = require("./cookieSession");
-module.exports = [cookieSession];
+const cookieParser = require("./cookieParser");
+module.exports = [cookieParser];
