@@ -34,11 +34,11 @@ function Store({ products }) {
                     <dl className="mt2 f6 lh-copy">
                       <dt className="clip">Name</dt>
                       <dd className="ml0 white truncate w-100">
-                        {products[i + 1].name}
+                        {products[i].name}
                       </dd>
                       <dt className="clip">Description</dt>
                       <dd className="ml0 gray truncate w-100">
-                        {products[i + 1].description}
+                        {products[i].description}
                       </dd>
                     </dl>
                   </a>
