@@ -3,48 +3,40 @@ import Head from "next/head";
 
 import Tippy from "tippy.js";
 import $ from "jquery";
-import CartStyles from "tippy.js/dist/tippy.css";
+import TippyStyles from "tippy.js/dist/tippy.css";
+import CartStyles from "../styles/cart.css";
 
 export default function Cart({ children }) {
   const [cnt, setCnt] = useState(0);
   const [items, setItems] = useState([]);
 
-  useEffect(
-    () => {
-      let el = $(".cart-tippy")[0];
-      let tippy = Tippy(".cart-tippy", {
-        html: "#cart-template",
-        arrow: true,
-        hideOnClick: false,
-        theme: "dark"
-      });
-      let popper = tippy.getPopperElement(el);
+  useEffect(() => {
+    let el = $(".cart-tippy")[0];
+    let tippy = Tippy(".cart-tippy", {
+      html: "#cart-template",
+      arrow: true,
+      hideOnClick: false,
+      theme: "dark"
+    });
+    let popper = tippy.getPopperElement(el);
 
-      let localCart = loadFromLocalStorage("vrs:cart");
-      console.log("before parse", localCart);
+    let localCart = loadFromLocalStorage("vrs:cart");
+    console.log("before parse", localCart);
 
-      if (localCart) {
-        let { cnt: local_cnt, items: local_items } = localCart;
+    if (localCart) {
+      let { items: local_items } = localCart;
 
-        if (local_cnt) {
-          setCnt(local_cnt);
-        }
-
-        if (local_items) {
-          setItems(local_items);
-        }
+      if (local_items) {
+        setCnt(local_items.length);
+        setItems(local_items);
       }
+    }
 
-      /*
-      setTimeout(() => {
-        tippy.update(popper);
-      }, 100);
-      */
-
-      // dirty
-    },
-    [cnt]
-  );
+    window.addToCart = function(details) {
+      console.log("adding to cart ...");
+      saveCart(details);
+    };
+  }, []);
 
   function removeFromCart(index) {
     console.log(index);
@@ -54,39 +46,6 @@ export default function Cart({ children }) {
     });
     this.saveCart();
     tippy.update(popper);
-  }
-
-  function addToCart(url) {
-    console.log("adding to cart ...");
-    let $screenshot = $(`<img src="${url}" class="screenshot"/>`);
-    $screenshot.appendTo(".container .scroll-content > div");
-    $screenshot.css({
-      left: 0,
-      top: 0,
-      width: window.innerWidth,
-      height: window.innerHeight
-    });
-    setTimeout(() => {
-      let box = $("#cart-icon")[0].getBoundingClientRect();
-      $screenshot.css({
-        width: 30,
-        height: 30,
-        left: box.left,
-        top: box.top + 20,
-        opacity: 0
-      });
-
-      setCnt(cnt + 1);
-      setItems([...items, { url }]);
-
-      saveCart();
-
-      tippy.update(popper);
-
-      setTimeout(() => {
-        $screenshot.remove();
-      }, 1000);
-    }, 300);
   }
 
   function saveToLocalStorage(key, data) {
@@ -105,15 +64,21 @@ export default function Cart({ children }) {
     }
   }
 
-  function saveCart() {
-    saveToLocalStorage("vrs:cart", { cnt, items });
+  function saveCart(details) {
+    setItems(prev => {
+      saveToLocalStorage("vrs:cart", {
+        items: [...prev, { ...details }]
+      });
+      return [...prev, { ...details }];
+    });
+    setCnt(prev => prev + 1);
     // TODO: save to server
   }
 
   return (
     <div style={{ position: "relative" }}>
       <Head>
-        <style dangerouslySetInnerHTML={{ __html: CartStyles }} />
+        <style dangerouslySetInnerHTML={{ __html: CartStyles + TippyStyles }} />
       </Head>
       {cnt ? <div className="badge">{cnt}</div> : null}
       <div

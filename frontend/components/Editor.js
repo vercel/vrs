@@ -137,6 +137,7 @@ class Editor extends Component {
     this.hoverObject = throttle(this.hoverObject.bind(this), 100, false);
   }
   componentDidMount() {
+    console.log("MODEL PROPS:", this.props);
     window.addEventListener("resize", this.handleResize);
 
     this.isMob =
@@ -174,7 +175,7 @@ class Editor extends Component {
 
   addToCart() {
     capturescreen().then(url => {
-      window.addToCart && window.addToCart(url);
+      window.addToCart && window.addToCart({ ...this.props.details, url });
     });
   }
 
@@ -457,7 +458,7 @@ class Editor extends Component {
     const id =
       new URL(window.location.href).searchParams.get("id") ||
       Router.query.id ||
-      this.props.id;
+      this.props.details.id;
     const modelPath = `/static/models/${id}/data.js`;
 
     return new Promise(resolve => {
@@ -987,6 +988,20 @@ class Editor extends Component {
             <i className="material-icons mr2">hourglass_full</i>loading model...
           </div>
         )}
+
+        <div
+          style={{
+            color: "#ffffff",
+            position: "fixed",
+            top: "12%",
+            left: "55%",
+            background: "rgba(20, 20, 20, 0.3)",
+            padding: "10px"
+          }}
+        >
+          <h1>{this.props.details.name}</h1>
+          <p>{this.props.details.description}</p>
+        </div>
 
         <canvas
           className="view-canvas"
