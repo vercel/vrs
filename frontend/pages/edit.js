@@ -2,15 +2,19 @@
  * Created by shu on 10/5/2017.
  */
 
+import { useEffect } from "react";
 import Layout from "../components/Layout";
 import Editor from "../components/Editor";
 
 // 10, 11, 12, 18, 1, 2, 4, 5, 7
 
-function Edit({ details }) {
+function Edit({ details, addToCart, cartState }) {
+  useEffect(() => {
+    console.log("EDIT PAGE:", cartState);
+  });
   return (
-    <Layout>
-      <Editor details={details} />
+    <Layout cartState={cartState}>
+      <Editor details={details} addToCart={addToCart} />
     </Layout>
   );
 }

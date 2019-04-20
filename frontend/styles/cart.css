@@ -90,7 +90,7 @@
   right: 0;
   height: 100%;
   width: 350px;
-  background-color: white;
+  background-color: rgba(50, 50, 50, 0.5);
   display: flex;
   flex-direction: column;
   border-left: 1px solid #e5e5e5;
@@ -106,19 +106,21 @@
   position: absolute;
   right: 9px;
   top: 8px;
-  font-size: 35px;
-  color: #999;
+  font-size: 15px;
+  color: #fff;
   border: none;
   background: transparent;
   transition: transform 100ms ease;
   cursor: pointer;
+  text-decoration: underline;
 }
 
 .Cart__header {
   padding: 20px;
   border-bottom: 1px solid #e5e5e5;
-  flex: 0 0 auto;
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  color: #fff;
 }
 
 .Cart__line-items {

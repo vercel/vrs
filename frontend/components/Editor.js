@@ -175,7 +175,7 @@ class Editor extends Component {
 
   addToCart() {
     capturescreen().then(url => {
-      window.addToCart && window.addToCart({ ...this.props.details, url });
+      this.props.addToCart({ ...this.props.details, url });
     });
   }
 
