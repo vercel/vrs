@@ -1,7 +1,9 @@
-export default function CartSidebar({ cartOpen, setCartOpen }) {
+import LineItem from "./LineItem";
+
+export default function CartSidebar({ cartOpen, setCartOpen, cartItems }) {
   return (
     <div className={`Cart ${cartOpen && "Cart--open"}`}>
-      <div className="Cart__header">
+      <header className="Cart__header">
         <h2>cart</h2>
         <button
           className="Cart__close"
@@ -12,7 +14,13 @@ export default function CartSidebar({ cartOpen, setCartOpen }) {
         >
           close
         </button>
-      </div>
+      </header>
+      <ul className="Cart__line-items">
+        {cartItems &&
+          cartItems.map(({ id, name, price }) => (
+            <LineItem key={id} name={name} price={price} />
+          ))}
+      </ul>
     </div>
   );
 }
