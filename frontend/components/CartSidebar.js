@@ -17,8 +17,8 @@ export default function CartSidebar({ cartOpen, setCartOpen, cartItems }) {
       </header>
       <ul className="Cart__line-items">
         {cartItems &&
-          cartItems.map(({ id, name, price }) => (
-            <LineItem key={id} name={name} price={price} />
+          cartItems.map(item => (
+              <LineItem key={item.id} product={item} />
           ))}
       </ul>
     </div>

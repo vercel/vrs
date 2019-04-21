@@ -180,7 +180,7 @@
   width: 65px;
   height: 65px;
   border-radius: 3px;
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
   background-color: #e5e5e5;
@@ -208,12 +208,13 @@
 }
 
 .Line-item__title {
-  color: #4E5665;
+  color: #fff;
   font-size: 15px;
   font-weight: 400;
 }
 
 .Line-item__price {
+  color: #fff;
   line-height: 23px;
   float: right;
   font-weight: bold;
@@ -222,13 +223,13 @@
 }
 
 .Line-item__quantity-container {
-  border: 1px solid #767676;
+  border: 1px solid #fff;
   float: left;
   border-radius: 3px;
 }
 
 .Line-item__quantity-update {
-  color: #767676;
+  color: #fff;
   display: block;
   float: left;
   height: 21px;
@@ -249,7 +250,7 @@
 }
 
 .Line-item__quantity {
-  color: black;
+  color: #fff;
   width: 38px;
   height: 21px;
   line-height: 23px;
@@ -258,8 +259,8 @@
   text-align: center;
   -moz-appearance: textfield;
   background: transparent;
-  border-left: 1px solid #767676;
-  border-right: 1px solid #767676;
+  border-left: 1px solid #fff;
+  border-right: 1px solid #fff;
   display: block;
   float: left;
   padding: 0;

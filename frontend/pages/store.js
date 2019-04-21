@@ -24,7 +24,7 @@ function Store({ products }) {
             .fill(0)
             .map((_, i) => (
               <div className="fl w-100 w-50-m w-25-l pa2" key={i}>
-                <Link href={`/edit?id=${i + 1}`}>
+                <Link href={`/edit?id=${i + 1}&name=${products[i].name}&description=${products[i].description}&price=${products[i].price}&url=${products[i].url}`}>
                   <a className="db link dim tc white">
                     <img
                       src={`/static/models/${i + 1}/thumbnail@m.jpg`}

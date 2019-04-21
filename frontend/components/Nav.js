@@ -137,7 +137,7 @@ export default function Nav({ cartState }) {
       <CartSidebar
         cartOpen={cartOpen}
         setCartOpen={setCartOpen}
-        cartItems={cartState.cartItems}
+        cartItems={cartState && cartState.cartItems}
       />
     </div>
   );

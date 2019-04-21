@@ -1,9 +1,8 @@
-export default function LineItem({ name, price }) {
+export default function LineItem({ product }) {
+  const { name, price, url } = product
   return (
     <li className="Line-item">
-      <div className="Line-item__img">
-        <img src="http://via.placeholder.com/65" />
-      </div>
+      <div className="Line-item__img" style={{backgroundImage: `url(${url})`}} />
       <div className="Line-item__content">
         <div className="Line-item__content-row">
           <span className="Line-item__title">{name}</span>
