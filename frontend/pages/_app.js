@@ -29,10 +29,25 @@ class VRS extends App {
   };
 
   saveCart = details => {
+    const {id} = details
     this.setState(
-      ({ cartItems }) => ({
-        cartItems: [...cartItems, { ...details }]
-      }),
+      ({ cartItems }) => {
+	if (cartItems.find(item => item['id'] == id)) {
+	  return {
+	    cartItems: cartItems.map(item => {
+	      if (item['id'] == id) {
+		item.quantity += 1
+	      }
+	      return item
+	    })
+	  }
+	} else {
+	  return {
+	    cartItems: [...cartItems, { ...details, quantity: 1 }]
+	  }
+	}
+      }
+	,
       () => {
         console.log(this.state.cartItems);
         this.saveToLocalStorage("vrs:cart", {

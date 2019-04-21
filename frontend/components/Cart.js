@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import Head from "next/head";
 
-export default function Cart({ children, cnt, items }) {
+export default function Cart({ children, items }) {
+  const cnt = items.reduce((a, b) => a + b.quantity, 0)
+  console.log('CNT:', cnt)
   /*
   const [cnt, setCnt] = useState(0);
   const [items, setItems] = useState([]);
