@@ -5,9 +5,9 @@
 import Layout from "../components/Layout";
 import Slider from "../components/Slider";
 
-export default function Index() {
+export default function Index({ cartState }) {
   return (
-    <Layout>
+      <Layout cartState={cartState}>
       <section>
         <Slider />
       </section>

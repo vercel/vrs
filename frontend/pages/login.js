@@ -5,8 +5,8 @@
 import Layout from "../components/Layout";
 import Footer from "../components/Footer";
 
-export default () => (
-  <Layout>
+export default ({ cartState }) => (
+    <Layout cartState={cartState}>
     <main className="pa3 pa5-ns vh-100 w-100 white dt tc">
       <p className="f4 lh-copy measure dtc v-mid">
         <h1>Welcome</h1>
