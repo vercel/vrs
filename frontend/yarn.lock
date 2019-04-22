@@ -4389,6 +4389,13 @@ react-smooth-scrollbar@^7.2.2:
   dependencies:
     smooth-scrollbar "^7.2.0"
 
+react-stripe-elements-universal@^1.2.0-3:
+  version "1.2.0-3"
+  resolved "https://registry.yarnpkg.com/react-stripe-elements-universal/-/react-stripe-elements-universal-1.2.0-3.tgz#d11c146c09b584acf62f35eeb3babb90500c910e"
+  integrity sha512-Boljj+S/9lJ0FgNApxtasoLeDOubwcIFGA4n6oizuba2dbkXGDnuOREZNu0nKPerpB0qQpToLzhC0M8E8LnxRA==
+  dependencies:
+    prop-types "^15.5.10"
+
 react@^16.8.5:
   version "16.8.5"
   resolved "https://registry.yarnpkg.com/react/-/react-16.8.5.tgz#49be3b655489d74504ad994016407e8a0445de66"

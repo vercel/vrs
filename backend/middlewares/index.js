@@ -1,2 +1,4 @@
 const cookieParser = require("./cookieParser");
-module.exports = [cookieParser];
+const { json } = require("express");
+
+module.exports = [cookieParser, json];

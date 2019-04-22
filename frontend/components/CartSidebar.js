@@ -60,14 +60,8 @@ export default function CartSidebar({
           </div>
         </div>
         <Elements>
-          <CheckoutForm />
+          <CheckoutForm totalPrice={totalPrice} />
         </Elements>
-        <button
-          className="Cart__checkout button"
-          onClick={() => console.log("checking out ...")}
-        >
-          Checkout
-        </button>
       </footer>
     </div>
   );
