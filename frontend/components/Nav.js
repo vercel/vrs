@@ -21,7 +21,7 @@ Router.onRouteChangeStart = () => NProgress.start();
 Router.onRouteChangeComplete = () => NProgress.done();
 Router.onRouteChangeError = () => NProgress.done();
 
-export default function Nav({ cartState }) {
+export default function Nav({ cartState, incrementQuantity, decrementQuantity }) {
   const [router, setRouter] = useState("");
   const [username, setUsername] = useState("");
   const [avatarURL, setAvatarURL] = useState("");
@@ -138,6 +138,8 @@ export default function Nav({ cartState }) {
         cartOpen={cartOpen}
         setCartOpen={setCartOpen}
         cartItems={cartState && cartState.cartItems}
+    incrementQuantity={incrementQuantity}
+    decrementQuantity={decrementQuantity}
       />
     </div>
   );

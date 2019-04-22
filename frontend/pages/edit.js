@@ -8,12 +8,12 @@ import Editor from "../components/Editor";
 
 // 10, 11, 12, 18, 1, 2, 4, 5, 7
 
-function Edit({ details, addToCart, cartState }) {
+function Edit({ details, addToCart, cartState, incrementQuantity, decrementQuantity }) {
   useEffect(() => {
     console.log("EDIT PAGE:", cartState);
   });
   return (
-    <Layout cartState={cartState}>
+      <Layout cartState={cartState} incrementQuantity={incrementQuantity} decrementQuantity={decrementQuantity}>
       <Editor details={details} addToCart={addToCart} />
     </Layout>
   );

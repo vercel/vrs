@@ -5,9 +5,9 @@
 import Layout from "../components/Layout";
 import Slider from "../components/Slider";
 
-export default function Index({ cartState }) {
+export default function Index({ cartState, incrementQuantity, decrementQuantity }) {
   return (
-      <Layout cartState={cartState}>
+      <Layout cartState={cartState} incrementQuantity={incrementQuantity} decrementQuantity={decrementQuantity}>
       <section>
         <Slider />
       </section>

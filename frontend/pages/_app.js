@@ -28,6 +28,29 @@ class VRS extends App {
     this.saveCart(details);
   };
 
+
+  incrementQuantity = id => {
+    const { cartItems } = this.state
+    const updatedCartItems = cartItems.map(item => {
+      if (item['id'] == id) {
+	item.quantity += 1
+      }
+      return item
+    })
+    this.setState({cartItems: updatedCartItems})
+  }
+
+  decrementQuantity = id => {
+    const { cartItems } = this.state
+    const updatedCartItems = cartItems.map(item => {
+      if (item['id'] == id) {
+	item.quantity -= 1
+      }
+      return item
+    })
+    this.setState({cartItems: updatedCartItems})
+  }
+
   saveCart = details => {
     const {id} = details
     this.setState(
@@ -80,6 +103,8 @@ class VRS extends App {
         <Component
           {...pageProps}
           addToCart={this.addToCart}
+          incrementQuantity={this.incrementQuantity}
+          decrementQuantity={this.decrementQuantity}
           cartState={this.state}
         />
       </Container>

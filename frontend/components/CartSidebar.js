@@ -1,6 +1,6 @@
 import LineItem from "./LineItem";
 
-export default function CartSidebar({ cartOpen, setCartOpen, cartItems }) {
+export default function CartSidebar({ cartOpen, setCartOpen, cartItems, incrementQuantity, decrementQuantity }) {
   return (
     <div className={`Cart ${cartOpen && "Cart--open"}`}>
       <header className="Cart__header">
@@ -18,7 +18,7 @@ export default function CartSidebar({ cartOpen, setCartOpen, cartItems }) {
       <ul className="Cart__line-items">
         {cartItems &&
           cartItems.map(item => (
-              <LineItem key={item.id} product={item} />
+              <LineItem key={item.id} product={item} incrementQuantity={incrementQuantity} decrementQuantity={decrementQuantity} />
           ))}
       </ul>
     </div>
