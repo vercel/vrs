@@ -9,7 +9,7 @@ function CheckoutForm({ totalPrice, stripe }) {
     setStatus("submitting");
     if (stripe) {
       try {
-        const token = await stripe.createToken();
+        const { token } = await stripe.createToken();
         console.log("STRIPE TOKEN:", token);
         const res = await fetch("/api/checkout", {
           method: "POST",
