@@ -14,7 +14,7 @@ export default function LineItem({ product, incrementQuantity, decrementQuantity
       <span className="Line-item__quantity">{quantity}</span>
       <button onClick={() => incrementQuantity(id)} className="Line-item__quantity-update">+</button>
           </div>
-          <span className="Line-item__price">${price}</span>
+      <span className="Line-item__price">$ {(price * quantity).toFixed(2)}</span>
         </div>
       </div>
     </li>
