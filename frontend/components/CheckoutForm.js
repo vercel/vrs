@@ -16,7 +16,7 @@ function CheckoutForm({ totalPrice, stripe }) {
           body: JSON.stringify({
             // convert to cents for stripe
             amount: totalPrice * 100,
-            token
+            token: token.id
           }),
           headers: {
             "content-type": "application/json"
