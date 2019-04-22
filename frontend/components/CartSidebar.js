@@ -45,7 +45,7 @@ export default function CartSidebar({ cartOpen, setCartOpen, cartItems, incremen
       <span className="pricing">$ {totalPrice.toFixed(2)}</span>
       </div>
       </div>
- 
+      <button className="Cart__checkout button" onClick={() => console.log('checking out ...')}>Checkout</button>
       </footer>
     </div>
   );

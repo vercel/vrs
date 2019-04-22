@@ -19,7 +19,7 @@
 }
 
 .button {
-  background-color: #2752ff;
+  background-color: red;
   color: white;
   border: none;
   font-size: 1.2rem;
@@ -29,7 +29,7 @@
 
 .button:hover,
 .button:focus {
-  background-color: #222222;
+  background-color: rgb(150, 0 , 0);
 }
 
 .button:disabled {
