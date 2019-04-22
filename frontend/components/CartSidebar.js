@@ -1,6 +1,6 @@
 import LineItem from "./LineItem";
 
-export default function CartSidebar({ cartOpen, setCartOpen, cartItems, incrementQuantity, decrementQuantity }) {
+export default function CartSidebar({ cartOpen, setCartOpen, cartItems, incrementQuantity, decrementQuantity, removeFromCart }) {
 
   const TAX_RATE = 0.08
   const subtotalPrice = cartItems.reduce((a, b) => a + (b.quantity * b.price), 0)
@@ -23,7 +23,7 @@ export default function CartSidebar({ cartOpen, setCartOpen, cartItems, incremen
       <ul className="Cart__line-items">
         {cartItems &&
           cartItems.map(item => (
-              <LineItem key={item.id} product={item} incrementQuantity={incrementQuantity} decrementQuantity={decrementQuantity} />
+              <LineItem key={item.id} product={item} incrementQuantity={incrementQuantity} decrementQuantity={decrementQuantity} removeFromCart={removeFromCart} />
           ))}
       </ul>
       <footer className="Cart__footer">

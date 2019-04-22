@@ -187,7 +187,7 @@ export default class Layout extends Component {
           />
           <meta name="theme-color" content="#ffffff" />
         </Head>
-        <Nav cartState={this.props.cartState} incrementQuantity={this.props.incrementQuantity} decrementQuantity={this.props.decrementQuantity} />
+        <Nav cartState={this.props.cartState} incrementQuantity={this.props.incrementQuantity} decrementQuantity={this.props.decrementQuantity} removeFromCart={this.props.removeFromCart }/>
         <Motion defaultStyle={{ o: 0 }} style={{ o: spring(1) }}>
           {style => (
             <div style={{ opacity: style.o }} key="motion-content">

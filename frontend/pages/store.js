@@ -5,9 +5,9 @@ import fetch from "isomorphic-unfetch";
 
 const MODEL_NUM = 16;
 
-function Store({ products, cartState, incrementQuantity, decrementQuantity }) {
+function Store({ products, cartState, incrementQuantity, decrementQuantity, removeFromCart}) {
   return (
-      <Layout cartState={cartState} incrementQuantity={incrementQuantity} decrementQuantity={decrementQuantity}>
+      <Layout cartState={cartState} incrementQuantity={incrementQuantity} decrementQuantity={decrementQuantity} removeFromCart={removeFromCart}>
       <article className="pt5 bg-black white ph3">
         <a className="link white tc">
           <p>

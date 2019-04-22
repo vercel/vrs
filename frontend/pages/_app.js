@@ -23,35 +23,6 @@ class VRS extends App {
   }
 
   addToCart = details => {
-    console.log("adding to cart ...");
-    console.log("PRODUCT DETAILS:", details);
-    this.saveCart(details);
-  };
-
-
-  incrementQuantity = id => {
-    const { cartItems } = this.state
-    const updatedCartItems = cartItems.map(item => {
-      if (item['id'] == id) {
-	item.quantity += 1
-      }
-      return item
-    })
-    this.setState({cartItems: updatedCartItems})
-  }
-
-  decrementQuantity = id => {
-    const { cartItems } = this.state
-    const updatedCartItems = cartItems.map(item => {
-      if (item['id'] == id) {
-	item.quantity -= 1
-      }
-      return item
-    })
-    this.setState({cartItems: updatedCartItems})
-  }
-
-  saveCart = details => {
     const {id} = details
     this.setState(
       ({ cartItems }) => {
@@ -69,16 +40,45 @@ class VRS extends App {
 	    cartItems: [...cartItems, { ...details, quantity: 1 }]
 	  }
 	}
+      }, () => this.saveCart());
+  };
+
+
+  incrementQuantity = id => {
+    const { cartItems } = this.state
+    const updatedCartItems = cartItems.map(item => {
+      if (item['id'] == id) {
+	item.quantity += 1
       }
-	,
-      () => {
-        console.log(this.state.cartItems);
+      return item
+    })
+    this.setState({cartItems: updatedCartItems}, () => this.saveCart())
+  }
+
+  decrementQuantity = id => {
+    const { cartItems } = this.state
+    const updatedCartItems = cartItems.map(item => {
+      if (item['id'] == id) {
+	if(item.quantity > 0) {
+	  item.quantity -= 1
+	} 
+      }
+      return item
+    }).filter(item => item.quantity > 0)
+    this.setState({cartItems: updatedCartItems}, () => this.saveCart())
+  }
+
+  removeFromCart = id => {
+    const { cartItems } = this.state
+    const updatedCartItems = cartItems.filter(item => item['id'] != id)
+    this.setState({ cartItems: updatedCartItems }, () => this.saveCart())
+  }
+
+  saveCart = details => {
         this.saveToLocalStorage("vrs:cart", {
           items: [...this.state.cartItems]
-        });
-      }
-    );
-  };
+        })
+        };
 
   loadFromLocalStorage = key => {
     try {
@@ -103,6 +103,7 @@ class VRS extends App {
         <Component
           {...pageProps}
           addToCart={this.addToCart}
+      removeFromCart={this.removeFromCart}
           incrementQuantity={this.incrementQuantity}
           decrementQuantity={this.decrementQuantity}
           cartState={this.state}

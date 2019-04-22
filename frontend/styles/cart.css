@@ -85,6 +85,7 @@
 /* CART
  * ============================== */
 .Cart {
+  color: #fff;
   position: fixed;
   top: 0;
   right: 0;
@@ -161,7 +162,7 @@
 .pricing {
   margin-left: 5px;
   font-size: 16px;
-  color: black;
+  color: #fff;
 }
 
 /* LINE ITEMS
@@ -268,6 +269,7 @@
 }
 
 .Line-item__remove {
+  color: #fff;
   position: absolute;
   right: 0;
   top: 0;

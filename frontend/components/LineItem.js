@@ -1,4 +1,4 @@
-export default function LineItem({ product, incrementQuantity, decrementQuantity }) {
+export default function LineItem({ product, incrementQuantity, decrementQuantity, removeFromCart }) {
 
   const { id, name, price, url, quantity } = product
   return (
@@ -15,6 +15,7 @@ export default function LineItem({ product, incrementQuantity, decrementQuantity
       <button onClick={() => incrementQuantity(id)} className="Line-item__quantity-update">+</button>
           </div>
       <span className="Line-item__price">$ {(price * quantity).toFixed(2)}</span>
+      <button onClick={() => removeFromCart(id)}className="Line-item__remove">x</button>
         </div>
       </div>
     </li>
