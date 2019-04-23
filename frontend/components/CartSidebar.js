@@ -53,7 +53,7 @@ export default function CartSidebar({
             <span className="pricing">$ {totalTax.toFixed(2)}</span>
           </div>
         </div>
-        <div className="Cart-info clearfix">
+        <div className="Cart-info clearfix total">
           <div className="Cart-info__total Cart-info__small">Total</div>
           <div className="Cart-info__pricing">
             <span className="pricing">$ {totalPrice.toFixed(2)}</span>
