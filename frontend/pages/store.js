@@ -84,76 +84,7 @@ Store.getInitialProps = async function getInitialProps({ req }) {
   } catch (e) {
     console.error(e.message);
     return {
-      products: [
-        {
-          name: "Charzard",
-          description: "A friendly fire lizard Pokemon",
-          price: 99
-        },
-        {
-          name: "Bulbasaur",
-          description: "A loving dinosaur Pokemon",
-          price: 99
-        },
-        {
-          name: "Moltres",
-          description: "A legendary fire bird Pokemon",
-          price: 99
-        },
-        { name: "Sonic", description: "A fast blue hedgehog", price: 99 },
-        { name: "iPhone 5", description: "A smartphone from Apple", price: 99 },
-        {
-          name: "NASA Rocket",
-          description: "Transportation to space",
-          price: 99
-        },
-        {
-          name: "Tai Kamiya",
-          description: "The legendary Digimon trainer",
-          price: 99
-        },
-        {
-          name: "Hatsune Miku",
-          description: "The first sound from the future",
-          price: 99
-        },
-        {
-          name: "Sony Cybershot",
-          description: "A 16 MP Digital Camera",
-          price: 99
-        },
-        {
-          name: "Room w/ Ball",
-          description: "A colorful room w/ light ball",
-          price: 99
-        },
-        {
-          name: "Water Sniper",
-          description: "A powerful water gun",
-          price: 99
-        },
-        {
-          name: "Mario",
-          description: "Adventurous Italian plumber",
-          price: 99
-        },
-        { name: "Iron Man", description: "A Tony Stark invention", price: 99 },
-        {
-          name: "Headphones",
-          description: "HD wireless headphones",
-          price: 99
-        },
-        {
-          name: "Blue Chair",
-          description: "Comfortable chair w/ wheels",
-          price: 99
-        },
-        {
-          name: "White Chair",
-          description: "Ergonomic desk chair",
-          price: 99
-        }
-      ]
+      products: []
     };
   }
 };
