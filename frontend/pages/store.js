@@ -5,9 +5,20 @@ import fetch from "isomorphic-unfetch";
 
 const MODEL_NUM = 16;
 
-function Store({ products, cartState, incrementQuantity, decrementQuantity, removeFromCart}) {
+function Store({
+  products,
+  cartState,
+  incrementQuantity,
+  decrementQuantity,
+  removeFromCart
+}) {
   return (
-      <Layout cartState={cartState} incrementQuantity={incrementQuantity} decrementQuantity={decrementQuantity} removeFromCart={removeFromCart}>
+    <Layout
+      cartState={cartState}
+      incrementQuantity={incrementQuantity}
+      decrementQuantity={decrementQuantity}
+      removeFromCart={removeFromCart}
+    >
       <article className="pt5 bg-black white ph3">
         <a className="link white tc">
           <p>
@@ -24,7 +35,13 @@ function Store({ products, cartState, incrementQuantity, decrementQuantity, remo
             .fill(0)
             .map((_, i) => (
               <div className="fl w-100 w-50-m w-25-l pa2" key={i}>
-                <Link href={`/edit?id=${i + 1}&name=${products[i].name}&description=${products[i].description}&price=${products[i].price}&url=${products[i].url}`}>
+                <Link
+                  href={`/edit?id=${i + 1}&name=${
+                    products[i].name
+                  }&description=${products[i].description}&price=${
+                    products[i].price
+                  }&url=${products[i].url}`}
+                >
                   <a className="db link dim tc white">
                     <img
                       src={`/static/models/${i + 1}/thumbnail@m.jpg`}
@@ -53,12 +70,12 @@ function Store({ products, cartState, incrementQuantity, decrementQuantity, remo
 }
 
 Store.getInitialProps = async function getInitialProps({ req }) {
-  /*
   let URL = "/api/get-products";
   if (req) {
-    const proto = req.headers.referer.includes("https") ? "https" : "http";
-    const host = req.headers.host;
-    URL = `${proto}://${host}${URL}`;
+    if (process.env.NODE === "production") {
+      const host = req.headers.host;
+      URL = `https://${host}${URL}`;
+    }
   }
   try {
     const response = await fetch(URL);
@@ -66,73 +83,79 @@ Store.getInitialProps = async function getInitialProps({ req }) {
     return { products };
   } catch (e) {
     console.error(e.message);
-    return { products: [] };
+    return {
+      products: [
+        {
+          name: "Charzard",
+          description: "A friendly fire lizard Pokemon",
+          price: 99
+        },
+        {
+          name: "Bulbasaur",
+          description: "A loving dinosaur Pokemon",
+          price: 99
+        },
+        {
+          name: "Moltres",
+          description: "A legendary fire bird Pokemon",
+          price: 99
+        },
+        { name: "Sonic", description: "A fast blue hedgehog", price: 99 },
+        { name: "iPhone 5", description: "A smartphone from Apple", price: 99 },
+        {
+          name: "NASA Rocket",
+          description: "Transportation to space",
+          price: 99
+        },
+        {
+          name: "Tai Kamiya",
+          description: "The legendary Digimon trainer",
+          price: 99
+        },
+        {
+          name: "Hatsune Miku",
+          description: "The first sound from the future",
+          price: 99
+        },
+        {
+          name: "Sony Cybershot",
+          description: "A 16 MP Digital Camera",
+          price: 99
+        },
+        {
+          name: "Room w/ Ball",
+          description: "A colorful room w/ light ball",
+          price: 99
+        },
+        {
+          name: "Water Sniper",
+          description: "A powerful water gun",
+          price: 99
+        },
+        {
+          name: "Mario",
+          description: "Adventurous Italian plumber",
+          price: 99
+        },
+        { name: "Iron Man", description: "A Tony Stark invention", price: 99 },
+        {
+          name: "Headphones",
+          description: "HD wireless headphones",
+          price: 99
+        },
+        {
+          name: "Blue Chair",
+          description: "Comfortable chair w/ wheels",
+          price: 99
+        },
+        {
+          name: "White Chair",
+          description: "Ergonomic desk chair",
+          price: 99
+        }
+      ]
+    };
   }
-  */
-  return {
-    products: [
-      {
-        name: "Charzard",
-        description: "A friendly fire lizard Pokemon",
-        price: 99
-      },
-      {
-        name: "Bulbasaur",
-        description: "A loving dinosaur Pokemon",
-        price: 99
-      },
-      {
-        name: "Moltres",
-        description: "A legendary fire bird Pokemon",
-        price: 99
-      },
-      { name: "Sonic", description: "A fast blue hedgehog", price: 99 },
-      { name: "iPhone 5", description: "A smartphone from Apple", price: 99 },
-      {
-        name: "NASA Rocket",
-        description: "Transportation to space",
-        price: 99
-      },
-      {
-        name: "Tai Kamiya",
-        description: "The legendary Digimon trainer",
-        price: 99
-      },
-      {
-        name: "Hatsune Miku",
-        description: "The first sound from the future",
-        price: 99
-      },
-      {
-        name: "Sony Cybershot",
-        description: "A 16 MP Digital Camera",
-        price: 99
-      },
-      {
-        name: "Room w/ Ball",
-        description: "A colorful room w/ light ball",
-        price: 99
-      },
-      {
-        name: "Water Sniper",
-        description: "A powerful water gun",
-        price: 99
-      },
-      {
-        name: "Mario",
-        description: "Adventurous Italian plumber",
-        price: 99
-      },
-      { name: "Iron Man", description: "A Tony Stark invention", price: 99 },
-      { name: "Headphones", description: "HD wireless headphones", price: 99 },
-      {
-        name: "Blue Chair",
-        description: "Ergonomic chair w/ wheels",
-        price: 99
-      },
-      { name: "White Chair", description: "Comfortable desk chair", price: 99 }
-    ]
-  };
 };
 
 export default Store;
