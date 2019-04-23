@@ -70,13 +70,14 @@ function Store({
 }
 
 Store.getInitialProps = async function getInitialProps({ req }) {
-  let URL = "/api/get-products";
-  if (req) {
-    if (process.env.NODE === "production") {
-      const host = req.headers.host;
-      URL = `https://${host}${URL}`;
-    }
+  let URL;
+
+  if (typeof window === "undefined") {
+    URL = `https://${req.headers.host}/api/get-products`;
+  } else {
+    URL = "/api/get-products";
   }
+
   try {
     const response = await fetch(URL);
     const { docs: products } = await response.json();
