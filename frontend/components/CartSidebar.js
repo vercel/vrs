@@ -15,7 +15,7 @@ export default function CartSidebar({
   const totalTax = subtotalPrice * TAX_RATE;
   const totalPrice = subtotalPrice + totalTax;
   return (
-    <div className={`Cart ${cartOpen && "Cart--open"}`}>
+    <div className={`Cart ${cartOpen ? "Cart--open" : "dn"}`}>
       <header className="Cart__header">
         <h2>cart</h2>
         <button
