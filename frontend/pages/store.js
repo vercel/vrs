@@ -4,7 +4,7 @@ import fetch from "isomorphic-unfetch";
 
 const MODEL_NUM = 16;
 
-function Store() {
+function Store({ products }) {
   return (
     <div>
       <article className="pt5 bg-black white ph3">
