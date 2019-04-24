@@ -140,8 +140,7 @@ class Editor extends Component {
     console.log("MODEL PROPS:", this.props);
     window.addEventListener("resize", this.handleResize);
 
-    this.isMob =
-      window.DeviceOrientationEvent && /Mobi/.test(navigator.userAgent);
+    this.isMob = window.DeviceOrientationEvent ? true : false;
 
     this.initThree(window.innerWidth, window.innerHeight);
     this.initScene();
