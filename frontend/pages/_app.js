@@ -1,6 +1,7 @@
 import App, { Container } from "next/app";
 import Router from "next/router";
 import { StripeProvider } from "react-stripe-elements-universal";
+import Layout from "../components/Layout";
 
 class VRS extends App {
   static async getInitialProps({ Component, ctx }) {
@@ -82,6 +83,10 @@ class VRS extends App {
     this.setState({ cartItems: updatedCartItems }, () => this.saveCart());
   };
 
+  clearCart = () => {
+    this.setState({ cartItems: [] }, () => this.saveCart());
+  };
+
   saveCart = details => {
     this.saveToLocalStorage("vrs:cart", {
       items: [...this.state.cartItems]
@@ -109,14 +114,15 @@ class VRS extends App {
     return (
       <Container>
         <StripeProvider apiKey="pk_test_lvZUcve5SCKEDCkOZ7BTG49N">
-          <Component
-            {...pageProps}
-            addToCart={this.addToCart}
+          <Layout
+            clearCart={this.clearCart}
             removeFromCart={this.removeFromCart}
             incrementQuantity={this.incrementQuantity}
             decrementQuantity={this.decrementQuantity}
             cartState={this.state}
-          />
+          >
+            <Component addToCart={this.addToCart} />
+          </Layout>
         </StripeProvider>
       </Container>
     );

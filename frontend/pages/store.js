@@ -1,24 +1,12 @@
 import Link from "next/link";
-import Layout from "../components/Layout";
 import Footer from "../components/Footer";
 import fetch from "isomorphic-unfetch";
 
 const MODEL_NUM = 16;
 
-function Store({
-  products,
-  cartState,
-  incrementQuantity,
-  decrementQuantity,
-  removeFromCart
-}) {
+function Store() {
   return (
-    <Layout
-      cartState={cartState}
-      incrementQuantity={incrementQuantity}
-      decrementQuantity={decrementQuantity}
-      removeFromCart={removeFromCart}
-    >
+    <div>
       <article className="pt5 bg-black white ph3">
         <a className="link white tc">
           <p>
@@ -65,7 +53,7 @@ function Store({
         </div>
       </article>
       <Footer />
-    </Layout>
+    </div>
   );
 }
 

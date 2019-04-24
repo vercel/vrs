@@ -3,20 +3,10 @@
  */
 
 import { useEffect } from "react";
-import Layout from "../components/Layout";
 import Editor from "../components/Editor";
 
-// 10, 11, 12, 18, 1, 2, 4, 5, 7
-
-function Edit({ details, addToCart, removeFromCart, cartState, incrementQuantity, decrementQuantity }) {
-  useEffect(() => {
-    console.log("EDIT PAGE:", cartState);
-  });
-  return (
-      <Layout cartState={cartState} incrementQuantity={incrementQuantity} decrementQuantity={decrementQuantity} removeFromCart={removeFromCart}>
-      <Editor details={details} addToCart={addToCart} />
-    </Layout>
-  );
+function Edit({ addToCart, details }) {
+  return <Editor details={details} addToCart={addToCart} />;
 }
 
 Edit.getInitialProps = async function({ query }) {

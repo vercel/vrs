@@ -21,7 +21,13 @@ Router.onRouteChangeStart = () => NProgress.start();
 Router.onRouteChangeComplete = () => NProgress.done();
 Router.onRouteChangeError = () => NProgress.done();
 
-export default function Nav({ cartState, incrementQuantity, decrementQuantity, removeFromCart }) {
+export default function Nav({
+  clearCart,
+  cartState,
+  incrementQuantity,
+  decrementQuantity,
+  removeFromCart
+}) {
   const [router, setRouter] = useState("");
   const [username, setUsername] = useState("");
   const [avatarURL, setAvatarURL] = useState("");
@@ -42,6 +48,7 @@ export default function Nav({ cartState, incrementQuantity, decrementQuantity, r
     Cookies.remove("user-from-github");
     setUsername(null);
     setAvatarURL(null);
+    clearCart();
   }
 
   return (
@@ -138,9 +145,9 @@ export default function Nav({ cartState, incrementQuantity, decrementQuantity, r
         cartOpen={cartOpen}
         setCartOpen={setCartOpen}
         cartItems={cartState && cartState.cartItems}
-    incrementQuantity={incrementQuantity}
-    decrementQuantity={decrementQuantity}
-    removeFromCart={removeFromCart}
+        incrementQuantity={incrementQuantity}
+        decrementQuantity={decrementQuantity}
+        removeFromCart={removeFromCart}
       />
     </div>
   );

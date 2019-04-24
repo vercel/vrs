@@ -85,6 +85,7 @@ export default class Layout extends Component {
           />
         </Head>
         <Nav
+          clearCart={this.props.clearCart}
           cartState={this.props.cartState}
           incrementQuantity={this.props.incrementQuantity}
           decrementQuantity={this.props.decrementQuantity}
