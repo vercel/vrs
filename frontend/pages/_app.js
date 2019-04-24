@@ -1,4 +1,5 @@
 import App, { Container } from "next/app";
+import Router from "next/router";
 import { StripeProvider } from "react-stripe-elements-universal";
 
 class VRS extends App {
@@ -23,26 +24,30 @@ class VRS extends App {
   }
 
   addToCart = details => {
-    const { id } = details;
-    this.setState(
-      ({ cartItems }) => {
-        if (cartItems.find(item => item["id"] == id)) {
-          return {
-            cartItems: cartItems.map(item => {
-              if (item["id"] == id) {
-                item.quantity += 1;
-              }
-              return item;
-            })
-          };
-        } else {
-          return {
-            cartItems: [...cartItems, { ...details, quantity: 1 }]
-          };
-        }
-      },
-      () => this.saveCart()
-    );
+    if (this.loadFromLocalStorage("user-from-github")) {
+      const { id } = details;
+      this.setState(
+        ({ cartItems }) => {
+          if (cartItems.find(item => item["id"] == id)) {
+            return {
+              cartItems: cartItems.map(item => {
+                if (item["id"] == id) {
+                  item.quantity += 1;
+                }
+                return item;
+              })
+            };
+          } else {
+            return {
+              cartItems: [...cartItems, { ...details, quantity: 1 }]
+            };
+          }
+        },
+        () => this.saveCart()
+      );
+    } else {
+      Router.push("/login");
+    }
   };
 
   incrementQuantity = id => {
