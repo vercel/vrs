@@ -121,7 +121,7 @@ class VRS extends App {
             decrementQuantity={this.decrementQuantity}
             cartState={this.state}
           >
-            <Component addToCart={this.addToCart} />
+            <Component addToCart={this.addToCart} {...pageProps} />
           </Layout>
         </StripeProvider>
       </Container>

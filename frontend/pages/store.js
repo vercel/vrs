@@ -3,8 +3,8 @@ import Footer from "../components/Footer";
 import fetch from "isomorphic-unfetch";
 
 function Store(props) {
-  console.log('got props', props)
-  const { products } = props
+  console.log("got props", props);
+  const { products } = props;
 
   return (
     <div>
@@ -20,33 +20,36 @@ function Store(props) {
         </h2>
         <div className="cf pa2">
           {// how about adding some placeholders here
-          Array.isArray(products) && products.map(product => (
-            <div className="fl w-100 w-50-m w-25-l pa2" key={product.id}>
-              <Link
-                href={`/edit?id=${product.id}&name=${
-                  product.name
-                }&description=${product.description}&price=${
-                  product.price
-                }&url=${product.url}`}
-              >
-                <a className="db link dim tc white">
-                  <img
-                    src={`/static/models/${product.id}/thumbnail@m.jpg`}
-                    alt="Lorem"
-                    className="w-100 db outline black-10"
-                  />
-                  <dl className="mt2 f6 lh-copy">
-                    <dt className="clip">Name</dt>
-                    <dd className="ml0 white truncate w-100">{product.name}</dd>
-                    <dt className="clip">Description</dt>
-                    <dd className="ml0 gray truncate w-100">
-                      {product.description}
-                    </dd>
-                  </dl>
-                </a>
-              </Link>
-            </div>
-          ))}
+          Array.isArray(products) &&
+            products.map(product => (
+              <div className="fl w-100 w-50-m w-25-l pa2" key={product.id}>
+                <Link
+                  href={`/edit?id=${product.id}&name=${
+                    product.name
+                  }&description=${product.description}&price=${
+                    product.price
+                  }&url=${product.url}`}
+                >
+                  <a className="db link dim tc white">
+                    <img
+                      src={`/static/models/${product.id}/thumbnail@m.jpg`}
+                      alt="Lorem"
+                      className="w-100 db outline black-10"
+                    />
+                    <dl className="mt2 f6 lh-copy">
+                      <dt className="clip">Name</dt>
+                      <dd className="ml0 white truncate w-100">
+                        {product.name}
+                      </dd>
+                      <dt className="clip">Description</dt>
+                      <dd className="ml0 gray truncate w-100">
+                        {product.description}
+                      </dd>
+                    </dl>
+                  </a>
+                </Link>
+              </div>
+            ))}
         </div>
       </article>
       <Footer />
@@ -62,17 +65,17 @@ Store.getInitialProps = async ({ req }) => {
   } else {
     URL = "/api/get-products";
   }
-  const props = { products: [] }
+
+  const props = { products: [] };
 
   try {
     const response = await fetch(URL);
     const { docs } = await response.json();
-    console.log("DOCS:", docs);
-    props.products = docs
+    props.products = docs;
   } catch (e) {
     console.error(e.message);
   }
-  return props
+  return props;
 };
 
 export default Store;
