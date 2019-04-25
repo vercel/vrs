@@ -2,7 +2,10 @@ import Link from "next/link";
 import Footer from "../components/Footer";
 import fetch from "isomorphic-unfetch";
 
-function Store({ products }) {
+function Store(props) {
+  console.log('got props', props)
+  const { products } = props
+
   return (
     <div>
       <article className="pt5 bg-black white ph3">
@@ -17,7 +20,7 @@ function Store({ products }) {
         </h2>
         <div className="cf pa2">
           {// how about adding some placeholders here
-          products.map(product => (
+          Array.isArray(products) && products.map(product => (
             <div className="fl w-100 w-50-m w-25-l pa2" key={product.id}>
               <Link
                 href={`/edit?id=${product.id}&name=${
@@ -51,7 +54,7 @@ function Store({ products }) {
   );
 }
 
-Store.getInitialProps = async function getInitialProps({ req }) {
+Store.getInitialProps = async ({ req }) => {
   let URL;
 
   if (typeof window === "undefined") {
@@ -59,18 +62,17 @@ Store.getInitialProps = async function getInitialProps({ req }) {
   } else {
     URL = "/api/get-products";
   }
+  const props = { products: [] }
 
   try {
     const response = await fetch(URL);
     const { docs } = await response.json();
     console.log("DOCS:", docs);
-    return { products: docs };
+    props.products = docs
   } catch (e) {
     console.error(e.message);
-    return {
-      products: []
-    };
   }
+  return props
 };
 
 export default Store;
