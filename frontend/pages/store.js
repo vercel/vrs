@@ -19,8 +19,7 @@ function Store(props) {
           <i className="material-icons red">whatshot</i>
         </h2>
         <div className="cf pa2">
-          {// how about adding some placeholders here
-          Array.isArray(products) &&
+          {Array.isArray(products) &&
             products.map(product => (
               <div className="fl w-100 w-50-m w-25-l pa2" key={product.id}>
                 <Link
