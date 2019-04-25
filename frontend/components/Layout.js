@@ -69,9 +69,8 @@ export default class Layout extends Component {
         this.sbs[0].addListener(handler);
       });
     }
-    this.route = Router.router ? Router.router.pathname : "";
-    this.forceUpdate();
     */
+    this.route = Router.router ? Router.router.pathname : "";
   }
 
   render() {
