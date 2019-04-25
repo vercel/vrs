@@ -2,8 +2,6 @@ import Link from "next/link";
 import Footer from "../components/Footer";
 import fetch from "isomorphic-unfetch";
 
-const MODEL_NUM = 16;
-
 function Store({ products }) {
   return (
     <div>
@@ -19,37 +17,33 @@ function Store({ products }) {
         </h2>
         <div className="cf pa2">
           {// how about adding some placeholders here
-          Array(MODEL_NUM)
-            .fill(0)
-            .map((_, i) => (
-              <div className="fl w-100 w-50-m w-25-l pa2" key={i}>
-                <Link
-                  href={`/edit?id=${i + 1}&name=${
-                    products[i].name
-                  }&description=${products[i].description}&price=${
-                    products[i].price
-                  }&url=${products[i].url}`}
-                >
-                  <a className="db link dim tc white">
-                    <img
-                      src={`/static/models/${i + 1}/thumbnail@m.jpg`}
-                      alt="Lorem"
-                      className="w-100 db outline black-10"
-                    />
-                    <dl className="mt2 f6 lh-copy">
-                      <dt className="clip">Name</dt>
-                      <dd className="ml0 white truncate w-100">
-                        {products[i].name}
-                      </dd>
-                      <dt className="clip">Description</dt>
-                      <dd className="ml0 gray truncate w-100">
-                        {products[i].description}
-                      </dd>
-                    </dl>
-                  </a>
-                </Link>
-              </div>
-            ))}
+          products.map(product => (
+            <div className="fl w-100 w-50-m w-25-l pa2" key={product.id}>
+              <Link
+                href={`/edit?id=${product.id}&name=${
+                  product.name
+                }&description=${product.description}&price=${
+                  product.price
+                }&url=${product.url}`}
+              >
+                <a className="db link dim tc white">
+                  <img
+                    src={`/static/models/${product.id}/thumbnail@m.jpg`}
+                    alt="Lorem"
+                    className="w-100 db outline black-10"
+                  />
+                  <dl className="mt2 f6 lh-copy">
+                    <dt className="clip">Name</dt>
+                    <dd className="ml0 white truncate w-100">{product.name}</dd>
+                    <dt className="clip">Description</dt>
+                    <dd className="ml0 gray truncate w-100">
+                      {product.description}
+                    </dd>
+                  </dl>
+                </a>
+              </Link>
+            </div>
+          ))}
         </div>
       </article>
       <Footer />
