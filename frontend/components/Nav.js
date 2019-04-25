@@ -125,7 +125,7 @@ export default function Nav({
                 className="link dim white dib v-mid"
                 onClick={logout}
                 src={avatarURL}
-                style={{ height: "30px", borderRadius: 100 }}
+                style={{ height: "20px", borderRadius: 100 }}
               />
             ) : (
               <Link href="/login">
