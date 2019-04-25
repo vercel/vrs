@@ -62,6 +62,7 @@ import { Motion, spring } from "react-motion";
 
 export default class Layout extends Component {
   componentDidMount() {
+    /*
     this.sbs = ScrollBar.initAll();
     if (window.scrollHandlers) {
       window.scrollHandlers.forEach(handler => {
@@ -70,6 +71,7 @@ export default class Layout extends Component {
     }
     this.route = Router.router ? Router.router.pathname : "";
     this.forceUpdate();
+    */
   }
 
   render() {
