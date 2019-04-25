@@ -49,6 +49,7 @@ export default function Nav({
     setUsername(null);
     setAvatarURL(null);
     clearCart();
+    Router.push("/");
   }
 
   return (
