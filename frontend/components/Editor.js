@@ -140,8 +140,7 @@ class Editor extends Component {
     console.log("MODEL PROPS:", this.props);
     window.addEventListener("resize", this.handleResize);
 
-    this.isMob =
-      window.DeviceOrientationEvent && /Mobi/.test(navigator.userAgent);
+    this.isMob = window.DeviceOrientationEvent ? true : false;
 
     this.initThree(window.innerWidth, window.innerHeight);
     this.initScene();
@@ -201,16 +200,27 @@ class Editor extends Component {
 
     let controls;
 
+    controls = new THREE.OrbitControls(camera, this.canvas);
+    controls.enableZoom = true;
+    controls.enablePan = false;
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.1;
+    controls.rotateSpeed = 0.12;
+
+    /*
     if (this.isMob) {
       controls = new THREE.DeviceOrientationControls(camera);
     } else {
-      controls = new THREE.OrbitControls(camera, this.canvas);
-      controls.enableZoom = true;
-      controls.enablePan = false;
-      controls.enableDamping = true;
-      controls.dampingFactor = 0.1;
-      controls.rotateSpeed = 0.12;
+    
+    controls = new THREE.OrbitControls(camera, this.canvas);
+    controls.enableZoom = true;
+    controls.enablePan = false;
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.1;
+    controls.rotateSpeed = 0.12;
+
     }
+    */
 
     const raycaster = new THREE.Raycaster();
 
