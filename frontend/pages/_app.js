@@ -2,6 +2,7 @@ import App, { Container } from "next/app";
 import Router from "next/router";
 import { StripeProvider } from "react-stripe-elements-universal";
 import Layout from "../components/Layout";
+import Cookies from "js-cookie";
 
 class VRS extends App {
   static async getInitialProps({ Component, ctx }) {
@@ -25,7 +26,7 @@ class VRS extends App {
   }
 
   addToCart = details => {
-    if (this.loadFromLocalStorage("user-from-github")) {
+    if (Cookies.get("user-from-github")) {
       const { id } = details;
       this.setState(
         ({ cartItems }) => {
