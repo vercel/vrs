@@ -62,8 +62,9 @@ Store.getInitialProps = async function getInitialProps({ req }) {
 
   try {
     const response = await fetch(URL);
-    const { docs: products } = await response.json();
-    return { products };
+    const { docs } = await response.json();
+    console.log("DOCS:", docs);
+    return { products: docs };
   } catch (e) {
     console.error(e.message);
     return {
