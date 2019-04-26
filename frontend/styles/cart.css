@@ -226,3 +226,11 @@
   cursor: pointer;
 }
 
+.add-to-cart-btn {
+    background: #0076FF;
+    padding: 10px; 
+}
+
+.add-to-cart-btn:hover {
+    background: #0061d1;
+}

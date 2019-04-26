@@ -1093,16 +1093,11 @@ class Editor extends Component {
             </a>
           </div>
 
-          <div>
-            <div className="v-mid mr2 mb3 mt4 nowrap pointer hover-gray dib">
-              <Comment />
-            </div>
-            <div className="v-mid mb3 mt4 nowrap pointer hover-gray dib">
-              <a className="pa1" onClick={this.addToCart}>
-                <i className="material-icons v-mid">add_circle_outline</i>{" "}
-                <span className="v-mid">Add to cart</span>
-              </a>
-            </div>
+          <div className="v-mid mb3 mt4 nowrap pointer dib add-to-cart-btn">
+            <a className="pa1" onClick={this.addToCart}>
+              <i className="material-icons v-mid">add_circle_outline</i>{" "}
+              <span className="v-mid">Add to cart</span>
+            </a>
           </div>
         </div>
       </div>
