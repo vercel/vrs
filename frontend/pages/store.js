@@ -3,7 +3,6 @@ import Footer from "../components/Footer";
 import fetch from "isomorphic-unfetch";
 
 function Store(props) {
-  console.log("got props", props);
   const { products } = props;
 
   return (
@@ -22,13 +21,7 @@ function Store(props) {
           {Array.isArray(products) &&
             products.map(product => (
               <div className="fl w-100 w-50-m w-25-l pa2" key={product.id}>
-                <Link
-                  href={`/edit?id=${product.id}&name=${
-                    product.name
-                  }&description=${product.description}&price=${
-                    product.price
-                  }&url=${product.url}`}
-                >
+                <Link href={`/edit?id=${product.id}`}>
                   <a className="db link dim tc white">
                     <img
                       src={`/static/models/${product.id}/thumbnail@m.jpg`}
@@ -60,7 +53,11 @@ Store.getInitialProps = async ({ req }) => {
   let URL;
 
   if (typeof window === "undefined") {
-    URL = `https://${req.headers.host}/api/get-products`;
+    if (process.env.NODE === "production") {
+      URL = `https://${req.headers.host}/api/get-products`;
+    } else {
+      URL = `http://${req.headers.host}/api/get-products`;
+    }
   } else {
     URL = "/api/get-products";
   }

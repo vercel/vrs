@@ -4,6 +4,7 @@ const app = require("../../utils/app");
 const ModelSchema = require("../../models/Model");
 
 app.get("*", async (req, res) => {
+  const { id } = req.query;
   try {
     const conn = await mongoose.createConnection(
       process.env.MONGODB_ATLAS_URI,
@@ -13,18 +14,17 @@ app.get("*", async (req, res) => {
       }
     );
     const Model = conn.model("Model", ModelSchema);
-    Model.find({}, (error, docs) => {
+    Model.find({ id: Number(id) }, (error, docs) => {
       if (error) res.status(500).json({ error });
       res.set(
         "cache-control",
-        "s-maxage=1, maxage=0, stale-while-revalidate=31536000, stale-if-error=31536000"
+        "s-maxage=1, maxage=0, stale-while-revalidate, stale-if-error"
       );
-      console.log("DOCS:", docs);
       res.json({ docs });
       conn.close();
     });
   } catch (e) {
-    res.status(500).json({ error: e.message || "uh oh " });
+    res.status(500).json({ error: e.message || "uh oh" });
   }
 });
 
