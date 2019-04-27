@@ -10,9 +10,7 @@ import { Component } from "react";
 import throttle from "lodash/throttle";
 
 import editorStyles from "../styles/editor.less";
-
 import EditorSidebar from "./EditorSidebar";
-import Comment from "./Comment";
 
 // utils
 const traverse = (object, callback) => {
