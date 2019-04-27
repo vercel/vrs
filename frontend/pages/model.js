@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import Layout from "../components/Layout";
 import Editor from "../components/Editor";
+import fetch from "isomorphic-unfetch";
 
 function Model({
   details,
@@ -32,9 +33,9 @@ Model.getInitialProps = async function({ req, query }) {
 
   if (typeof window === "undefined") {
     if (process.env.NODE === "production") {
-      URL = `https://${req.headers.host}/api/get-product?id=${req.query.id}`;
+      URL = `https://${req.headers.host}/api/get-product?id=${id}`;
     } else {
-      URL = `http://${req.headers.host}/api/get-product?id=${req.query.id}`;
+      URL = `http://${req.headers.host}/api/get-product?id=${id}`;
     }
   } else {
     URL = `/api/get-product?id=${id}`;
