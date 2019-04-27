@@ -14,7 +14,8 @@ class VRS extends App {
   }
 
   state = {
-    cartItems: []
+    cartItems: [],
+    cartOpen: false
   };
 
   componentDidMount() {
@@ -24,6 +25,10 @@ class VRS extends App {
       this.setState({ cartItems }, () => console.log(this.state.cartItems));
     }
   }
+
+  toggleCartOpen = openOrClose => {
+    this.setState(prev => ({ ...prev, cartOpen: openOrClose }));
+  };
 
   addToCart = details => {
     if (Cookies.get("user-from-github")) {
@@ -37,11 +42,13 @@ class VRS extends App {
                   item.quantity += 1;
                 }
                 return item;
-              })
+              }),
+              cartOpen: true
             };
           } else {
             return {
-              cartItems: [...cartItems, { ...details, quantity: 1 }]
+              cartItems: [...cartItems, { ...details, quantity: 1 }],
+              cartOpen: true
             };
           }
         },
@@ -121,6 +128,7 @@ class VRS extends App {
             incrementQuantity={this.incrementQuantity}
             decrementQuantity={this.decrementQuantity}
             cartState={this.state}
+            toggleCartOpen={this.toggleCartOpen}
           >
             <Component addToCart={this.addToCart} {...pageProps} />
           </Layout>

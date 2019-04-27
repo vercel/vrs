@@ -4,7 +4,7 @@ import CheckoutForm from "./CheckoutForm";
 
 export default function CartSidebar({
   cartOpen,
-  setCartOpen,
+  toggleCartOpen,
   cartItems,
   incrementQuantity,
   decrementQuantity,
@@ -22,7 +22,7 @@ export default function CartSidebar({
           className="Cart__close"
           onClick={e => {
             e.preventDefault();
-            setCartOpen(false);
+            toggleCartOpen(false);
           }}
         >
           close

@@ -22,6 +22,7 @@ Router.onRouteChangeComplete = () => NProgress.done();
 Router.onRouteChangeError = () => NProgress.done();
 
 export default function Nav({
+  toggleCartOpen,
   clearCart,
   cartState,
   incrementQuantity,
@@ -31,7 +32,6 @@ export default function Nav({
   const [router, setRouter] = useState("");
   const [username, setUsername] = useState("");
   const [avatarURL, setAvatarURL] = useState("");
-  const [cartOpen, setCartOpen] = useState(false);
 
   useEffect(() => {
     Router.router && setRouter(Router.router.pathname);
@@ -109,7 +109,7 @@ export default function Nav({
               onClick={e => {
                 e.preventDefault();
                 console.log("opening cart...");
-                setCartOpen(true);
+                toggleCartOpen(true);
               }}
               title="Open Cart"
             >
@@ -143,8 +143,8 @@ export default function Nav({
         </nav>
       </header>
       <CartSidebar
-        cartOpen={cartOpen}
-        setCartOpen={setCartOpen}
+        cartOpen={cartState.cartOpen}
+        toggleCartOpen={toggleCartOpen}
         cartItems={cartState && cartState.cartItems}
         incrementQuantity={incrementQuantity}
         decrementQuantity={decrementQuantity}
