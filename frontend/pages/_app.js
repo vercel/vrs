@@ -122,16 +122,16 @@ class VRS extends App {
     return (
       <Container>
         <StripeProvider apiKey="pk_test_lvZUcve5SCKEDCkOZ7BTG49N">
-          <Layout
-            clearCart={this.clearCart}
-            removeFromCart={this.removeFromCart}
+          <Component
+            addToCart={this.addToCart}
             incrementQuantity={this.incrementQuantity}
             decrementQuantity={this.decrementQuantity}
+            removeFromCart={this.removeFromCart}
+            clearCart={this.clearCart}
             cartState={this.state}
             toggleCartOpen={this.toggleCartOpen}
-          >
-            <Component addToCart={this.addToCart} {...pageProps} />
-          </Layout>
+            {...pageProps}
+          />
         </StripeProvider>
       </Container>
     );

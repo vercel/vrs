@@ -1,12 +1,26 @@
 import Link from "next/link";
+import Layout from "../components/Layout";
 import Footer from "../components/Footer";
 import fetch from "isomorphic-unfetch";
 
-function Store(props) {
-  const { products } = props;
-
+function Store({
+  products,
+  incrementQuantity,
+  decrementQuantity,
+  removeFromCart,
+  clearCart,
+  cartState,
+  toggleCartOpen
+}) {
   return (
-    <div>
+    <Layout
+      incrementQuantity={incrementQuantity}
+      decrementQuantity={decrementQuantity}
+      removeFromCart={removeFromCart}
+      clearCart={clearCart}
+      cartState={cartState}
+      toggleCartOpen={toggleCartOpen}
+    >
       <article className="pt5 bg-black white ph3">
         <a className="link white tc">
           <p>
@@ -21,7 +35,7 @@ function Store(props) {
           {Array.isArray(products) &&
             products.map(product => (
               <div className="fl w-100 w-50-m w-25-l pa2" key={product.id}>
-                <Link href={`/edit?id=${product.id}`}>
+                <Link href={`/model?id=${product.id}`}>
                   <a className="db link dim tc white">
                     <img
                       src={`/static/models/${product.id}/thumbnail@m.jpg`}
@@ -45,7 +59,7 @@ function Store(props) {
         </div>
       </article>
       <Footer />
-    </div>
+    </Layout>
   );
 }
 

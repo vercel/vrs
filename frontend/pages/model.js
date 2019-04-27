@@ -1,15 +1,32 @@
-/**
- * Created by shu on 10/5/2017.
- */
-
 import { useEffect } from "react";
+import Layout from "../components/Layout";
 import Editor from "../components/Editor";
 
-function Edit({ addToCart, details }) {
-  return <Editor details={details} addToCart={addToCart} />;
+function Model({
+  details,
+  addToCart,
+  incrementQuantity,
+  decrementQuantity,
+  removeFromCart,
+  clearCart,
+  cartState,
+  toggleCartOpen
+}) {
+  return (
+    <Layout
+      incrementQuantity={incrementQuantity}
+      decrementQuantity={decrementQuantity}
+      removeFromCart={removeFromCart}
+      clearCart={clearCart}
+      cartState={cartState}
+      toggleCartOpen={toggleCartOpen}
+    >
+      <Editor details={details} addToCart={addToCart} />;
+    </Layout>
+  );
 }
 
-Edit.getInitialProps = async function({ req, query }) {
+Model.getInitialProps = async function({ req, query }) {
   const { id } = query;
   let URL;
 
@@ -43,4 +60,4 @@ Edit.getInitialProps = async function({ req, query }) {
   return props;
 };
 
-export default Edit;
+export default Model;

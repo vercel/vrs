@@ -1,8 +1,3 @@
-/**
- * Created by shu on 7/5/2017.
- * Refactored by coetry on 3/25/2019.
- */
-
 import { useState, useEffect } from "react";
 
 import Link from "next/link";

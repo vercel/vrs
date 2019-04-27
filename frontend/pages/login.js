@@ -1,13 +1,23 @@
-/**
- * Created by shu on 11/6/2017.
- */
-
 import Layout from "../components/Layout";
 import Footer from "../components/Footer";
 
-export default function Login() {
+export default function Login({
+  incrementQuantity,
+  decrementQuantity,
+  removeFromCart,
+  clearCart,
+  cartState,
+  toggleCartOpen
+}) {
   return (
-    <div>
+    <Layout
+      incrementQuantity={incrementQuantity}
+      decrementQuantity={decrementQuantity}
+      removeFromCart={removeFromCart}
+      clearCart={clearCart}
+      cartState={cartState}
+      toggleCartOpen={toggleCartOpen}
+    >
       <main className="pa3 pa5-ns vh-100 w-100 white dt tc">
         <p className="f4 lh-copy measure dtc v-mid">
           <h1>Welcome</h1>
@@ -28,6 +38,6 @@ export default function Login() {
         </p>
       </main>
       <Footer />
-    </div>
+    </Layout>
   );
 }
