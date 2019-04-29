@@ -28,13 +28,10 @@ function Store({
           </p>
           <h1 className="tc f3 mb4">Model Store</h1>
         </a>
-        <h2 className="f4 fw4 pa3 mv0 tc">
-          <i className="material-icons red">whatshot</i>
-        </h2>
-        <div className="cf pa2">
+        <div className="pa2 flex flex-wrap">
           {Array.isArray(products) &&
             products.map(product => (
-              <div className="fl w-100 w-50-m w-25-l pa2" key={product.id}>
+              <div className="fl w-100 w-50-m w-33-l pa2" key={product.id}>
                 <Link href={`/model?id=${product.id}`}>
                   <a className="db link dim tc white">
                     <img
