@@ -7,7 +7,6 @@ const app = require("../../utils/app");
 const UserSchema = require("../../models/User");
 
 app.use(passport.initialize());
-//app.use(passport.session());
 
 passport.use(
   new GitHubStrategy(
@@ -17,7 +16,6 @@ passport.use(
       callbackURL: "https://serverless-vrs.now.sh/auth/github"
     },
     async function passportVerifyCallback(token, tokenSecret, profile, cb) {
-      console.log(profile);
       try {
         conn = await mongoose.createConnection(process.env.MONGODB_ATLAS_URI, {
           bufferCommands: false,
@@ -34,10 +32,8 @@ passport.use(
           },
           (err, user) => {
             if (err) {
-              console.log("error: ...", err);
               cb(err);
             }
-            console.log("success: ...", user._doc);
             cb(null, user._doc);
           }
         );
@@ -52,7 +48,6 @@ passport.serializeUser((user, done) => done(null, user));
 passport.deserializeUser((user, done) => done(null, user));
 
 app.get("*", passport.authenticate("github"), async (req, res) => {
-  console.log("user on req:", req.user);
   const { id, username, avatar } = req.user;
   res.cookie("user-from-github", JSON.stringify({ id, username, avatar }));
   res.redirect("/store");

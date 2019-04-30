@@ -13,7 +13,7 @@ app.post("*", async (req, res) => {
     });
     res.json({ status });
   } catch ({ message }) {
-    res.status(400).json({ error: message || "uh oh " });
+    res.status(400).json({ error: message });
   }
 });
 

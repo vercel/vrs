@@ -2,7 +2,7 @@
   "version": 2,
   "name": "vrs",
   "alias": ["serverless-vrs.now.sh"],
-  "public": false,
+  "public": true,
   "regions": ["sfo"],
   "builds": [
     { "src": "backend/**/*.js", "use": "@now/node" },
@@ -26,10 +26,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "frontend/$1",
-      "headers": {
-        "cache-control": "s-maxage=1, maxage=0, stale-while-revalidate=31536000, stale-if-error=31536000"
-      }
+      "dest": "frontend/$1"
     }
   ],
   "env": {

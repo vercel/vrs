@@ -1,7 +1,6 @@
 import App, { Container } from "next/app";
 import Router from "next/router";
 import { StripeProvider } from "react-stripe-elements-universal";
-import Layout from "../components/Layout";
 import Cookies from "js-cookie";
 
 class VRS extends App {
@@ -22,7 +21,7 @@ class VRS extends App {
     const cart = this.loadFromLocalStorage("vrs:cart");
     if (cart) {
       const { items: cartItems } = cart;
-      this.setState({ cartItems }, () => console.log(this.state.cartItems));
+      this.setState({ cartItems });
     }
   }
 
