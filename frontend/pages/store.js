@@ -64,7 +64,7 @@ Store.getInitialProps = async ({ req }) => {
   let URL;
 
   if (typeof window === "undefined") {
-    if (process.env.NODE === "production") {
+    if (process.env.NODE_ENV === "production") {
       URL = `https://${req.headers.host}/api/get-products`;
     } else {
       URL = `http://localhost:3000/api/get-products`;

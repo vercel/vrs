@@ -32,7 +32,7 @@ Model.getInitialProps = async function({ req, query }) {
   let URL;
 
   if (typeof window === "undefined") {
-    if (process.env.NODE === "production") {
+    if (process.env.NODE_ENV === "production") {
       URL = `https://${req.headers.host}/api/get-product?id=${id}`;
     } else {
       URL = `http://localhost:3000/api/get-product?id=${id}`;
