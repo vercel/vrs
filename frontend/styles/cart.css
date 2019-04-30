@@ -21,16 +21,16 @@
  * ============================== */
 
 .Cart {
-  color: #fff;
+  color: #000;
   position: fixed;
   top: 0;
   right: 0;
   height: 100%;
   width: 350px;
-  background-color: rgba(50, 50, 50, 0.5);
+  background-color: rgba(255, 255, 255, 0.97);
   display: flex;
   flex-direction: column;
-  border-left: 1px solid #e5e5e5;
+  border-left: 1px solid #000;
   transform: translateX(100%);
   transition: transform 0.15s ease-in-out;
 }
@@ -44,7 +44,7 @@
   right: 9px;
   top: 8px;
   font-size: 15px;
-  color: #fff;
+  color: #000;
   border: none;
   background: transparent;
   transition: transform 100ms ease;
@@ -54,10 +54,10 @@
 
 .Cart__header {
   padding: 20px;
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid #000;
   display: flex;
   align-items: center;
-  color: #fff;
+  color: #000;
 }
 
 .Cart__line-items {
@@ -69,7 +69,7 @@
 
 .Cart__footer {
   padding: 20px;
-  border-top: 1px solid #e5e5e5;
+  border-top: 1px solid #000;
   flex: 0 0 auto;
 }
 
@@ -103,7 +103,7 @@
 .pricing {
   margin-left: 5px;
   font-size: 16px;
-  color: #fff;
+  color: #000;
 }
 
 /* LINE ITEMS
@@ -125,7 +125,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  background-color: #e5e5e5;
+  background-color: #000;
   position: absolute;
 }
 
@@ -146,32 +146,32 @@
   font-weight: bold;
   font-size: 11px;
   line-height: 17px;
-  color: #767676;
+  color: #000;
 }
 
 .Line-item__title {
-  color: #fff;
+  color: #000;
   font-size: 15px;
-  font-weight: 400;
+  font-weight: 600;
 }
 
 .Line-item__price {
-  color: #fff;
+  color: #000;
   line-height: 23px;
   float: right;
-  font-weight: bold;
+  font-weight: 500;
   font-size: 15px;
   margin-right: 40px;
 }
 
 .Line-item__quantity-container {
-  border: 1px solid #fff;
+  border: 1px solid #000;
   float: left;
   border-radius: 3px;
 }
 
 .Line-item__quantity-update {
-  color: #fff;
+  color: #000;
   display: block;
   float: left;
   height: 21px;
@@ -192,7 +192,7 @@
 }
 
 .Line-item__quantity {
-  color: #fff;
+  color: #000;
   width: 38px;
   height: 21px;
   line-height: 23px;
@@ -201,8 +201,8 @@
   text-align: center;
   -moz-appearance: textfield;
   background: transparent;
-  border-left: 1px solid #fff;
-  border-right: 1px solid #fff;
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
   display: block;
   float: left;
   padding: 0;
@@ -210,7 +210,7 @@
 }
 
 .Line-item__remove {
-  color: #fff;
+  color: #000;
   position: absolute;
   right: 0;
   top: 0;

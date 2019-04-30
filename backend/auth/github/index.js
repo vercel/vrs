@@ -55,7 +55,7 @@ app.get("*", passport.authenticate("github"), async (req, res) => {
   console.log("user on req:", req.user);
   const { id, username, avatar } = req.user;
   res.cookie("user-from-github", JSON.stringify({ id, username, avatar }));
-  res.redirect("/");
+  res.redirect("/store");
 });
 
 module.exports = app;

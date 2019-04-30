@@ -997,16 +997,7 @@ class Editor extends Component {
           </div>
         )}
 
-        <div
-          style={{
-            color: "#ffffff",
-            position: "fixed",
-            top: "12%",
-            left: "55%",
-            background: "rgba(20, 20, 20, 0.3)",
-            padding: "10px"
-          }}
-        >
+        <div className="description-container">
           <h1>{this.props.details.name}</h1>
           <p>{this.props.details.description}</p>
         </div>
