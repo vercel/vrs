@@ -32,7 +32,7 @@ function Store({
           {Array.isArray(products) &&
             products.map(product => (
               <div
-                style={{ height: "200px" }}
+                style={{ height: "350px" }}
                 className="fl w-100 w-50-m w-33-l pa2"
                 key={product.id}
               >

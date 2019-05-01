@@ -2,7 +2,7 @@ import ZEITLogo from "./ZEITLogo";
 
 export default function Footer() {
   return (
-    <footer className="tc-l bg-center pb5 w-100 relative bg-white">
+    <footer className="tc bg-center pb5 w-100 relative bg-white">
       <div className="w-100 ph3 pv4">
         <a
           className="link black bg-transparent inline-flex items-center ma2 tc br2 pa2"
