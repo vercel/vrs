@@ -27,14 +27,12 @@ export default function About({
             <br/>
             With a single command `now`, the store deploys instantly,
             scales automatically, and requires zero supervision.
-          </p>
-          <p className="lh-copy">
             The underlying infrastructure can handle peak time traffic with
             consistent, blazing-fast performance.
           </p>
           <p className="lh-copy">
-            You can deploy VRS to our scalable serverless infrastructure{' '}
-            <strong>free of cost</strong>.
+          </p>
+          <p className="lh-copy">
             The source-code for VRS is open-sourced on {" "}
             <a
               className="link dim white underline"
@@ -42,7 +40,9 @@ export default function About({
             >
               GitHub
             </a>
-            .
+            .<br/>
+            You can deploy VRS to our scalable serverless infrastructure{' '}
+            <strong>free of cost</strong>.
             <br/>
             Thanks to the on-demand pricing model, you don’t pay a cent for
             infrastructure during idle time.
