@@ -40,10 +40,16 @@ function CheckoutForm({ totalPrice, stripe }) {
     <form onSubmit={handleSubmit}>
       <CardElement
         style={{
-          base: { fontFamily: "Space Mono, monospace", color: "white" }
+          base: { fontFamily: "Space Mono, monospace", color: "black" }
         }}
       />
-      <button type="submit" className="Cart__checkout button">
+      <button
+        type="submit"
+        disabled={status === "submitting"}
+        className={`Cart__checkout button ${
+          status === "success" ? "success" : ""
+        } `}
+      >
         {status === "default" && "Checkout"}
         {status === "submitting" && "Submitting ..."}
         {status === "success" && "Payment Complete!"}

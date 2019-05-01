@@ -24,10 +24,10 @@
       "src": "/backend/(.*)",
       "dest": "backend/$1"
     },
-    { 
+    {
       "src": "/_next/static/(?:[^/]+/pages|chunks|runtime)/.+",
       "continue": true,
-      "headers": { 
+      "headers": {
         "cache-control": "immutable,max-age=31536000"
       }
     },
@@ -35,7 +35,7 @@
       "src": "/static/models/(.*)",
       "dest": "frontend/static/models/$1",
       "headers": {
-        "cache-control": "public, immutable"
+        "cache-control": "immutable, max-age=31536000"
       }
     },
     {
@@ -47,7 +47,6 @@
     }
   ],
   "env": {
-    "COOK_KEY": "@vrs-cook-key",
     "GITHUB_CLIENT_ID": "@vrs-github-client-id",
     "GITHUB_CLIENT_SECRET": "@vrs-github-client-secret",
     "MONGODB_ATLAS_URI": "@vrs-mongodb-atlas-uri",

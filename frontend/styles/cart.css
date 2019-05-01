@@ -7,6 +7,10 @@
   cursor: pointer;
 }
 
+.success {
+  background-color: #4caf50;
+}
+
 .button:hover,
 .button:focus {
   background-color: rgb(150, 0 , 0);
