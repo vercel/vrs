@@ -1,14 +1,11 @@
-/**
- * Created by shu on 7/5/2017.
- * Refactored by coetry on 3/25/2019.
- */
+import ZEITLogo from "./ZEITLogo";
 
 export default function Footer() {
   return (
     <footer className="tc-l bg-center pb5 w-100 relative bg-white">
       <div className="w-100 ph3 pv4">
         <a
-          className="link black bg-transparent hover-gray inline-flex items-center ma2 tc br2 pa2"
+          className="link black bg-transparent inline-flex items-center ma2 tc br2 pa2"
           href="https://twitter.com/zeithq"
           title="Twitter"
         >
@@ -30,7 +27,7 @@ export default function Footer() {
           <span className="f6 ml3 pr2">Twitter</span>
         </a>
         <a
-          className="link black bg-transparent hover-gray inline-flex items-center ma2 tc br2 pa2"
+          className="link black bg-transparent inline-flex items-center ma2 tc br2 pa2"
           href="https://github.com/zeit/vrs"
           title="GitHub"
         >
@@ -49,16 +46,13 @@ export default function Footer() {
           <span className="f6 ml3 pr2">GitHub</span>
         </a>
         <br />
-        <span
-          className="black-50 bg-transparent inline-flex items-center tc br2 pa2"
-          title="VRS"
+
+        <a
+          className="link black inline-flex items-center ma2 tc br2 pa2"
+          href="https://zeit.co"
         >
-          <a className="link" href="https://zeit.co">
-            <span className="f4 black hover-gray ml3 pr2">
-              ▲ <span className="f6">ZEIT</span>
-            </span>
-          </a>
-        </span>
+          <ZEITLogo dark={true} />
+        </a>
       </div>
     </footer>
   );

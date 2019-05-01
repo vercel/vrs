@@ -34,15 +34,15 @@ export default function About({
             </a>
             , the underlying infrastructure can handle peak time traffic with
             consistently blazing fast performance. Thanks to the caching done on
-            the expansive
+            the expansive{" "}
             <a className="link dim white underline" href="https://zeit.co/cdn">
               ZEIT CDN network
-            </a>
+            </a>{" "}
             customers located anywhere enjoy equally low latency.
           </p>
           <h2 className="f4 lh-copy">Is it expensive?</h2>
           <p className="lh-copy">
-            The source-code for VRS is completely free and
+            The source-code for VRS is completely free and{" "}
             <a
               className="link dim white underline"
               href="https://github.com/zeit/vrs"
@@ -58,14 +58,14 @@ export default function About({
           </p>
           <h2 className="f4 lh-copy">How do I set it up?</h2>
           <p className="lh-copy">
-            The code for this demo is completely open source. Once you have
+            The code for this demo is completely open source. Once you have{" "}
             <a
               className="link dim white underline"
               href="https://zeit.co/download"
             >
               Now CLI
-            </a>
-            installed, clone the
+            </a>{" "}
+            installed, clone the{" "}
             <a
               className="link dim white underline"
               href="https://github.com/zeit/vrs"
@@ -73,7 +73,7 @@ export default function About({
               VRS repo
             </a>
             , specify the necessary secrets with Now CLI, and run `now` — that’s
-            it. The
+            it. The{" "}
             <a
               className="link dim white underline"
               href="https://zeit.co/blog/serverless-ecommerce"
