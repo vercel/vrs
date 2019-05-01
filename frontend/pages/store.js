@@ -39,7 +39,7 @@ function Store({
                 <Link href={`/model?id=${product.id}`}>
                   <a className="db link dim tc white">
                     <img
-                      style={{ height: "200px" }}
+                      style={{ objectFit: "contain", height: "200px" }}
                       src={`/static/models/${product.id}/thumbnail@m.jpg`}
                       alt="Lorem"
                       className="w-100 db outline black-10"
