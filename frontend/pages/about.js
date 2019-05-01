@@ -23,27 +23,26 @@ export default function About({
           <p className="lh-copy">
             VRS is a fully-functional e-commerce store, built on the serverless
             paradigm.
-            <br/>
-            <br/>
-            With a single command `now`, the store deploys instantly,
-            scales automatically, and requires zero supervision.
-            The underlying infrastructure can handle peak time traffic with
-            consistent, blazing-fast performance.
+            <br />
+            <br />
+            With a single command `now`, the store deploys instantly, scales
+            automatically, and requires zero supervision. The underlying
+            infrastructure can handle peak time traffic with consistent,
+            blazing-fast performance.
           </p>
+          <p className="lh-copy" />
           <p className="lh-copy">
-          </p>
-          <p className="lh-copy">
-            The source-code for VRS is open-sourced on {" "}
+            The source-code for VRS is open-sourced on{" "}
             <a
               className="link dim white underline"
               href="https://github.com/zeit/vrs"
             >
               GitHub
             </a>
-            .<br/>
-            You can deploy VRS to our scalable serverless infrastructure{' '}
+            .<br />
+            You can deploy VRS to our scalable serverless infrastructure{" "}
             <strong>free of cost</strong>.
-            <br/>
+            <br />
             Thanks to the on-demand pricing model, you don’t pay a cent for
             infrastructure during idle time.
           </p>
@@ -69,7 +68,7 @@ export default function About({
               href="https://zeit.co/blog/serverless-ecommerce#deploying-and-infrastructure"
             >
               deployment section
-            </a>{' '}
+            </a>{" "}
             on our blog post explains how you can specify the secrets.
           </p>
           <p className="lh-copy">
@@ -79,7 +78,9 @@ export default function About({
             teaching the developer community about serverless-related
             technology. We made VRS to showcase that it’s possible to create a
             fully functional, high-performance e-commerce store without
-            requiring infrastructure know-how. <br/><br/>Let us know how we did on{" "}
+            requiring infrastructure know-how. <br />
+            <br />
+            Let us know how we did on{" "}
             <a
               className="link white underline dim"
               href="https://twitter.com/zeithq"
