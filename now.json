@@ -25,6 +25,13 @@
       "dest": "backend/$1"
     },
     {
+      "src": "/static/models/(.*)",
+      "dest": "frontend/static/models/$1",
+      "headers": {
+        "cache-control": "public, immutable"
+      }
+    },
+    {
       "src": "/(.*)",
       "dest": "frontend/$1",
       "headers": {
