@@ -28,7 +28,7 @@
       "src": "/(.*)",
       "dest": "frontend/$1",
       "headers": {
-        "cache-control": "s-maxage=1, maxage=0, stale-while-revalidate"
+        "cache-control": "s-maxage=31536000, maxage=0, stale-while-revalidate"
       }
     }
   ],
