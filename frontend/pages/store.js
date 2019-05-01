@@ -31,7 +31,11 @@ function Store({
         <div className="pa2 flex flex-wrap">
           {Array.isArray(products) &&
             products.map(product => (
-              <div className="fl w-100 w-50-m w-33-l pa2" key={product.id}>
+              <div
+                style={{ height: "200px" }}
+                className="fl w-100 w-50-m w-33-l pa2"
+                key={product.id}
+              >
                 <Link href={`/model?id=${product.id}`}>
                   <a className="db link dim tc white">
                     <img
