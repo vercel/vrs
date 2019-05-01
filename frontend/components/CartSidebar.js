@@ -8,7 +8,8 @@ export default function CartSidebar({
   cartItems,
   incrementQuantity,
   decrementQuantity,
-  removeFromCart
+  removeFromCart,
+  clearCart
 }) {
   const TAX_RATE = 0.08;
   const subtotalPrice = cartItems.reduce((a, b) => a + b.quantity * b.price, 0);
@@ -60,7 +61,7 @@ export default function CartSidebar({
           </div>
         </div>
         <Elements>
-          <CheckoutForm totalPrice={totalPrice} />
+          <CheckoutForm clearCart={clearCart} totalPrice={totalPrice} />
         </Elements>
       </footer>
     </div>

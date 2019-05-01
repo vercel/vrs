@@ -144,6 +144,7 @@ export default function Nav({
         incrementQuantity={incrementQuantity}
         decrementQuantity={decrementQuantity}
         removeFromCart={removeFromCart}
+        clearCart={clearCart}
       />
     </div>
   );

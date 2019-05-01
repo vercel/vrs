@@ -2,7 +2,7 @@ import { useState } from "react";
 import { injectStripe } from "react-stripe-elements-universal";
 import { CardElement } from "react-stripe-elements-universal";
 
-function CheckoutForm({ totalPrice, stripe }) {
+function CheckoutForm({ totalPrice, stripe, clearCart }) {
   const [status, setStatus] = useState("default");
   async function handleSubmit(e) {
     e.preventDefault();
@@ -29,6 +29,7 @@ function CheckoutForm({ totalPrice, stripe }) {
 
         const json = await res.json();
         console.log("STRIPE PURCHASE STATUS:", json);
+        clearCart();
         setStatus("success");
       } catch ({ message }) {
         setStatus("error");
