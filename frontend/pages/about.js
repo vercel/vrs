@@ -18,7 +18,7 @@ export default function About({
       cartState={cartState}
       toggleCartOpen={toggleCartOpen}
     >
-      <main className="pa3 pa5-ns vh-100 white dt">
+      <main className="pv3 pv5-ns vh-100 white dt mw8 center">
         <div className="items-center">
           <p className="lh-copy">
             VRS is a fully-functional e-commerce store, built on the serverless

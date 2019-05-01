@@ -33,6 +33,7 @@ class VRSDoc extends Document {
             word-wrap: break-word;
             -webkit-tap-highlight-color: transparent;
             -webkit-font-smoothing: antialiased;
+            font-variant-ligatures: none;
           }
           .material-icons.md-18 { font-size: 18px; }
           .material-icons.md-24 { font-size: 24px; }
