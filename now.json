@@ -24,6 +24,13 @@
       "src": "/backend/(.*)",
       "dest": "backend/$1"
     },
+    { 
+      "src": "/_next/static/(?:[^/]+/pages|chunks|runtime)/.+",
+      "continue": true,
+      "headers": { 
+        "cache-control": "immutable,max-age=31536000"
+      }
+    },
     {
       "src": "/static/models/(.*)",
       "dest": "frontend/static/models/$1",
