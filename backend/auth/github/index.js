@@ -27,7 +27,6 @@ passport.use(
             id: profile.id,
             name: profile.displayName,
             username: profile.username,
-            email: profile.emails[0].value,
             avatar: profile.photos[0].value
           },
           (err, user) => {
