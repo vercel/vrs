@@ -23,6 +23,7 @@ app.get("*", async (req, res) => {
       if (error) {
         res.status(500).json({ error });
         connection.close();
+        return;
       }
       res.set("cache-control", "s-maxage=1, maxage=0, stale-while-revalidate");
       res.json({ docs });
