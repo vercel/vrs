@@ -13,7 +13,7 @@ passport.use(
     {
       clientID: process.env.GITHUB_CLIENT_ID,
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
-      callbackURL: "https://serverless-vrs.now.sh/auth/github"
+      callbackURL: "https://zeit-now-vrs-ecommerce-demo.therobbrennan.now.sh/auth/github"
     },
     async function passportVerifyCallback(token, tokenSecret, profile, cb) {
       try {
