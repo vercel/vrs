@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "name": "vrs",
-  "alias": ["serverless-vrs.now.sh"],
+  "name": "zeit-now-vrs-ecommerce-demo",
+  "alias": ["zeit-now-vrs-ecommerce-demo.therobbrennan.now.sh"],
   "public": true,
   "regions": ["sfo"],
   "builds": [
