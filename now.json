@@ -1,14 +1,10 @@
 {
-  "version": 2,
-  "name": "vrs",
-  "alias": ["serverless-vrs.now.sh"],
   "public": true,
-  "regions": ["sfo"],
   "builds": [
-    { "src": "backend/**/*.js", "use": "@now/node" },
+    { "src": "backend/**/*.js", "use": "@vercel/node" },
     {
       "src": "frontend/package.json",
-      "use": "@now/next"
+      "use": "@vercel/next"
     }
   ],
   "routes": [
