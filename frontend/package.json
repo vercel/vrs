@@ -19,7 +19,7 @@
     "react-smooth-scrollbar": "^7.2.2",
     "react-stripe-elements-universal": "^1.2.0-3",
     "tachyons": "^4.7.1",
-    "three": "^0.85.2",
+    "three": "^0.137.0",
     "tween.js": "^16.6.0"
   },
   "devDependencies": {
