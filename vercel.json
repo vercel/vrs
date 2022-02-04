@@ -1,4 +1,5 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
   "public": true,
   "builds": [
     { "src": "backend/**/*.js", "use": "@vercel/node" },
