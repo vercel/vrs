@@ -1,4 +1,5 @@
 import App from "next/app";
+import Head from "next/head";
 import Router from "next/router";
 import { StripeProvider } from "react-stripe-elements-universal";
 import Cookies from "js-cookie";
@@ -125,18 +126,26 @@ class VRS extends App {
   render() {
     const { Component, pageProps } = this.props;
     return (
-      <StripeProvider apiKey="pk_test_lvZUcve5SCKEDCkOZ7BTG49N">
-        <Component
-          addToCart={this.addToCart}
-          incrementQuantity={this.incrementQuantity}
-          decrementQuantity={this.decrementQuantity}
-          removeFromCart={this.removeFromCart}
-          clearCart={this.clearCart}
-          cartState={this.state}
-          toggleCartOpen={this.toggleCartOpen}
-          {...pageProps}
-        />
-      </StripeProvider>
+      <>
+        <Head>
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+          />
+        </Head>
+        <StripeProvider apiKey="pk_test_lvZUcve5SCKEDCkOZ7BTG49N">
+          <Component
+            addToCart={this.addToCart}
+            incrementQuantity={this.incrementQuantity}
+            decrementQuantity={this.decrementQuantity}
+            removeFromCart={this.removeFromCart}
+            clearCart={this.clearCart}
+            cartState={this.state}
+            toggleCartOpen={this.toggleCartOpen}
+            {...pageProps}
+          />
+        </StripeProvider>
+      </>
     );
   }
 }
