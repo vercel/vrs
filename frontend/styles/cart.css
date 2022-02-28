@@ -231,10 +231,11 @@
 }
 
 .add-to-cart-btn {
-    background: #0076FF;
-    padding: 10px; 
+  background: #0076FF;
+  padding: 10px; 
 }
 
 .add-to-cart-btn:hover {
-    background: #0061d1;
+  background: #0061d1;
 }
+

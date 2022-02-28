@@ -3,6 +3,12 @@ import Router from "next/router";
 import { StripeProvider } from "react-stripe-elements-universal";
 import Cookies from "js-cookie";
 
+import "../styles/editor.css";
+import "../styles/cart.css";
+import "../styles/layout.css";
+import "../styles/slider.css";
+import "../styles/view.css";
+
 class VRS extends App {
   static async getInitialProps({ Component, ctx }) {
     let pageProps = {};

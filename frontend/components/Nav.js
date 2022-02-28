@@ -9,7 +9,6 @@ import NProgressStyles from "nprogress/nprogress.css";
 
 import Cart from "./Cart";
 import CartSidebar from "./CartSidebar";
-import CartStyles from "../styles/cart.css";
 
 NProgress.configure({ showSpinner: false });
 Router.onRouteChangeStart = () => NProgress.start();
@@ -53,7 +52,6 @@ export default function Nav({
         <style
           dangerouslySetInnerHTML={{
             __html:
-              CartStyles +
               NProgressStyles +
               "#nprogress .peg { display: none } #nprogress .bar { background: white; height: 3px; z-index: 10000; }"
           }}
@@ -72,9 +70,8 @@ export default function Nav({
           <div className="w-100 w-90-l dtc-l tc tr-l v-mid">
             <Link href="/store">
               <a
-                className={`link dim white dib mr3 v-mid ${
-                  router === "/store" ? "bb" : ""
-                }`}
+                className={`link dim white dib mr3 v-mid ${router === "/store" ? "bb" : ""
+                  }`}
                 title="Store"
               >
                 Store
@@ -82,9 +79,8 @@ export default function Nav({
             </Link>
             <Link href="/about">
               <a
-                className={`link dim white dib mr3 v-mid ${
-                  router === "/about" ? "bb" : ""
-                }`}
+                className={`link dim white dib mr3 v-mid ${router === "/about" ? "bb" : ""
+                  }`}
                 title="About"
               >
                 About
@@ -125,9 +121,8 @@ export default function Nav({
             ) : (
               <Link href="/login">
                 <a
-                  className={`link dim white dib v-mid ${
-                    router === "/login" ? "bb" : ""
-                  }`}
+                  className={`link dim white dib v-mid ${router === "/login" ? "bb" : ""
+                    }`}
                   title="Login"
                 >
                   <i className="material-icons md-18">person</i>

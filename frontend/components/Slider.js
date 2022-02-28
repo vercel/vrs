@@ -13,7 +13,6 @@ import ScrollIcon from "./ScrollIcon";
 import ShowBox from "./ShowBox";
 import Footer from "./Footer";
 
-import sliderStyles from "../styles/slider.less";
 
 const Page = ({ children, fixed }) => (
   <div className={`slider-item ${fixed ? "fixed" : "relative slide"}`}>
@@ -37,7 +36,7 @@ class Slider extends Component {
       window.DeviceOrientationEvent && /Mobi/.test(navigator.userAgent);
   }
   componentWillUnmount() {
-    this.scrollHandler = () => {};
+    this.scrollHandler = () => { };
   }
   scrollHandler(status) {
     this.setState({
@@ -51,10 +50,6 @@ class Slider extends Component {
 
     return (
       <div>
-        <Head>
-          <style dangerouslySetInnerHTML={{ __html: sliderStyles }} />
-        </Head>
-
         <div className="slider-container">
           <Page>
             <div className="absolute w-100 vh-100">
@@ -120,7 +115,7 @@ class Slider extends Component {
                   <ShowBox
                     width={Math.min(600, width)}
                     height={Math.min(600, height * 0.6)}
-                    composer={function() {
+                    composer={function () {
                       let effect = new THREE.RenderPass(
                         this.scene,
                         this.camera
@@ -143,7 +138,7 @@ class Slider extends Component {
                   <ShowBox
                     width={Math.min(600, width)}
                     height={Math.min(600, height * 0.6)}
-                    composer={function() {
+                    composer={function () {
                       let effect = new THREE.RenderPass(
                         this.scene,
                         this.camera
@@ -225,7 +220,7 @@ class Slider extends Component {
                   <ShowBox
                     width={Math.min(600, width)}
                     height={Math.min(600, height * 0.6)}
-                    composer={function() {
+                    composer={function () {
                       let effect = new THREE.RenderPass(
                         this.scene,
                         this.camera

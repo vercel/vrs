@@ -6,7 +6,6 @@ import Head from "next/head";
 import Nav from "./Nav";
 
 import tachyonsStyles from "tachyons/css/tachyons.min.css";
-import layoutStyles from "../styles/layout.less";
 import scrollBarStyles from "smooth-scrollbar/dist/smooth-scrollbar.css";
 
 import SliderWave from "./SliderWave";
@@ -76,7 +75,7 @@ export default class Layout extends Component {
           <title>{title}</title>
           <style
             dangerouslySetInnerHTML={{
-              __html: tachyonsStyles + scrollBarStyles + layoutStyles
+              __html: tachyonsStyles + scrollBarStyles
             }}
           />
         </Head>

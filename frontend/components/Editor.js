@@ -9,7 +9,6 @@ import TWEEN from "tween.js";
 import { Component } from "react";
 import throttle from "lodash/throttle";
 
-import editorStyles from "../styles/editor.less";
 import EditorSidebar from "./EditorSidebar";
 
 // utils
@@ -72,16 +71,16 @@ THREE.FilmShader.fragmentShader = [
   "}"
 ].join("\n");
 
-THREE.StereoEffect = function(renderer, composer, renderPass) {
+THREE.StereoEffect = function (renderer, composer, renderPass) {
   var _stereo = new THREE.StereoCamera();
   _stereo.aspect = 0.5;
-  this.setEyeSeparation = function(eyeSep) {
+  this.setEyeSeparation = function (eyeSep) {
     _stereo.eyeSep = eyeSep;
   };
-  this.setSize = function(width, height) {
+  this.setSize = function (width, height) {
     renderer.setSize(width, height);
   };
-  this.render = function(scene, camera) {
+  this.render = function (scene, camera) {
     scene.updateMatrixWorld();
     if (camera.parent === null) camera.updateMatrixWorld();
     _stereo.update(camera);
@@ -152,7 +151,7 @@ class Editor extends Component {
     });
   }
   componentWillUnmount() {
-    this.renderLoop = () => {};
+    this.renderLoop = () => { };
   }
 
   // user event handlers
@@ -987,10 +986,6 @@ class Editor extends Component {
     let { selectedObjectData } = this;
     return (
       <div style={{ display: "flex" }}>
-        <Head>
-          <style dangerouslySetInnerHTML={{ __html: editorStyles }} />
-        </Head>
-
         {!this.loaded && (
           <div className="absolute w-100 h-100 flex white items-center justify-center">
             <i className="material-icons mr2">hourglass_full</i>loading model...
@@ -1054,27 +1049,24 @@ class Editor extends Component {
 
           <div className="flex items-center">
             <a
-              className={`hover-gray pointer mr2 flex justify-center items-center flex-column br-100 w3 h3 ba ${
-                this.wireframe || this.vr ? "b--transparent" : ""
-              }`}
+              className={`hover-gray pointer mr2 flex justify-center items-center flex-column br-100 w3 h3 ba ${this.wireframe || this.vr ? "b--transparent" : ""
+                }`}
               onClick={this.switchToModel}
             >
               <i className="material-icons">brightness_1</i>
               <span className="ttu f7 mb1">Body</span>
             </a>
             <a
-              className={`hover-gray pointer mr2 flex justify-center items-center flex-column br-100 w3 h3 ba ${
-                this.wireframe && !this.vr ? "" : "b--transparent"
-              }`}
+              className={`hover-gray pointer mr2 flex justify-center items-center flex-column br-100 w3 h3 ba ${this.wireframe && !this.vr ? "" : "b--transparent"
+                }`}
               onClick={this.switchToWireframe}
             >
               <i className="material-icons">blur_circular</i>
               <span className="ttu f7 mb1">Frame</span>
             </a>
             <a
-              className={`hover-gray pointer mr2 flex justify-center items-center flex-column br-100 w3 h3 ba ${
-                !this.vr ? "b--transparent" : ""
-              }`}
+              className={`hover-gray pointer mr2 flex justify-center items-center flex-column br-100 w3 h3 ba ${!this.vr ? "b--transparent" : ""
+                }`}
               onClick={this.switchToVR}
             >
               <i className="material-icons">vignette</i>

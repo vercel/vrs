@@ -1,34 +1,25 @@
-@backgroud: #040404;
-
 body {
-  background-color: @backgroud;
+  background-color: #040404;
 }
-
 .container {
   height: 100vh;
 }
-
 .scrollbar-track-y, scrollbar .scrollbar-track-y {
   right: 3px !important;
   width: 5px !important;
 }
-
 .scrollbar-thumb, scrollbar .scrollbar-thumb {
   width: 5px !important;
 }
-
 .tippy-tooltip.dark-theme .tippy-tooltip-content {
   color: white;
 }
-
 .tippy-tooltip:focus, .tippy-tooltip:active, .tippy-popper:focus {
   outline: none;
 }
-
 #cart-template {
   max-height: 300px;
 }
-
 .badge {
   position: absolute;
   top: -5px;
