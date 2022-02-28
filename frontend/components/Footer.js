@@ -1,4 +1,4 @@
-import ZEITLogo from "./ZEITLogo";
+import VercelLogo from "./VercelLogo";
 
 export default function Footer() {
   return (
@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="w-100 ph3 pv4">
         <a
           className="link black bg-transparent inline-flex items-center ma2 tc br2 pa2"
-          href="https://twitter.com/zeithq"
+          href="https://twitter.com/vercel"
           title="Twitter"
         >
           <svg
@@ -28,7 +28,7 @@ export default function Footer() {
         </a>
         <a
           className="link black bg-transparent inline-flex items-center ma2 tc br2 pa2"
-          href="https://github.com/zeit/vrs"
+          href="https://github.com/vercel/vrs"
           title="GitHub"
         >
           <svg
@@ -49,9 +49,9 @@ export default function Footer() {
 
         <a
           className="link black inline-flex items-center ma2 tc br2 pa2"
-          href="https://zeit.co"
+          href="https://vercel.com"
         >
-          <ZEITLogo dark={true} />
+          <VercelLogo dark={true} />
         </a>
       </div>
     </footer>

@@ -35,7 +35,7 @@ export default function About({
             The source-code for VRS is open-sourced on{" "}
             <a
               className="link dim white underline"
-              href="https://github.com/zeit/vrs"
+              href="https://github.com/vercel/vrs"
             >
               GitHub
             </a>
@@ -50,29 +50,29 @@ export default function About({
             Once you have{" "}
             <a
               className="link dim white underline"
-              href="https://zeit.co/download"
+              href="https://vercel.com/cli"
             >
-              Now CLI
+              Vercel CLI
             </a>{" "}
             installed, clone the{" "}
             <a
               className="link dim white underline"
-              href="https://github.com/zeit/vrs"
+              href="https://github.com/vercel/vrs"
             >
               VRS repo
             </a>
-            , specify the necessary secrets with Now CLI, and run `now` — that’s
+            , specify the necessary secrets with the Vercel CLI, and run `npx vercel` — that’s
             it. The{" "}
             <a
               className="link dim white underline"
-              href="https://zeit.co/blog/serverless-ecommerce#deploying-and-infrastructure"
+              href="https://vercel.com/docs/concepts/projects/environment-variables"
             >
-              deployment section
+              environment variables section
             </a>{" "}
-            on our blog post explains how you can specify the secrets.
+            on our website explains how you can specify the secrets.
           </p>
           <p className="lh-copy">
-            Our mission at ZEIT is to make the cloud accessible to everyone. We
+            Our mission at Vercel is to make the cloud accessible to everyone. We
             do that by creating products that improve developer experience,
             provisioning infrastructure that is globally available, and by
             teaching the developer community about serverless-related
@@ -83,7 +83,7 @@ export default function About({
             Let us know how we did on{" "}
             <a
               className="link white underline dim"
-              href="https://twitter.com/zeithq"
+              href="https://twitter.com/vercel"
             >
               Twitter
             </a>
