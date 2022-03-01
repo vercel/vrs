@@ -4,8 +4,8 @@ import Head from "next/head";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import Router from "next/router";
-import Cookies from "js-cookie";
 import NProgress from "nprogress";
+import { useSession, signOut } from "next-auth/react";
 
 import Cart from "./Cart";
 const CartSidebar = dynamic(() => import("./CartSidebar"));
@@ -25,23 +25,24 @@ export default function Nav({
   decrementQuantity,
   removeFromCart
 }) {
+  const { data: session, status } = useSession()
   const [router, setRouter] = useState("");
   const [username, setUsername] = useState("");
   const [avatarURL, setAvatarURL] = useState("");
 
   useEffect(() => {
     Router.router && setRouter(Router.router.pathname);
-    if (Cookies.get("user-from-github")) {
-      const { username, avatar } = JSON.parse(
-        decodeURIComponent(Cookies.get("user-from-github"))
-      );
-      setUsername(username);
-      setAvatarURL(avatar);
-    }
   }, []);
 
+  useEffect(() => {
+    if (status === "authenticated") {
+      setUsername(session.user.name);
+      setAvatarURL(session.user.image);
+    }
+  }, [status])
+
   function logout() {
-    Cookies.remove("user-from-github");
+    signOut();
     setUsername(null);
     setAvatarURL(null);
     clearCart();
@@ -117,7 +118,8 @@ export default function Nav({
               <Image
                 className="link dim white dib v-mid"
                 onClick={logout}
-                layout="fill"
+                height="30px"
+                width="30px"
                 src={avatarURL}
                 style={{ height: "20px", borderRadius: 100 }}
               />
