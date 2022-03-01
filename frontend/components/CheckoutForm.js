@@ -1,16 +1,16 @@
 import { useState } from "react";
-import { injectStripe } from "react-stripe-elements-universal";
-import { CardElement } from "react-stripe-elements-universal";
+import { CardElement } from "@stripe/react-stripe-js";
 
-function CheckoutForm({ totalPrice, stripe, clearCart }) {
+export default function CheckoutForm({ totalPrice, stripe, clearCart }) {
   const [status, setStatus] = useState("default");
+
   async function handleSubmit(e) {
     e.preventDefault();
     setStatus("submitting");
     if (stripe) {
       try {
         const { token } = await stripe.createToken();
-        console.log("STRIPE TOKEN:", token);
+
         const res = await fetch("/api/checkout", {
           method: "POST",
           body: JSON.stringify({
@@ -37,6 +37,7 @@ function CheckoutForm({ totalPrice, stripe, clearCart }) {
       }
     }
   }
+
   return (
     <form onSubmit={handleSubmit}>
       <CardElement
@@ -47,9 +48,8 @@ function CheckoutForm({ totalPrice, stripe, clearCart }) {
       <button
         type="submit"
         disabled={status === "submitting"}
-        className={`Cart__checkout button ${
-          status === "success" ? "success" : ""
-        } `}
+        className={`Cart__checkout button ${status === "success" ? "success" : ""
+          } `}
       >
         {status === "default" && "Checkout"}
         {status === "submitting" && "Submitting ..."}
@@ -60,4 +60,3 @@ function CheckoutForm({ totalPrice, stripe, clearCart }) {
   );
 }
 
-export default injectStripe(CheckoutForm);

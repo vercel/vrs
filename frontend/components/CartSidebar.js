@@ -1,4 +1,5 @@
-import { Elements } from "react-stripe-elements-universal";
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
 
 import LineItem from "./LineItem";
 import CheckoutForm from "./CheckoutForm";
@@ -16,6 +17,7 @@ export default function CartSidebar({
   const subtotalPrice = cartItems.reduce((a, b) => a + b.quantity * b.price, 0);
   const totalTax = subtotalPrice * TAX_RATE;
   const totalPrice = subtotalPrice + totalTax;
+
   return (
     <div className={`Cart ${cartOpen ? "Cart--open" : "dn"}`}>
       <header className="Cart__header">
@@ -61,7 +63,7 @@ export default function CartSidebar({
             <span className="pricing">$ {totalPrice.toFixed(2)}</span>
           </div>
         </div>
-        <Elements>
+        <Elements stripe={loadStripe("pk_test_lvZUcve5SCKEDCkOZ7BTG49N")}>
           <CheckoutForm clearCart={clearCart} totalPrice={totalPrice} />
         </Elements>
       </footer>

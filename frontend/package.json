@@ -1,11 +1,11 @@
 {
   "scripts": {
-    "dev": "next -p $PORT",
-    "now-dev": "npm run dev",
-    "build": "next build",
-    "now-build": "npm run build"
+    "dev": "next dev",
+    "build": "next build"
   },
   "dependencies": {
+    "@stripe/react-stripe-js": "^1.7.0",
+    "@stripe/stripe-js": "^1.23.0",
     "isomorphic-unfetch": "^3.0.0",
     "js-cookie": "^2.2.0",
     "lodash": "^4.17.21",
@@ -17,9 +17,11 @@
     "react-dom": "^17.0.2",
     "react-motion": "^0.5.0",
     "react-smooth-scrollbar": "^7.2.2",
-    "react-stripe-elements-universal": "^1.2.0-3",
     "tachyons": "^4.7.1",
     "three": "^0.85.2",
     "tween.js": "^16.6.0"
+  },
+  "devDependencies": {
+    "sharp": "^0.30.1"
   }
 }

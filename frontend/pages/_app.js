@@ -1,7 +1,6 @@
 import App from "next/app";
 import Head from "next/head";
 import Router from "next/router";
-import { StripeProvider } from "react-stripe-elements-universal";
 import Cookies from "js-cookie";
 
 import "../styles/editor.css";
@@ -10,15 +9,8 @@ import "../styles/layout.css";
 import "../styles/slider.css";
 import "../styles/view.css";
 
-class VRS extends App {
-  static async getInitialProps({ Component, ctx }) {
-    let pageProps = {};
-    if (Component.getInitialProps) {
-      pageProps = await Component.getInitialProps(ctx);
-    }
-    return { pageProps };
-  }
 
+class VRS extends App {
   state = {
     cartItems: [],
     cartOpen: false
@@ -133,18 +125,16 @@ class VRS extends App {
             content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
           />
         </Head>
-        <StripeProvider apiKey="pk_test_lvZUcve5SCKEDCkOZ7BTG49N">
-          <Component
-            addToCart={this.addToCart}
-            incrementQuantity={this.incrementQuantity}
-            decrementQuantity={this.decrementQuantity}
-            removeFromCart={this.removeFromCart}
-            clearCart={this.clearCart}
-            cartState={this.state}
-            toggleCartOpen={this.toggleCartOpen}
-            {...pageProps}
-          />
-        </StripeProvider>
+        <Component
+          addToCart={this.addToCart}
+          incrementQuantity={this.incrementQuantity}
+          decrementQuantity={this.decrementQuantity}
+          removeFromCart={this.removeFromCart}
+          clearCart={this.clearCart}
+          cartState={this.state}
+          toggleCartOpen={this.toggleCartOpen}
+          {...pageProps}
+        />
       </>
     );
   }

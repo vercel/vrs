@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Head from "next/head";
+import dynamic from "next/dynamic";
+import Image from "next/image";
 import Router from "next/router";
 import Cookies from "js-cookie";
 import NProgress from "nprogress";
 
 import Cart from "./Cart";
-import CartSidebar from "./CartSidebar";
+const CartSidebar = dynamic(() => import("./CartSidebar"));
 
 import NProgressStyles from "nprogress/nprogress.css";
 
@@ -112,9 +114,10 @@ export default function Nav({
               </Cart>
             </a>
             {avatarURL ? (
-              <img
+              <Image
                 className="link dim white dib v-mid"
                 onClick={logout}
+                layout="fill"
                 src={avatarURL}
                 style={{ height: "20px", borderRadius: 100 }}
               />
@@ -132,7 +135,7 @@ export default function Nav({
           </div>
         </nav>
       </header>
-      <CartSidebar
+      {cartState.cartOpen && <CartSidebar
         cartOpen={cartState.cartOpen}
         toggleCartOpen={toggleCartOpen}
         cartItems={cartState && cartState.cartItems}
@@ -140,7 +143,7 @@ export default function Nav({
         decrementQuantity={decrementQuantity}
         removeFromCart={removeFromCart}
         clearCart={clearCart}
-      />
+      />}
     </div>
   );
 }
