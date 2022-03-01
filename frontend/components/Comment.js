@@ -5,7 +5,6 @@
 import { Component } from 'react'
 
 import Tippy from 'tippy.js'
-import $ from 'jquery'
 
 export default class extends Component {
   constructor() {
@@ -21,7 +20,7 @@ export default class extends Component {
     })
   }
   render() {
-    return <div style={{position: 'relative'}}>
+    return <div style={{ position: 'relative' }}>
       <div
         className="comment-tippy"
         data-duration="300"
@@ -29,14 +28,14 @@ export default class extends Component {
         data-trigger="click"
         data-position="bottom">
         <i className="material-icons">comment</i>
-        <div id="comment-template" style={{display: 'none'}}>
+        <div id="comment-template" style={{ display: 'none' }}>
           <p className="">Comments</p>
           <ul className="tl">
             <li>Good</li>
             <li>alright</li>
           </ul>
-          <textarea/>
-          <br/>
+          <textarea />
+          <br />
           <button>Submit</button>
         </div>
       </div>
