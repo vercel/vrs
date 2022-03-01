@@ -4,7 +4,8 @@
   "builds": [
     { "src": "backend/**/*.js", "use": "@vercel/node" },
     {
-      "src": "frontend/package.json"    
+      "src": "frontend/package.json",
+      "use": "@vercel/next"
     }
   ],
   "routes": [
