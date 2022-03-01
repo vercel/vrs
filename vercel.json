@@ -16,6 +16,10 @@
     {
       "src": "/backend/(.*)",
       "dest": "backend/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "frontend/$1"
     }
   ],
   "env": {
