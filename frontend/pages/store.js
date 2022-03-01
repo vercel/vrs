@@ -1,7 +1,8 @@
 import Link from "next/link";
+import fetch from "isomorphic-unfetch";
+
 import Layout from "../components/Layout";
 import Footer from "../components/Footer";
-import fetch from "isomorphic-unfetch";
 
 function Store({
   products,

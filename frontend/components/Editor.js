@@ -1,12 +1,9 @@
 /**
  * Created by shu on 10/5/2017.
  */
-
-import Head from "next/head";
-import Router from "next/router";
 import TWEEN from "tween.js";
-
 import { Component } from "react";
+import Router from "next/router";
 import throttle from "lodash/throttle";
 
 import EditorSidebar from "./EditorSidebar";

@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
-
 import Link from "next/link";
 import Head from "next/head";
 import Router from "next/router";
 import Cookies from "js-cookie";
 import NProgress from "nprogress";
-import NProgressStyles from "nprogress/nprogress.css";
 
 import Cart from "./Cart";
 import CartSidebar from "./CartSidebar";
+
+import NProgressStyles from "nprogress/nprogress.css";
 
 NProgress.configure({ showSpinner: false });
 Router.onRouteChangeStart = () => NProgress.start();

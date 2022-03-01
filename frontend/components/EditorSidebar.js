@@ -1,5 +1,4 @@
 import { Component } from 'react'
-
 import { ChromePicker } from 'react-color'
 import ClickOutside from 'react-click-outside'
 
@@ -25,14 +24,14 @@ export default class extends Component {
     this.props.changeColor && this.props.changeColor(color, index)
   }
   componentWillReceiveProps(newProps) {
-    let {data} = newProps
+    let { data } = newProps
     if (this.props.data && this.props.data.uuid !== data.uuid) {
       // component changed
       this.setState({ colorPicker: [], currColor: [] })
     }
   }
   render() {
-    let {data} = this.props
+    let { data } = this.props
     return <div className="sidebar-container white">
       {
         data &&
@@ -41,19 +40,19 @@ export default class extends Component {
           {data.name ? <div>{data.name}</div> : <div>-</div>}
           <span className="subtitle mb1 mt3">Textures <i className="material-icons f7 v-btm">lock</i></span>
           {data.textures && <div>
-            {data.textures.map((texture, i) => <img className="mr1" key={`texture-${i}`} src={texture}/>)}
+            {data.textures.map((texture, i) => <img className="mr1" key={`texture-${i}`} src={texture} />)}
           </div>}
           {(!data.textures || !data.textures.length) && <div>-</div>}
           <span className="subtitle mb1 mt3">Colors</span>
           {data.colors && <div>
-            {data.colors.map(({r, g, b}, i) => {
-              let bg = this.state.currColor[i] || `rgb(${~~(r*255)}, ${~~(g*255)}, ${~~(b*255)})`
-              return <div key={`color-${i}`} className="dib color-swatch mr1 relative" onClick={ev => this.openColorpicker(ev, i)} style={{backgroundColor: bg}}>{
+            {data.colors.map(({ r, g, b }, i) => {
+              let bg = this.state.currColor[i] || `rgb(${~~(r * 255)}, ${~~(g * 255)}, ${~~(b * 255)})`
+              return <div key={`color-${i}`} className="dib color-swatch mr1 relative" onClick={ev => this.openColorpicker(ev, i)} style={{ backgroundColor: bg }}>{
                 this.state.colorPicker[i] && <ClickOutside onClickOutside={ev => this.close()}>
                   <div className="absolute z-1">
                     <ChromePicker
                       color={bg}
-                      onChangeComplete={color => this.changeColor(color, i)}/>
+                      onChangeComplete={color => this.changeColor(color, i)} />
                   </div>
                 </ClickOutside>
               }</div>

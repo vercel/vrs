@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import Layout from "../components/Layout";
 import Editor from "../components/Editor";
 import fetch from "isomorphic-unfetch";

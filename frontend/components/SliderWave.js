@@ -38,7 +38,7 @@ class SliderWave extends Component {
   }
 
   tick() {
-    let {x, y} = this
+    let { x, y } = this
     let t = this.time
     this.camera.position.x += (x - this.camera.position.x) * .05
     this.camera.position.y += (-y - this.camera.position.y) * .05
@@ -109,7 +109,7 @@ class SliderWave extends Component {
   }
 
   render() {
-    return <canvas key="slider-wave" ref={canvas => this.canvas = canvas}/>
+    return <canvas key="slider-wave" ref={canvas => this.canvas = canvas} />
   }
 }
 

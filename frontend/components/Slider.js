@@ -3,13 +3,9 @@
  */
 
 import { Component } from "react";
-import Head from "next/head";
 import Link from "next/link";
-
 import { Motion, spring } from "react-motion";
 
-import SliderWave from "./SliderWave";
-import ScrollIcon from "./ScrollIcon";
 import ShowBox from "./ShowBox";
 import Footer from "./Footer";
 

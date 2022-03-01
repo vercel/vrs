@@ -1,5 +1,6 @@
-import LineItem from "./LineItem";
 import { Elements } from "react-stripe-elements-universal";
+
+import LineItem from "./LineItem";
 import CheckoutForm from "./CheckoutForm";
 
 export default function CartSidebar({

@@ -1,16 +1,15 @@
 import { Component } from "react";
 import Router from "next/router";
-import Link from "next/link";
 import Head from "next/head";
+import { Motion, spring } from "react-motion";
 
 import Nav from "./Nav";
+import SliderWave from "./SliderWave";
+import ScrollIcon from "./ScrollIcon";
 
 import tachyonsStyles from "tachyons/css/tachyons.min.css";
 import scrollBarStyles from "smooth-scrollbar/dist/smooth-scrollbar.css";
 
-import SliderWave from "./SliderWave";
-import ScrollIcon from "./ScrollIcon";
-import { Motion, spring } from "react-motion";
 
 // include three.js
 const THREE = require("three/build/three");

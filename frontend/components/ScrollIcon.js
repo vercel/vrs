@@ -3,7 +3,7 @@
  */
 
 import { Component } from 'react'
-import _ from 'lodash'
+import debounce from 'lodash/debounce'
 
 // source: https://github.com/boguz/rumuli/blob/master/animations/03_svg_animations/svg_animation_1/svg_animation_1.html
 // modified by shu
@@ -16,9 +16,9 @@ export default class ScrollIcon extends Component {
       scrolled: false
     }
 
-    this.scrollHandler = _.debounce(this.scrollHandler.bind(this), 50)
+    this.scrollHandler = debounce(this.scrollHandler.bind(this), 50)
   }
-  scrollHandler (status) {
+  scrollHandler(status) {
     let scrolled = status.offset.y >= 10
 
     if (scrolled !== this.state.scrolled) {
@@ -32,12 +32,12 @@ export default class ScrollIcon extends Component {
     window.scrollHandlers.push(status => this.scrollHandler(status))
   }
   componentWillUnmount() {
-    this.scrollHandler = () => {}
+    this.scrollHandler = () => { }
   }
-  render () {
-    let {scrolled} = this.state
+  render() {
+    let { scrolled } = this.state
 
-    return <div className="scroll-icon" style={{ opacity: scrolled ? 0: 1 }}>
+    return <div className="scroll-icon" style={{ opacity: scrolled ? 0 : 1 }}>
       <style jsx>{`
       .scroll-icon {
         position: fixed;
