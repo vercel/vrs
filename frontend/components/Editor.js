@@ -276,7 +276,7 @@ class Editor extends Component {
     });
 
     let textureLoader = new THREE.TextureLoader();
-    let sprite = textureLoader.load(`/static/images/1.png`);
+    let sprite = textureLoader.load(`/images/1.png`);
     const pointsMaterial = new THREE.PointsMaterial({
       size: 18, // / (window.devicePixelRatio || 1),
       sizeAttenuation: false,
