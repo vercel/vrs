@@ -69,7 +69,7 @@ function Store({
 }
 
 export async function getStaticProps() {
-  const products = await fetchData(`/api/get-products`);
+  const products = await fetchData();
 
   return {
     props: {

@@ -27,17 +27,17 @@ function Model({
 }
 
 export async function getStaticProps(props) {
-  const docs = await fetchData(`/api/get-product?id=${props.params.id}`);
+  const details = await fetchData(props.params.id);
 
   return {
     props: {
-      details: docs[0]
+      details
     },
   };
 };
 
 export async function getStaticPaths() {
-  const docs = await fetchData(`/api/get-products`);
+  const docs = await fetchData();
 
   return {
     paths: docs.map(doc => ({

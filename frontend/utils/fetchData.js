@@ -1,14 +1,16 @@
-export async function fetchData(path) {
-  function getBaseUrl() {
-    if (typeof window === "undefined") {
-      return process.env.NODE_ENV === "production" ? `https://${req.headers.host}` : `https://localhost:3000`;
-    }
+import Airtable from 'airtable';
+const base = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY }).base(process.env.AIRTABLE_BASE_NAME);
 
-    return `/`
+export async function fetchData(id) {
+  const results = [
+    ...await base('Table 1').select({ view: "Grid view" }).all()
+  ].map(({ fields }) => fields);
+
+  if (id) {
+    return results.find(result =>
+      result.id === id
+    );
   }
 
-  const response = await fetch(`${getBaseUrl()}${path}`);
-  const { docs } = await response.json();
-
-  return docs;
+  return results
 }
