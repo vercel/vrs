@@ -2,26 +2,10 @@ import Layout from "../../components/Layout";
 import Editor from "../../components/Editor";
 import { fetchData } from "../../utils/fetchData";
 
-function Model({
-  details,
-  addToCart,
-  incrementQuantity,
-  decrementQuantity,
-  removeFromCart,
-  clearCart,
-  cartState,
-  toggleCartOpen
-}) {
+function Model({ details }) {
   return (
-    <Layout
-      incrementQuantity={incrementQuantity}
-      decrementQuantity={decrementQuantity}
-      removeFromCart={removeFromCart}
-      clearCart={clearCart}
-      cartState={cartState}
-      toggleCartOpen={toggleCartOpen}
-    >
-      <Editor details={details} addToCart={addToCart} />;
+    <Layout>
+      <Editor details={details} />;
     </Layout>
   );
 }

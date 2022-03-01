@@ -1,4 +1,7 @@
-export default function LineItem({ product, incrementQuantity, decrementQuantity, removeFromCart }) {
+import { useCartContext } from "../context/CartContext";
+
+export default function LineItem({ product }) {
+  const { decrementQuantity, incrementQuantity, removeFromCart } = useCartContext();
   const { id, name, price, url, quantity } = product
 
   return (

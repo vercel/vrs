@@ -14,25 +14,6 @@ class VRSDoc extends Document {
             href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap"
             rel="stylesheet"
           />
-          <style
-            dangerouslySetInnerHTML={{
-              __html: `
-          body {
-            font-family: "Space Mono", monospace;
-            text-rendering: optimizeLegibility;
-            word-break: break-word;
-            word-wrap: break-word;
-            -webkit-tap-highlight-color: transparent;
-            -webkit-font-smoothing: antialiased;
-            font-variant-ligatures: none;
-          }
-          .material-icons.md-18 { font-size: 18px; }
-          .material-icons.md-24 { font-size: 24px; }
-          .material-icons.md-36 { font-size: 36px; }
-          .material-icons.md-48 { font-size: 48px; }
-        `
-            }}
-          />
           <link
             rel="apple-touch-icon"
             sizes="57x57"

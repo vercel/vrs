@@ -3,16 +3,16 @@ import { loadStripe } from '@stripe/stripe-js';
 
 import LineItem from "./LineItem";
 import CheckoutForm from "./CheckoutForm";
+import { useCartContext } from '../context/CartContext';
 
-export default function CartSidebar({
-  cartOpen,
-  toggleCartOpen,
-  cartItems,
-  incrementQuantity,
-  decrementQuantity,
-  removeFromCart,
-  clearCart
-}) {
+export default function CartSidebar() {
+  const {
+    setCartVisibility,
+    clearCart,
+    cartItems,
+    visible: cartOpen
+  } = useCartContext();
+
   const TAX_RATE = 0.08;
   const subtotalPrice = cartItems.reduce((a, b) => a + b.quantity * b.price, 0);
   const totalTax = subtotalPrice * TAX_RATE;
@@ -26,7 +26,7 @@ export default function CartSidebar({
           className="Cart__close"
           onClick={e => {
             e.preventDefault();
-            toggleCartOpen(false);
+            setCartVisibility(false);
           }}
         >
           close
@@ -38,9 +38,6 @@ export default function CartSidebar({
             <LineItem
               key={item.id}
               product={item}
-              incrementQuantity={incrementQuantity}
-              decrementQuantity={decrementQuantity}
-              removeFromCart={removeFromCart}
             />
           ))}
       </ul>

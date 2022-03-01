@@ -5,24 +5,9 @@ import Layout from "../components/Layout";
 import Footer from "../components/Footer";
 import { fetchData } from "../utils/fetchData";
 
-function Store({
-  products,
-  incrementQuantity,
-  decrementQuantity,
-  removeFromCart,
-  clearCart,
-  cartState,
-  toggleCartOpen
-}) {
+function Store({ products }) {
   return (
-    <Layout
-      incrementQuantity={incrementQuantity}
-      decrementQuantity={decrementQuantity}
-      removeFromCart={removeFromCart}
-      clearCart={clearCart}
-      cartState={cartState}
-      toggleCartOpen={toggleCartOpen}
-    >
+    <Layout>
       <article className="pt5 bg-black white ph3">
         <a className="link white tc">
           <p>

@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { CardElement } from "@stripe/react-stripe-js";
+import { useCartContext } from "../context/CartContext";
 
-export default function CheckoutForm({ totalPrice, stripe, clearCart }) {
+export default function CheckoutForm({ totalPrice, stripe }) {
+  const { clearCart } = useCartContext();
   const [status, setStatus] = useState("default");
 
   async function handleSubmit(e) {
@@ -41,10 +43,11 @@ export default function CheckoutForm({ totalPrice, stripe, clearCart }) {
   return (
     <form onSubmit={handleSubmit}>
       <CardElement
-        style={{
-          base: { fontFamily: "Space Mono, monospace", color: "black" }
-        }}
-      />
+        options={{
+          style: {
+            base: { fontFamily: "Space Mono, monospace", color: "black" }
+          }
+        }} />
       <button
         type="submit"
         disabled={status === "submitting"}

@@ -7,6 +7,7 @@ import Router from "next/router";
 import throttle from "lodash/throttle";
 
 import EditorSidebar from "./EditorSidebar";
+import { useCartContext } from "../context/CartContext";
 
 // utils
 const traverse = (object, callback) => {
@@ -1083,4 +1084,10 @@ class Editor extends Component {
   }
 }
 
-export default Editor;
+export default (props) => {
+  const cart = useCartContext();
+
+  return (
+    <Editor {...props} {...cart} />
+  )
+}

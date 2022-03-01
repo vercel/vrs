@@ -11,20 +11,19 @@ import Cart from "./Cart";
 const CartSidebar = dynamic(() => import("./CartSidebar"));
 
 import NProgressStyles from "nprogress/nprogress.css";
+import { useCartContext } from "../context/CartContext";
 
 NProgress.configure({ showSpinner: false });
 Router.onRouteChangeStart = () => NProgress.start();
 Router.onRouteChangeComplete = () => NProgress.done();
 Router.onRouteChangeError = () => NProgress.done();
 
-export default function Nav({
-  toggleCartOpen,
-  clearCart,
-  cartState,
-  incrementQuantity,
-  decrementQuantity,
-  removeFromCart
-}) {
+export default function Nav() {
+  const {
+    setCartVisibility,
+    clearCart,
+    visible,
+  } = useCartContext();
   const { data: session, status } = useSession()
   const [router, setRouter] = useState("");
   const [username, setUsername] = useState("");
@@ -103,26 +102,23 @@ export default function Nav({
               onClick={e => {
                 e.preventDefault();
                 console.log("opening cart...");
-                toggleCartOpen(true);
+                setCartVisibility(true);
               }}
               title="Open Cart"
             >
-              <Cart
-                cnt={cartState && cartState.cartItems.length}
-                items={cartState && cartState.cartItems}
-              >
+              <Cart>
                 <i className="material-icons md-18">shopping_cart</i>
               </Cart>
             </a>
             {avatarURL ? (
-              <Image
-                className="link dim white dib v-mid"
-                onClick={logout}
-                height="30px"
-                width="30px"
-                src={avatarURL}
-                style={{ height: "20px", borderRadius: 100 }}
-              />
+              <div className="link dim white dib v-mid">
+                <Image
+                  onClick={logout}
+                  height="20px"
+                  width="20px"
+                  src={avatarURL}
+                />
+              </div>
             ) : (
               <Link href="/login">
                 <a
@@ -137,15 +133,7 @@ export default function Nav({
           </div>
         </nav>
       </header>
-      {cartState.cartOpen && <CartSidebar
-        cartOpen={cartState.cartOpen}
-        toggleCartOpen={toggleCartOpen}
-        cartItems={cartState && cartState.cartItems}
-        incrementQuantity={incrementQuantity}
-        decrementQuantity={decrementQuantity}
-        removeFromCart={removeFromCart}
-        clearCart={clearCart}
-      />}
+      {visible && <CartSidebar />}
     </div>
   );
 }
