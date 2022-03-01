@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 import Layout from "../components/Layout";
 import Footer from "../components/Footer";
@@ -39,8 +40,9 @@ function Store({
               >
                 <Link href={`/model/${product.id}`}>
                   <a className="db link dim tc white">
-                    <img
-                      style={{ objectFit: "contain", height: "200px" }}
+                    <Image
+                      height="200px"
+                      width="300px"
                       src={`/models/${product.id}/thumbnail@m.jpg`}
                       alt="Lorem"
                       className="w-100 db outline black-10"
