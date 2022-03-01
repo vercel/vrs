@@ -463,7 +463,7 @@ class Editor extends Component {
       new URL(window.location.href).searchParams.get("id") ||
       Router.query.id ||
       this.props.details.id;
-    const modelPath = `/static/models/${id}/data.js`;
+    const modelPath = `/models/${id}/data.js`;
 
     return new Promise(resolve => {
       loader.load(modelPath, result => {
