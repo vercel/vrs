@@ -2,11 +2,7 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "public": true,
   "builds": [
-    { "src": "backend/**/*.js", "use": "@vercel/node" },
-    {
-      "src": "frontend/package.json",
-      "use": "@vercel/next"
-    }
+    { "src": "backend/**/*.js", "use": "@vercel/node" }
   ],
   "routes": [
     {
@@ -20,27 +16,6 @@
     {
       "src": "/backend/(.*)",
       "dest": "backend/$1"
-    },
-    {
-      "src": "/_next/static/(?:[^/]+/pages|chunks|runtime)/.+",
-      "continue": true,
-      "headers": {
-        "cache-control": "immutable,max-age=31536000"
-      }
-    },
-    {
-      "src": "/static/models/(.*)",
-      "dest": "frontend/static/models/$1",
-      "headers": {
-        "cache-control": "immutable, max-age=31536000"
-      }
-    },
-    {
-      "src": "/(.*)",
-      "dest": "frontend/$1",
-      "headers": {
-        "cache-control": "s-maxage=31536000, maxage=0, stale-while-revalidate"
-      }
     }
   ],
   "env": {
