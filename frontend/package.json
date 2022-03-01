@@ -6,10 +6,12 @@
   "dependencies": {
     "@stripe/react-stripe-js": "^1.7.0",
     "@stripe/stripe-js": "^1.23.0",
+    "airtable": "^0.11.2",
     "isomorphic-unfetch": "^3.0.0",
     "js-cookie": "^2.2.0",
     "lodash": "^4.17.21",
     "next": "^12.1.0",
+    "next-auth": "^4.2.1",
     "nprogress": "^0.2.0",
     "react": "^17.0.2",
     "react-click-outside": "tj/react-click-outside",
@@ -17,6 +19,7 @@
     "react-dom": "^17.0.2",
     "react-motion": "^0.5.0",
     "react-smooth-scrollbar": "^7.2.2",
+    "stripe": "^8.205.0",
     "tachyons": "^4.7.1",
     "three": "^0.85.2",
     "tween.js": "^16.6.0"

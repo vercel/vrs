@@ -1,7 +1,7 @@
-import App from "next/app";
+import React from "react";
 import Head from "next/head";
 import Router from "next/router";
-import Cookies from "js-cookie";
+import { SessionProvider, useSession } from 'next-auth/react'
 
 import "../styles/editor.css";
 import "../styles/cart.css";
@@ -9,8 +9,22 @@ import "../styles/layout.css";
 import "../styles/slider.css";
 import "../styles/view.css";
 
+const withSession = (Component) => (props) => {
+  const session = useSession()
 
-class VRS extends App {
+  if (Component.prototype.render) {
+    return <Component session={session} {...props} />
+  }
+
+  throw new Error(
+    [
+      "You passed a function component, `withSession` is not needed.",
+      "You can `useSession` directly in your component.",
+    ].join("\n")
+  )
+}
+
+class VRS extends React.Component {
   state = {
     cartItems: [],
     cartOpen: false
@@ -29,7 +43,7 @@ class VRS extends App {
   };
 
   addToCart = details => {
-    if (Cookies.get("user-from-github")) {
+    if (this.props.session.status === "authenticated") {
       const { id } = details;
       this.setState(
         ({ cartItems }) => {
@@ -136,8 +150,16 @@ class VRS extends App {
           {...pageProps}
         />
       </>
-    );
+    )
   }
 }
 
-export default VRS;
+const VRSWithSession = withSession(VRS);
+
+export default function MyApp(props) {
+  return (
+    <SessionProvider session={props.pageProps.session}>
+      <VRSWithSession {...props} />
+    </SessionProvider>
+  )
+}
