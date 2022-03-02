@@ -434,6 +434,11 @@ material-colors@^1.2.1:
   version "1.2.6"
   resolved "https://registry.yarnpkg.com/material-colors/-/material-colors-1.2.6.tgz#6d1958871126992ceecc72f4bcc4d8f010865f46"
 
+material-icons@^1.10.7:
+  version "1.10.7"
+  resolved "https://registry.yarnpkg.com/material-icons/-/material-icons-1.10.7.tgz#5c1d2aa8ac73c7079851fc6925d0043a9ff47b73"
+  integrity sha512-DVW/37okFL2Dkjf/85nModJHNFlPdyOvvLJxRdiqSD1UbuTGez51hQt6f0IeXE6c42ww3YmFw0nsXePbufmNbA==
+
 mimic-response@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/mimic-response/-/mimic-response-3.1.0.tgz#2d1d59af9c1b129815accc2c46a022a5ce1fa3c9"

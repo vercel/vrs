@@ -6,10 +6,7 @@ class VRSDoc extends Document {
       <Html lang="en">
         <Head>
           <meta charSet="utf-8" />
-          <link
-            href="https://fonts.googleapis.com/icon?family=Material+Icons"
-            rel="stylesheet"
-          />
+          <meta name="description" content="VRS is a fully-functional e-commerce store, built on the serverless paradigm" />
           <link
             href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap"
             rel="stylesheet"
