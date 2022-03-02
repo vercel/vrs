@@ -1,4 +1,3 @@
-import type { FieldSet } from 'airtable';
 import Layout from "../../components/Layout";
 import Editor from "../../components/Editor";
 import { fetchData } from "../../utils/fetchData";
@@ -22,7 +21,7 @@ export async function getStaticProps(props) {
 };
 
 export async function getStaticPaths() {
-  const docs = await fetchData() as FieldSet[];
+  const docs = await fetchData();
 
   return {
     paths: docs.map(doc => ({

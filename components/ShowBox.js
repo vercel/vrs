@@ -19,7 +19,7 @@ export default class ShowBox extends Component {
     this.stop = true
   }
   initThree() {
-    let {width, height} = this.props
+    let { width, height } = this.props
 
     this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas, alpha: true })
     this.renderer.setClearColor(0x000000, 0)
@@ -38,7 +38,7 @@ export default class ShowBox extends Component {
     this.scene.add(this.object)
 
     let geometry = new THREE.SphereGeometry(3, 4, 4)
-    let material = new THREE.MeshPhongMaterial({color: 0xeeeeee, shading: THREE.FlatShading})
+    let material = new THREE.MeshPhongMaterial({ color: 0xeeeeee, shading: THREE.FlatShading })
 
     let mesh = new THREE.Mesh(geometry, material)
     mesh.position.set(0, 0, 0)
@@ -66,7 +66,7 @@ export default class ShowBox extends Component {
     this.renderer.clear()
     this.composer.render()
   }
-  render () {
-    return <canvas ref={canvas => this.canvas = canvas}/>
+  render() {
+    return <canvas ref={canvas => this.canvas = canvas} />
   }
 }

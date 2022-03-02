@@ -1,14 +1,13 @@
 import Head from "next/head";
 import { Motion, spring } from "react-motion";
+import { useRouter } from "next/router";
 
 import Nav from "./Nav";
 import SliderWave from "./SliderWave";
 import ScrollIcon from "./ScrollIcon";
 
-import tachyonsStyles from "tachyons/css/tachyons.min.css";
-import scrollBarStyles from "smooth-scrollbar/dist/smooth-scrollbar.css";
-import { useRouter } from "next/router";
-
+import "tachyons/css/tachyons.min.css";
+import "smooth-scrollbar/dist/smooth-scrollbar.css";
 
 // include three.js
 const THREE = require("three/build/three");
@@ -59,11 +58,6 @@ export default function Layout({ children, title = "VRS" }) {
     <div>
       <Head>
         <title>{title}</title>
-        <style
-          dangerouslySetInnerHTML={{
-            __html: tachyonsStyles + scrollBarStyles
-          }}
-        />
       </Head>
       <Nav />
       <Motion defaultStyle={{ o: 0 }} style={{ o: spring(1) }}>

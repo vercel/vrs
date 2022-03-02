@@ -1,22 +1,18 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import Head from "next/head";
 import dynamic from "next/dynamic";
 import Image from "next/image";
-import Router from "next/router";
+import { useRouter } from "next/router";
 import NProgress from "nprogress";
 import { useSession, signOut } from "next-auth/react";
 
+import { useCartContext } from "../context/CartContext";
 import Cart from "./Cart";
 const CartSidebar = dynamic(() => import("./CartSidebar"));
 
-import NProgressStyles from "nprogress/nprogress.css";
-import { useCartContext } from "../context/CartContext";
+import "nprogress/nprogress.css";
 
 NProgress.configure({ showSpinner: false });
-Router.onRouteChangeStart = () => NProgress.start();
-Router.onRouteChangeComplete = () => NProgress.done();
-Router.onRouteChangeError = () => NProgress.done();
 
 export default function Nav() {
   const {
@@ -25,12 +21,22 @@ export default function Nav() {
     visible,
   } = useCartContext();
   const { data: session, status } = useSession()
-  const [router, setRouter] = useState("");
+  const router = useRouter();
   const [username, setUsername] = useState("");
   const [avatarURL, setAvatarURL] = useState("");
 
   useEffect(() => {
-    Router.router && setRouter(Router.router.pathname);
+    router.events.on("routeChangeStart", () => {
+      NProgress.start();
+    })
+
+    router.events.on("routeChangeComplete", () => {
+      NProgress.done();
+    })
+
+    router.events.on("routeChangeError", () => {
+      NProgress.done();
+    })
   }, []);
 
   useEffect(() => {
@@ -45,21 +51,11 @@ export default function Nav() {
     setUsername(null);
     setAvatarURL(null);
     clearCart();
-    Router.push("/");
+    router.push("/");
   }
 
   return (
     <div className={`fixed w-100 ph3 pv3 pv3-ns ph3-m ph4-l fixed z-9999`}>
-      <Head>
-        <style
-          dangerouslySetInnerHTML={{
-            __html:
-              NProgressStyles +
-              "#nprogress .peg { display: none } #nprogress .bar { background: white; height: 3px; z-index: 10000; }"
-          }}
-        />
-      </Head>
-
       <header>
         <nav className="f6 fw6 ttu tracked dt-l w-100 mw8 center">
           <div className="w-100 w-10-l dtc-l tc tl-l v-mid">
@@ -72,7 +68,7 @@ export default function Nav() {
           <div className="w-100 w-90-l dtc-l tc tr-l v-mid">
             <Link href="/store">
               <a
-                className={`link dim white dib mr3 v-mid ${router === "/store" ? "bb" : ""
+                className={`link dim white dib mr3 v-mid ${router.pathname === "/store" ? "bb" : ""
                   }`}
                 title="Store"
               >
@@ -81,7 +77,7 @@ export default function Nav() {
             </Link>
             <Link href="/about">
               <a
-                className={`link dim white dib mr3 v-mid ${router === "/about" ? "bb" : ""
+                className={`link dim white dib mr3 v-mid ${router.pathname === "/about" ? "bb" : ""
                   }`}
                 title="About"
               >
@@ -122,7 +118,7 @@ export default function Nav() {
             ) : (
               <Link href="/login">
                 <a
-                  className={`link dim white dib v-mid ${router === "/login" ? "bb" : ""
+                  className={`link dim white dib v-mid ${router.pathname === "/login" ? "bb" : ""
                     }`}
                   title="Login"
                 >

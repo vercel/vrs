@@ -1,6 +1,14 @@
 import { useCartContext } from "../context/CartContext";
 
-export default function LineItem({ product }) {
+export default function LineItem({ product }: {
+  product: {
+    id: string;
+    name: string;
+    price: number;
+    url: string;
+    quantity: number;
+  }
+}) {
   const { decrementQuantity, incrementQuantity, removeFromCart } = useCartContext();
   const { id, name, price, url, quantity } = product
 

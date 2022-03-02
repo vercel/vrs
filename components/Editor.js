@@ -4,10 +4,11 @@
 import TWEEN from "tween.js";
 import { Component } from "react";
 import Router from "next/router";
+import dynamic from "next/dynamic"
 import throttle from "lodash/throttle";
 
-import EditorSidebar from "./EditorSidebar";
 import { useCartContext } from "../context/CartContext";
+const EditorSidebar = dynamic(() => import("./EditorSidebar"));
 
 // utils
 const traverse = (object, callback) => {
