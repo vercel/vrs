@@ -8,9 +8,8 @@ import { useCartContext } from '../context/CartContext';
 export default function CartSidebar() {
   const {
     setCartVisibility,
-    clearCart,
     cartItems,
-    visible: cartOpen
+    visible
   } = useCartContext();
 
   const TAX_RATE = 0.08;
@@ -19,7 +18,7 @@ export default function CartSidebar() {
   const totalPrice = subtotalPrice + totalTax;
 
   return (
-    <div className={`Cart ${cartOpen ? "Cart--open" : "dn"}`}>
+    <div className={`Cart ${visible ? "Cart--open" : "dn"}`}>
       <header className="Cart__header">
         <h2>cart</h2>
         <button
@@ -60,10 +59,12 @@ export default function CartSidebar() {
             <span className="pricing">$ {totalPrice.toFixed(2)}</span>
           </div>
         </div>
-        <Elements stripe={loadStripe("pk_test_lvZUcve5SCKEDCkOZ7BTG49N")}>
-          <CheckoutForm clearCart={clearCart} totalPrice={totalPrice} />
+        <Elements stripe={loadStripe(process.env.STRIPE_PK)}>
+          <CheckoutForm totalPrice={totalPrice} />
         </Elements>
       </footer>
     </div>
   );
 }
+
+
