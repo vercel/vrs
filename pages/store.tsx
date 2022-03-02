@@ -1,3 +1,4 @@
+import type { GetStaticProps } from 'next'
 import Link from "next/link";
 import Image from "next/image";
 
@@ -53,7 +54,7 @@ function Store({ products }) {
   );
 }
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
   const products = await fetchData();
 
   return {
@@ -61,6 +62,7 @@ export async function getStaticProps() {
       products
     },
   };
-};
+}
+
 
 export default Store;
