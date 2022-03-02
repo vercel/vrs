@@ -7,6 +7,7 @@ import Router from "next/router";
 import dynamic from "next/dynamic"
 import throttle from "lodash/throttle";
 
+import { THREE } from "../utils/three";
 import { useCartContext } from "../context/CartContext";
 const EditorSidebar = dynamic(() => import("./EditorSidebar"));
 
@@ -102,9 +103,35 @@ THREE.StereoEffect = function (renderer, composer, renderPass) {
   };
 };
 
-// the main component which renders a highly customized threejs model viewer
 
-class Editor extends Component {
+class Editor extends Component<{
+  details: { id: string; name: string; description: string; url: string; amount: number; };
+  addToCart: (x: any) => void;
+}> {
+  three;
+  materials;
+  objects;
+  wireframeObjects;
+  shapeObjects;
+  wireframe;
+  pointOpacity;
+  isMob;
+  loaded;
+  canvas;
+  stereoEffect;
+  vr;
+  initialScale;
+  initialPosition;
+  mousemoved;
+  selectedObject;
+  hoveredObjectDta;
+  selected;
+  selectedObjectData;
+  highlightedObject;
+  hoveredObjectData;
+  modelGroup;
+  initialRotation;
+
   constructor(props) {
     super(props);
 
@@ -169,7 +196,7 @@ class Editor extends Component {
   }
 
   addToCart() {
-    capturescreen().then(url => {
+    (window as any).capturescreen().then(url => {
       this.props.addToCart({ ...this.props.details, url });
     });
   }
@@ -185,9 +212,6 @@ class Editor extends Component {
     renderer.setClearColor(0x000000, 0);
     renderer.setPixelRatio(1); //window.devicePixelRatio || 1)
     renderer.setSize(width, height);
-    // renderer.shadowMap.enabled = true
-    // renderer.shadowMap.cascade = true
-    // renderer.shadowMap.type = THREE.PCFSoftShadowMap
     renderer.gammaInput = true;
     renderer.gammaOutput = true;
 
@@ -220,7 +244,7 @@ class Editor extends Component {
 
     const raycaster = new THREE.Raycaster();
 
-    window.capturescreen = () => {
+    (window as any).capturescreen = () => {
       return new Promise(resolve => {
         fetch(renderer.domElement.toDataURL("image/jpeg"))
           .then(data => data.blob())
@@ -458,7 +482,7 @@ class Editor extends Component {
 
     this.three.composer = composer;
   }
-  initModel() {
+  initModel(): Promise<void> {
     const loader = new THREE.ObjectLoader();
 
     const id =
@@ -698,7 +722,7 @@ class Editor extends Component {
       )
       .start();
   }
-  switchToWireframe(ev = {}) {
+  switchToWireframe(ev: { forceVR?: boolean;[key: string]: any } = {}) {
     if (!this.wireframe || this.vr || ev.forceVR) {
       this.wireframe = true;
       this.vr = !!ev.forceVR;
@@ -730,7 +754,7 @@ class Editor extends Component {
       this.setState({});
     }
   }
-  switchToModel(ev = {}) {
+  switchToModel(ev: { forceVR?: boolean;[key: string]: any } = {} = {}) {
     if (this.wireframe || this.vr || ev.forceVR) {
       this.wireframe = false;
       this.vr = !!ev.forceVR;
@@ -983,6 +1007,7 @@ class Editor extends Component {
 
   render() {
     let { selectedObjectData } = this;
+
     return (
       <div style={{ display: "flex" }}>
         {!this.loaded && (

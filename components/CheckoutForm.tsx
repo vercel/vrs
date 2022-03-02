@@ -31,8 +31,6 @@ export default function CheckoutForm({ totalPrice }: {
         }
       });
 
-      console.log({ res })
-
       if (!res.ok) {
         setStatus("error");
       }

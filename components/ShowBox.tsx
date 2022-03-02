@@ -3,10 +3,22 @@
  */
 
 import { Component } from 'react'
+import { THREE } from "../utils/three";
 
-export default class ShowBox extends Component {
-  constructor() {
-    super()
+export default class ShowBox extends Component<{
+  width: number;
+  height: number;
+  composer: () => void;
+}> {
+  stop;
+  renderer;
+  canvas;
+  camera;
+  scene;
+  object;
+  composer;
+  constructor(props) {
+    super(props)
 
     this.initThree = this.initThree.bind(this)
     this.tick = this.tick.bind(this)

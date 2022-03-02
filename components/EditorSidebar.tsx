@@ -2,7 +2,13 @@ import { Component } from 'react'
 import { ChromePicker } from 'react-color'
 import ClickOutside from 'react-click-outside'
 
-export default class extends Component {
+export default class extends Component<{
+  changeColor: (x: string, index: number) => void;
+  data: { name: string; uuid: string; colors: Array<any>; refractionRatios: Array<any>; shininesses: Array<any>; textures: Array<any> };
+}, {
+  colorPicker: Boolean[];
+  currColor: string[];
+}> {
   constructor(props) {
     super(props)
 
@@ -26,12 +32,12 @@ export default class extends Component {
   componentWillReceiveProps(newProps) {
     let { data } = newProps
     if (this.props.data && this.props.data.uuid !== data.uuid) {
-      // component changed
       this.setState({ colorPicker: [], currColor: [] })
     }
   }
   render() {
-    let { data } = this.props
+    let { data } = this.props;
+
     return <div className="sidebar-container white">
       {
         data &&
@@ -47,15 +53,17 @@ export default class extends Component {
           {data.colors && <div>
             {data.colors.map(({ r, g, b }, i) => {
               let bg = this.state.currColor[i] || `rgb(${~~(r * 255)}, ${~~(g * 255)}, ${~~(b * 255)})`
-              return <div key={`color-${i}`} className="dib color-swatch mr1 relative" onClick={ev => this.openColorpicker(ev, i)} style={{ backgroundColor: bg }}>{
-                this.state.colorPicker[i] && <ClickOutside onClickOutside={ev => this.close()}>
-                  <div className="absolute z-1">
-                    <ChromePicker
-                      color={bg}
-                      onChangeComplete={color => this.changeColor(color, i)} />
-                  </div>
-                </ClickOutside>
-              }</div>
+              return (
+                <div key={`color-${i}`} className="dib color-swatch mr1 relative" onClick={ev => this.openColorpicker(ev, i)} style={{ backgroundColor: bg }}>
+                  {this.state.colorPicker[i] && <ClickOutside onClickOutside={ev => this.close()}>
+                    <div className="absolute z-1">
+                      <ChromePicker
+                        color={bg}
+                        onChangeComplete={color => this.changeColor(color, i)} />
+                    </div>
+                  </ClickOutside>
+                  }</div>
+              )
             })}
           </div>}
           {(!data.colors || !data.colors.length) && <div>-</div>}

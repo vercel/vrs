@@ -1,32 +1,32 @@
-/**
- * Created by shu on 7/5/2017.
- */
-
 import { Component } from "react";
 import Link from "next/link";
 import { Motion, spring } from "react-motion";
 
 import ShowBox from "./ShowBox";
 import Footer from "./Footer";
+import { THREE } from "../utils/three";
 
-
-const Page = ({ children, fixed }) => (
+const Page = ({ children, fixed }: { children: JSX.Element | JSX.Element[]; fixed?: boolean }) => (
   <div className={`slider-item ${fixed ? "fixed" : "relative slide"}`}>
     {children}
   </div>
 );
 
-class Slider extends Component {
-  constructor() {
-    super();
+class Slider extends Component<{}, {
+  offset: number;
+}> {
+  isMobi;
+
+  constructor(props) {
+    super(props);
     this.state = {
       offset: 0
     };
     this.scrollHandler = this.scrollHandler.bind(this);
   }
   componentDidMount() {
-    window.scrollHandlers = window.scrollHandlers || [];
-    window.scrollHandlers.push(status => this.scrollHandler(status));
+    (window as any).scrollHandlers = (window as any).scrollHandlers || [];
+    (window as any).scrollHandlers.push(status => this.scrollHandler(status));
 
     this.isMobi =
       window.DeviceOrientationEvent && /Mobi/.test(navigator.userAgent);
