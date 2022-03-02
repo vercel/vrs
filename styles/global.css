@@ -6,9 +6,400 @@ body {
   -webkit-tap-highlight-color: transparent;
   -webkit-font-smoothing: antialiased;
   font-variant-ligatures: none;
+  background-color: #040404;
 }
 
 .material-icons.md-18 { font-size: 18px; }
 .material-icons.md-24 { font-size: 24px; }
 .material-icons.md-36 { font-size: 36px; }
 .material-icons.md-48 { font-size: 48px; }
+
+.button {
+  background-color: red;
+  color: white;
+  border: none;
+  font-size: 1.2rem;
+  padding: 10px 17px;
+  cursor: pointer;
+}
+
+.success {
+  background-color: #4caf50;
+}
+
+.button:hover,
+.button:focus {
+  background-color: rgb(150, 0 , 0);
+}
+
+.button:disabled {
+  background: #bfbfbf;
+  cursor: not-allowed;
+}
+
+.Cart {
+  color: #000;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 350px;
+  background-color: rgba(255, 255, 255, 0.97);
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid #000;
+  transform: translateX(100%);
+  transition: transform 0.15s ease-in-out;
+}
+
+.Cart--open {
+  transform: translateX(0);
+}
+
+.Cart__close {
+  position: absolute;
+  right: 9px;
+  top: 8px;
+  font-size: 15px;
+  color: #000;
+  border: none;
+  background: transparent;
+  transition: transform 100ms ease;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.Cart__header {
+  padding: 20px;
+  border-bottom: 1px solid #000;
+  display: flex;
+  align-items: center;
+  color: #000;
+}
+
+.Cart__line-items {
+  height: 59%;
+  overflow-y: scroll;
+  margin: 0;
+  padding: 20px;
+}
+
+.Cart__footer {
+  padding: 20px;
+  border-top: 1px solid #000;
+  flex: 0 0 auto;
+}
+
+.Cart__checkout {
+  margin-top: 20px;
+  display: block;
+  width: 100%;
+}
+
+.Cart-info {
+  padding: 15px 20px 10px;
+}
+
+.Cart-info.total {
+  padding-bottom: 30px;
+}
+
+.Cart-info__total {
+  float: left;
+  text-transform: uppercase;
+}
+
+.Cart-info__small {
+  font-size: 11px;
+}
+
+.Cart-info__pricing {
+  float: right;
+}
+
+.pricing {
+  margin-left: 5px;
+  font-size: 16px;
+  color: #000;
+}
+
+.Line-item {
+  margin-bottom: 20px;
+  overflow: hidden;
+  backface-visibility: visible;
+  min-height: 65px;
+  position: relative;
+  opacity: 1;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.Line-item__img {
+  width: 65px;
+  height: 65px;
+  border-radius: 3px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-color: #000;
+  position: absolute;
+}
+
+.Line-item__content {
+  width: 100%;
+  padding-left: 75px;
+}
+
+.Line-item__content-row {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 5px;
+  position: relative;
+}
+
+.Line-item__variant-title {
+  float: right;
+  font-weight: bold;
+  font-size: 11px;
+  line-height: 17px;
+  color: #000;
+}
+
+.Line-item__title {
+  color: #000;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.Line-item__price {
+  color: #000;
+  line-height: 23px;
+  float: right;
+  font-weight: 500;
+  font-size: 15px;
+  margin-right: 40px;
+}
+
+.Line-item__quantity-container {
+  border: 1px solid #000;
+  float: left;
+  border-radius: 3px;
+}
+
+.Line-item__quantity-update {
+  color: #000;
+  display: block;
+  float: left;
+  height: 21px;
+  line-height: 16px;
+  font-family: monospace;
+  width: 25px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  cursor: pointer;
+  font-size: 18px;
+  text-align: center;
+}
+
+.Line-item__quantity-update-form {
+  display: inline;
+}
+
+.Line-item__quantity {
+  color: #000;
+  width: 38px;
+  height: 21px;
+  line-height: 23px;
+  font-size: 15px;
+  border: none;
+  text-align: center;
+  -moz-appearance: textfield;
+  background: transparent;
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
+  display: block;
+  float: left;
+  padding: 0;
+  border-radius: 0;
+}
+
+.Line-item__remove {
+  color: #000;
+  position: absolute;
+  right: 0;
+  top: 0;
+  border: 0;
+  background: 0;
+  font-size: 20px;
+  top: -4px;
+  opacity: 0.5;
+}
+
+.Line-item__remove:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.add-to-cart-btn {
+  background: #0076FF;
+  padding: 10px; 
+}
+
+.add-to-cart-btn:hover {
+  background: #0061d1;
+}
+
+*::selection {
+  background: inherit;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+.view-canvas:active {
+  cursor: grabbing;
+}
+
+.setting-panel {
+  min-width: 200px;
+  top: 15%;
+  left: 10%;
+  opacity: 0.9;
+}
+
+.setting-panel:hover {
+  opacity: 1;
+  background: rgba(255,255,255,0.1);
+}
+
+.setting-panel .sidebar-container {
+  height: 100%;
+}
+
+.setting-panel .sidebar-container .subtitle {
+  display: block;
+  font-size: 10px;
+}
+
+.setting-panel .sidebar-container img {
+  height: 90px;
+}
+
+.setting-panel .sidebar-container .color-swatch {
+  width: 45px;
+  height: 20px;
+  border: 1px solid white;
+}
+
+.screenshot {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  transition: all .8s ease;
+}
+
+.description-container {
+  color: #fff;
+  position: fixed;
+  top: 12%;
+  left: 55%;
+  background: rgba(20,20,20,0.3);
+  padding: 10px;
+}
+
+@media (max-width: 500px) {
+  .description-container {
+    left: 15%;
+ }
+}
+
+.container {
+  height: 100vh;
+}
+
+.scrollbar-track-y, scrollbar .scrollbar-track-y {
+  right: 3px !important;
+  width: 5px !important;
+}
+
+.scrollbar-thumb, scrollbar .scrollbar-thumb {
+  width: 5px !important;
+}
+
+.tippy-tooltip.dark-theme .tippy-tooltip-content {
+  color: white;
+}
+
+.tippy-tooltip:focus, .tippy-tooltip:active, .tippy-popper:focus {
+  outline: none;
+}
+
+#cart-template {
+  max-height: 300px;
+}
+
+.badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 14px;
+  height: 14px;
+  font-size: 10px;
+  line-height: 14px;
+  text-align: center;
+  border-radius: 100%;
+  letter-spacing: -1px;
+  white-space: nowrap;
+  background: red;
+}
+
+.slider-container {
+  width: 100%;
+  height: 100vh;
+}
+.slider-container .slider-item {
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  font-size: 0;
+}
+.slider-container .slider-item canvas {
+  width: 100%;
+  height: 100%;
+}
+.slider-item-bg {
+  left: 0;
+  top: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.view-canvas {
+  cursor: grab;
+}
+
+.view-canvas:active {
+  cursor: grabbing;
+}
+
+.viewer-container {
+  align-content: center;
+  align-items: flex-end;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.viewer-container .sidebar {
+  flex: 1;
+}
+
+.viewer-container .sidebar.purchase {
+  align-items: center;
+}
+
+.viewer-container canvas {
+  flex: 2 300px;
+  height: auto;
+}

@@ -5,11 +5,6 @@ import { CartProvider } from "../context/CartContext";
 
 import "material-icons/iconfont/material-icons.css";
 import "../styles/global.css";
-import "../styles/editor.css";
-import "../styles/cart.css";
-import "../styles/layout.css";
-import "../styles/slider.css";
-import "../styles/view.css";
 
 export default function MyApp({ Component, pageProps }) {
   return (

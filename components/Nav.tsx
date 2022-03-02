@@ -110,8 +110,8 @@ export default function Nav() {
               <div className="link dim white dib v-mid">
                 <Image
                   onClick={logout}
-                  height="20px"
-                  width="20px"
+                  height={20}
+                  width={20}
                   src={avatarURL}
                 />
               </div>

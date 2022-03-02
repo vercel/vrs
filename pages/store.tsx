@@ -24,12 +24,12 @@ function Store({ products }) {
                 key={product.id}
               >
                 <Link href={`/model/${product.id}`}>
-                  <a className="db link dim tc white">
+                  <div className="db link dim tc white">
                     <Image
-                      height="200px"
-                      width="300px"
+                      height={200}
+                      width={300}
                       src={`/models/${product.id}/thumbnail@m.jpg`}
-                      alt="Lorem"
+                      alt={product.name}
                       className="w-100 db outline black-10"
                     />
                     <dl className="mt2 f6 lh-copy">
@@ -42,7 +42,7 @@ function Store({ products }) {
                         {product.description}
                       </dd>
                     </dl>
-                  </a>
+                  </div>
                 </Link>
               </div>
             ))}
