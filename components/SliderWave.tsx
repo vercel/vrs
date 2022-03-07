@@ -79,13 +79,13 @@ class SliderWave extends Component {
 
     this.dots = []
 
-    this.material = new THREE.SpriteMaterial({
+    this.material = new THREE.SpriteCanvasMaterial({
       color: 0xffffff,
-      // map: context => {
-      //   context.beginPath()
-      //   context.arc(0, 0, .3, 0, PI_2, true)
-      //   context.fill()
-      // }
+      program: context => {
+        context.beginPath()
+        context.arc(0, 0, .3, 0, PI_2, true)
+        context.fill()
+      }
     })
 
     for (let i = 0; i < X_CNT; ++i) {
@@ -99,7 +99,7 @@ class SliderWave extends Component {
       }
     }
 
-    this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas })
+    this.renderer = new THREE.CanvasRenderer({ canvas: this.canvas })
     this.renderer.setPixelRatio(1)
     this.renderer.setSize(window.innerWidth, window.innerHeight)
 
