@@ -2,17 +2,52 @@
 
 ---
 
-VRS is a fully-functional e-commerce store, built on the [serverless paradigm](https://vercel.com).
+# VRS
 
-With a single command `vercel`, the store deploys instantly, scales automatically, and requires zero supervision. The underlying infrastructure can handle peak time traffic with consistent, blazing-fast performance.
+VRS is a fully-functional e-commerce store using Next.js 12, three.js, NextAuth.js, Stripe Elements, and Airtable.  
 
-## Deploy
+## Demo 
 
-You can deploy VRS to our scalable serverless infrastructure free of cost.  
-Thanks to the on-demand pricing model, you don’t pay a cent for infrastructure during idle time.
+https://serverless-vrs.vercel.app/
 
-## About
+## Configuration 
 
-Our mission at Vercel is to make the cloud accessible to everyone. We do that by creating products that improve developer experience, provisioning infrastructure that is globally available, and by teaching the developer community about serverless-related technology. We made VRS to showcase that it’s possible to create a fully functional, high-performance e-commerce store without requiring infrastructure know-how. 
+### Step 1
+
+Clone the repository 
+
+```bash
+$ git clone https://github.com/vercel/vrs.git
+```
+
+### Step 2 
+
+In order to run this example locally, you have to set up your environment in the `.env.local` file.
+
+Copy the `.env.local.example` file in this directory to `.env.local` (which will be ignored by Git):
+
+```
+cp .env.local.example .env.local
+```
+
+Then, open `.env.local` and add the missing environment variables:
+
+- `NEXTAUTH_SECRET`: A secret value that's used by NextAuth.js to encrypt JWTs. Read more about NextAuth.js's secret value [here](https://next-auth.js.org/configuration/options#nextauth_secret). 
+- `STRIPE_PK`:  Stripe's publishable key. Read more about Stripe's API keys [here](https://stripe.com/docs/keys#obtain-api-keys). 
+- `STRIPE_SK`:  Stripe's secret key. Read more about Stripe's API keys [here](https://stripe.com/docs/keys#obtain-api-keys). 
+- `GITHUB_CLIENT_ID`:  Client ID of your registered OAuth application within Github. Read more about creating a Github app [here](https://docs.github.com/en/developers/apps/building-oauth-apps/creating-an-oauth-app).
+- `GITHUB_CLIENT_SECRET`:  Client Secret of your registered OAuth application within Github. Read more about creating a Github app [here](https://docs.github.com/en/developers/apps/building-oauth-apps/creating-an-oauth-app).
+
+In this example, we're using [Airtable](https://airtable.com/) as our data source. If you haven't configured Airtable, this example uses the local mock data that can be found in `mockdata.ts`. You can optionally provide the necessary environment variables in the `.env.local` file. 
+
+
+- `AIRTABLE_API_KEY` (_optional_): Airtable's API key. Read more about Airtable's API keys [here](https://support.airtable.com/hc/en-us/articles/219046777-How-do-I-get-my-API-key-) 
+- `AIRTABLE_BASE_NAME`  (_optional_): Your Airtable's base name. Read more about Airtable's API keys [here](https://support.airtable.com/hc/en-us/articles/219046777-How-do-I-get-my-API-key-) 
+
+
+## Deployment 
+
+You can deploy this app to the cloud with Vercel ([documentation](https://nextjs.org/docs/deployment))
+
 
 Follow us on [Twitter](https://twitter.com/vercel).
