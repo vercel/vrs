@@ -7,9 +7,10 @@ export async function fetchData(id: string): Promise<FieldSet>;
 export async function fetchData(): Promise<FieldSet[]>;
 
 export async function fetchData(id?: string): Promise<FieldSet | FieldSet[]> {
-  const results = [
-    ...await base("Table 1").select({ view: "Grid view" }).all()
-  ].map(({ fields }) => fields);
+  const results = process.env.AIRTABLE_API_KEY ?
+    [...await base("Table 1").select({ view: "Grid view" }).all()].map(({ fields }) => fields)
+    // Use fake data if Airtable has not been configured
+    : require('../mockdata').default;
 
   if (id) {
     return results.find(result =>
