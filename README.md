@@ -43,11 +43,6 @@ In this example, we're using [Airtable](https://airtable.com/) as our data sourc
 
 - `AIRTABLE_API_KEY` (_optional_): Airtable's API key. Read more about Airtable's API keys [here](https://support.airtable.com/hc/en-us/articles/219046777-How-do-I-get-my-API-key-) 
 - `AIRTABLE_BASE_NAME`  (_optional_): Your Airtable's base name. Read more about Airtable's API keys [here](https://support.airtable.com/hc/en-us/articles/219046777-How-do-I-get-my-API-key-) 
+- `AIRTABLE_TABLE_NAME`  (_optional_): Your Airtable's Table name. Read more about using data from Airtable [here](https://help.appsheet.com/en/articles/1785063-using-data-from-airtable#:~:text=The%20base%20ID%20can%20be,must%20be%20separated%20by%20commas).
+- `AIRTABLE_VIEW_NAME`  (_optional_): Your Airtable's View name. Read more about using data from Airtable [here](https://help.appsheet.com/en/articles/1785063-using-data-from-airtable#:~:text=The%20base%20ID%20can%20be,must%20be%20separated%20by%20commas).
 
-
-## Deployment 
-
-You can deploy this app to the cloud with Vercel ([documentation](https://nextjs.org/docs/deployment))
-
-
-Follow us on [Twitter](https://twitter.com/vercel).
