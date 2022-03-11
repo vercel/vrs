@@ -55,13 +55,14 @@ export default function About() {
             with the Vercel CLI, and run `npx vercel` — that’s it.
           </p>
           <p className="lh-copy">
-            The 3D models used are{' '}
+            The 3D models used are freely licensed through{' '}
             <a
               className="link white underline dim"
-              href="https://opensource.org/licenses/MIT"
+              href="https://clara.io/legal/content-guidelines"
             >
-              MIT licensed.
+              Clara
             </a>
+            .
           </p>
         </div>
       </main>
