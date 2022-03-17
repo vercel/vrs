@@ -50,6 +50,7 @@ export default function Footer() {
         <a
           className="link black inline-flex items-center ma2 tc br2 pa2"
           href="https://vercel.com"
+          aria-label="Vercel"
         >
           <VercelLogo dark={true} />
         </a>
