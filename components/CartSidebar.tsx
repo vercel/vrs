@@ -13,7 +13,7 @@ export default function CartSidebar() {
   } = useCartContext();
 
   const TAX_RATE = 0.08;
-  const subtotalPrice = cartItems.reduce((a, b) => a + b.quantity * b.price, 0);
+  const subtotalPrice = cartItems?.reduce((a, b) => a + b.quantity * b.price, 0) || 0;
   const totalTax = subtotalPrice * TAX_RATE;
   const totalPrice = subtotalPrice + totalTax;
 

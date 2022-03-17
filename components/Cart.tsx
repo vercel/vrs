@@ -2,7 +2,7 @@ import { useCartContext } from "../context/CartContext";
 
 export default function Cart({ children }: { children: JSX.Element | JSX.Element[] }) {
   const cart = useCartContext();
-  const cnt = cart.cartItems.reduce((a, b) => a + b.quantity, 0);
+  const cnt = cart.cartItems?.reduce((a, b) => a + b.quantity, 0) || 0;
 
   return (
     <div style={{ position: "relative" }}>
