@@ -464,10 +464,10 @@ napi-build-utils@^1.0.1:
   resolved "https://registry.yarnpkg.com/napi-build-utils/-/napi-build-utils-1.0.2.tgz#b1fddc0b2c46e380a0b7a76f984dd47c41a13806"
   integrity sha512-ONmRUqK7zj7DWX0D9ADe03wbwOBZxNAfF20PlGfCWQcD3+/MakShIHrMqx9YwPTfxDdF1zLeL+RGZiR9kGMLdg==
 
-next-auth@^4.3.2:
-  version "4.3.2"
-  resolved "https://registry.yarnpkg.com/next-auth/-/next-auth-4.3.2.tgz#eb4976511fb19766d0397bd4de45eee87c5c1998"
-  integrity sha512-yj9HN9p81Fg3dkrq4Y0FxjfgupiABac7o+ve47j5GPLjo1qE2FFX1pr7g7mwQ1HDUCoGhLmgBpFBR8+pdWgFfQ==
+next-auth@^4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/next-auth/-/next-auth-4.5.0.tgz#2df57287fddc705b8971c88c60bad44a89ac6dd1"
+  integrity sha512-B6gYRIbqtj8nlDsx3y2Ruwp/mvZnItPs7VUULY43QYw+M9xtDPIM9EBZ3ryd/wNYA3MDteBJlzGm/ivseXcmJA==
   dependencies:
     "@babel/runtime" "^7.16.3"
     "@panva/hkdf" "^1.0.1"
